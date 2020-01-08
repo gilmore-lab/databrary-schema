@@ -115,3 +115,57 @@ With the following addition(s):
 |               | `honorificSuffix`  | http://schema.org/honorificSuffix | e.g., Ph.D. |
 |               | `jobTitle`         | http://schema.org/jobTitle | |
 |               | `telephone`        | http://schema.org/telephone | |
+
+## Volume (Project)
+
+Here is the structure of the output from the DB1 API for a volume, in this case, the default is volume 1 (https://nyu.databrary.org/volume/1):
+
+```{r}
+str(databraryapi::download_containers_records())
+```
+
+We also have the project's icon at <https://nyu.databrary.org/volume/1/thumb?size>, so apparently the `thumb` variable holds the icon.
+
+### Schema suggestions
+
+Let's try the DataCatalog (http://schema.org/DataCatalog) schema to start mapping the volume-level items.
+
+| DB1           | Suggested mapping | Schema URL | Comments |
+|---------------|-------------------|------------|----------|
+| `id`          | `identifier`      | http://schema.org/identifier | |
+| `name`        | `name`            | http://schema.org/name ||
+| `body`        | `abstract`        | http://schema.org/abstract ||
+| `doi`         |                   | | Use `citation` or ? |
+| `creation`    | `dateCreated`     | http://schema.org/dateCreated ||
+| `owners`      | `creator`         | http://schema.org/creator | How to handle different types of 'ownership' |
+| `permission`  |              |                                | See related discussion above |
+| `publicshareful` |            |                                | |
+| `publicaccess`   |            |                               | |
+| https://nyu.databrary.org/volume/1/thumb?size                | `thumbnailUrl` | http://schema.org/thumbnailUrl | |          
+
+We'll deal with the `containers` array separately, as that is where the spreadsheet/session data reside.
+
+The following seem like logical additions to the volume level schema:
+
+| DB1           | Suggested mapping | Schema URL | Comments |
+|---------------|-------------------|------------|----------|
+|               | `dateModified`    | http://schema.org/dateModified | |
+|               | `datePublished`   | http://schema.org/datePublished | |
+|               | `dataset`         | http://schema.org/dataset | |
+|               | `measurementTechnique` | http://pending.schema.org/measurementTechnique | |
+|               | `citation`        | http://schema.org/citation | But see `doi` query |
+|               | `conditionsOfAccess` | http://pending.schema.org/conditionsOfAccess | |
+|               | `contributor`       | http://schema.org/contributor | Possibly use for non-authorial/citation contributors |
+|               | `copyrightHolder`    | http://schema.org/copyrightHolder | |
+|               |                      | http://schema.org/copyrightYear | |
+|               | `creativeWorkStatus` | http://pending.schema.org/creativeWorkStatus | |
+|                | `funder`             | http://schema.org/funder | Not sure how funders are handled now |
+|                | `hasPart`            | http://schema.org/hasPart | For subcomponents |
+|                | `inLanguage`         | http://schema.org/inLanguage | |
+|                | `interactionStatistic` | http://schema.org/interactionStatistic |  For view/download counts |
+|                | `isPartOf`           | http://schema.org/isPartOf | For relations between projects |
+|                | `keywords`           | http://schema.org/keywords | |
+|                | `publication`         | http://schema.org/publication | |
+|                | `version`             | http://schema.org/version | |
+|                | `sameAs`              | http://schema.org/sameAs | |
+
