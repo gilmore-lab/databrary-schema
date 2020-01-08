@@ -2911,9 +2911,15 @@ div.tocify {
 <p>Login to Databrary by running <code>rmarkdown::render(&quot;schema-development.Rmd&quot;, params = list(db_login=&quot;YOUREMAIL@PROVIDER.COM&quot;))</code> from the RStudio console.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YWJyYXJ5YXBpOjpsb2dpbl9kYihwYXJhbXMkZGJfbG9naW4pXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiZGF0YWJyYXJ5YXBpOjpsb2dpbl9kYihwYXJhbXMkZGJfbG9naW4pIn0= -->
 <pre class="r"><code>databraryapi::login_db(params$db_login)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-message-begin eyJkYXRhIjoiTG9naW4gc3VjY2Vzc2Z1bC5cbiJ9 -->
+<pre><code>Login successful.</code></pre>
+<!-- rnb-message-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFRSVUVcbiJ9 -->
+<pre><code>[1] TRUE</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="institutions" class="section level2">
@@ -2922,14 +2928,33 @@ div.tocify {
 <p>The DB1 API returns the following data for an Institution like NYU.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9wYXJ0eSg4KVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9wYXJ0eSg4KSJ9 -->
 <pre class="r"><code>databraryapi::download_party(8)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJGlkXG5bMV0gOFxuXG4kc29ydG5hbWVcblsxXSBcIk5ldyBZb3JrIFVuaXZlcnNpdHkgKE5ZVSlcIlxuXG4kdXJsXG5bMV0gXCJodHRwOi8vd3d3Lm55dS5lZHUvXCJcblxuJGluc3RpdHV0aW9uXG5bMV0gVFJVRVxuIn0= -->
+<pre><code>$id
+[1] 8
+
+$sortname
+[1] &quot;New York University (NYU)&quot;
+
+$url
+[1] &quot;http://www.nyu.edu/&quot;
+
+$institution
+[1] TRUE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTmV3IFlvcmsgVW5pdmVyc2l0eSAoTllVKVxuIn0= -->
+<pre><code>New York University (NYU)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaHR0cDovL3d3dy5ueXUuZWR1L1xuIn0= -->
+<pre><code>http://www.nyu.edu/</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="schema-suggestions" class="section level3">
 <h3>Schema suggestions</h3>
-<p>I suggest the following mappings:</p>
+<p>Based on the CollegeOrUniversity schema (<a href="http://schema.org/CollegeOrUniversity" class="uri">http://schema.org/CollegeOrUniversity</a>), I suggest the following mappings:</p>
 <table>
 <colgroup>
 <col width="26%"></col>
@@ -2978,7 +3003,7 @@ div.tocify {
 </tr>
 </tbody>
 </table>
-<p>and a simple addition</p>
+<p>I also suggest the following additions:</p>
 <table>
 <colgroup>
 <col width="26%"></col>
@@ -3001,6 +3026,18 @@ div.tocify {
 <td><a href="http://schema.org/name" class="uri">http://schema.org/name</a></td>
 <td>New field with official name, here New York University</td>
 </tr>
+<tr class="even">
+<td></td>
+<td><code>address</code></td>
+<td><a href="http://schema.org/address" class="uri">http://schema.org/address</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>contactPoint</code></td>
+<td><a href="http://schema.org/contactPoint" class="uri">http://schema.org/contactPoint</a></td>
+<td></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3011,9 +3048,8 @@ div.tocify {
 <p>Here, for example, is what the DB1 API returns for Rick Gilmore:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9wYXJ0eSg2KVxuXG5gYGAifQ== -->
-<pre class="r"><code>databraryapi::download_party(6)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9wYXJ0eSg2KSJ9 -->
+<pre class="r"><code>databraryapi::download_party(6)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiJGlkXG5bMV0gNlxuXG4kc29ydG5hbWVcblsxXSBcIkdpbG1vcmVcIlxuXG4kcHJlbmFtZVxuWzFdIFwiUmljayBPLlwiXG5cbiRvcmNpZFxuWzFdIFwiMDAwMC0wMDAyLTc2NzYtMzk4MlwiXG5cbiRhZmZpbGlhdGlvblxuWzFdIFwiVGhlIFBlbm5zeWx2YW5pYSBTdGF0ZSBVbml2ZXJzaXR5XCJcblxuJHVybFxuWzFdIFwiaHR0cDovL2dpbG1vcmUtbGFiLmdpdGh1Yi5pb1wiXG5cbiRlbWFpbFxuWzFdIFwicm9naWxtb3JlQHBzdS5lZHVcIlxuXG4kcGVybWlzc2lvblxuWzFdIDVcbiJ9 -->
 <pre><code>$id
@@ -3040,24 +3076,610 @@ $email
 $permission
 [1] 5</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiR2lsbW9yZVxuIn0= -->
+<pre><code>Gilmore</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmljayBPLlxuIn0= -->
+<pre><code>Rick O.</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiMDAwMC0wMDAyLTc2NzYtMzk4MlxuIn0= -->
+<pre><code>0000-0002-7676-3982</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiVGhlIFBlbm5zeWx2YW5pYSBTdGF0ZSBVbml2ZXJzaXR5XG4ifQ== -->
+<pre><code>The Pennsylvania State University</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaHR0cDovL2dpbG1vcmUtbGFiLmdpdGh1Yi5pb1xuIn0= -->
+<pre><code>http://gilmore-lab.github.io</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoicm9naWxtb3JlQHBzdS5lZHVcbiJ9 -->
+<pre><code>rogilmore@psu.edu</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>These are largely self-explanatory except for <code>permission</code>. Let’s investigate this.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGJfY29uc3QgPC0gZGF0YWJyYXJ5YXBpOjphc3NpZ25fY29uc3RhbnRzKClcbnN0cihkYl9jb25zdClcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjpbImRiX2NvbnN0IDwtIGRhdGFicmFyeWFwaTo6YXNzaWduX2NvbnN0YW50cygpIiwic3RyKGRiX2NvbnN0KSJdfQ== -->
 <pre class="r"><code>db_const &lt;- databraryapi::assign_constants()
 str(db_const)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlzdCBvZiA5XG4gJCBwZXJtaXNzaW9uOiBjaHIgWzE6Nl0gXCJOT05FXCIgXCJQVUJMSUNcIiBcIlNIQVJFRFwiIFwiUkVBRFwiIC4uLlxuICQgcmVsZWFzZSAgIDogY2hyIFsxOjRdIFwiUFJJVkFURVwiIFwiU0hBUkVEXCIgXCJFWENFUlBUU1wiIFwiUFVCTElDXCJcbiAkIG1ldHJpYyAgICA6TGlzdCBvZiAzNlxuICAuLiQgMSA6TGlzdCBvZiA3XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDFcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcIklEXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgdW5pcXVlLCBhbm9ueW1pemVkLCBwcmltYXJ5IGlkZW50aWZpZXIsIHN1Y2ggYXMgcGFydGljaXBhbnQgSURcIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgVFJVRVxuICAuLiQgMiA6TGlzdCBvZiA2XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDJcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImluZm9cIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiT3RoZXIgaW5mb3JtYXRpb24gb3IgYWx0ZXJuYXRlIGlkZW50aWZpZXJcIlxuICAuLiQgMyA6TGlzdCBvZiA3XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDNcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uXCJcbiAgLi4kIDQgOkxpc3Qgb2YgNlxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCA0XG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJiaXJ0aGRhdGVcIlxuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcImRhdGVcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkRhdGUgb2YgYmlydGggKHVzZWQgd2l0aCBzZXNzaW9uIGRhdGUgdG8gY2FsY3VsYXRlIGFnZTsgeW91IGNhbiBhbHNvIHVzZSB0aGUgZ3JvdXAgY2F0ZWdvcnkgdG8gZGVzaWduYXRlIGFnZSBncm91cHMpXCJcbiAgLi4gLi4kIHJlcXVpcmVkICAgOiBsb2dpIEZBTFNFXG4gIC4uJCA1IDpMaXN0IG9mIDhcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgNVxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCAxXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiZ2VuZGVyXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgb3B0aW9ucyAgICA6IGNociBbMToyXSBcIkZlbWFsZVwiIFwiTWFsZVwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiXFxcIk1hbGVcXFwiLCBcXFwiRmVtYWxlXFxcIiwgb3IgYW55IG90aGVyIHJlbGV2YW50IGdlbmRlclwiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICAuLiQgNiA6TGlzdCBvZiA4XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDZcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcInJhY2VcIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjddIFwiQW1lcmljYW4gSW5kaWFuIG9yIEFsYXNrYSBOYXRpdmVcIiBcIkFzaWFuXCIgXCJOYXRpdmUgSGF3YWlpYW4gb3IgT3RoZXIgUGFjaWZpYyBJc2xhbmRlclwiIFwiQmxhY2sgb3IgQWZyaWNhbiBBbWVyaWNhblwiIC4uLlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkFzIGNsYXNzaWZpZWQgYnkgTklILCBvciB1c2VyLWRlZmluZWQgY2xhc3NpZmljYXRpb25cIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAgLi4kIDcgOkxpc3Qgb2YgOFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCA3XG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJldGhuaWNpdHlcIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjNdIFwiTm90IEhpc3BhbmljIG9yIExhdGlub1wiIFwiSGlzcGFuaWMgb3IgTGF0aW5vXCIgXCJVbmtub3duIG9yIG5vdCByZXBvcnRlZFwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQXMgY2xhc3NpZmllZCBieSBOSUggKEhpc3BhbmljL05vbi1IaXNwYW5pYyksIG9yIHVzZXItZGVmaW5lZCBjbGFzc2lmaWNhdGlvblwiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICAuLiQgOCA6TGlzdCBvZiA2XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDhcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImdlc3RhdGlvbmFsIGFnZVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJudW1lcmljXCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJQcmVnbmFuY3kgYWdlIGluIHdlZWtzIGJldHdlZW4gbGFzdCBtZW5zdHJ1YWwgcGVyaW9kIGFuZCBiaXJ0aCAob3IgcHJlLW5hdGFsIG9ic2VydmF0aW9uKVwiXG4gIC4uJCA5IDpMaXN0IG9mIDhcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgOVxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCAxXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwicHJlZ25hbmN5IHRlcm1cIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjJdIFwiRnVsbCB0ZXJtXCIgXCJQcmV0ZXJtXCJcbiAgLi4gLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJGdWxsIHRlcm1cIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIlxcXCJGdWxsIHRlcm1cXFwiLCBcXFwiUHJldGVybVxcXCIsIG9yIG90aGVyIGdlc3RhdGlvbmFsIHRlcm1cIlxuICAuLiQgMTA6TGlzdCBvZiA2XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDEwXG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJiaXJ0aCB3ZWlnaHRcIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwibnVtZXJpY1wiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiV2VpZ2h0IGF0IGJpcnRoIChpbiBncmFtcywgZS5nLiwgMzI1MClcIlxuICAuLiQgMTE6TGlzdCBvZiA3XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDExXG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJkaXNhYmlsaXR5XCJcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJ0eXBpY2FsXCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBbnkgZGV2ZWxvcG1lbnRhbCwgcGh5c2ljYWwsIG9yIG1lbnRhbCBkaXNhYmlsaXR5IG9yIGRpc2FiaWxpdGllc1wiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICAuLiQgMTI6TGlzdCBvZiA4XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDEyXG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJsYW5ndWFnZVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJFbmdsaXNoXCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJQcmltYXJ5IGxhbmd1YWdlKHMpIHNwb2tlbiBieSBhbmQgdG8gcGFydGljaXBhbnRcIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAgLi4kIDEzOkxpc3Qgb2YgN1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAxM1xuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCAxXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiY291bnRyeVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJVU1wiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQ291bnRyeSB3aGVyZSBwYXJ0aWNpcGFudCB3YXMgYm9yblwiXG4gIC4uJCAxNDpMaXN0IG9mIDdcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMTRcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcInN0YXRlXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgb3B0aW9ucyAgICA6IGNociBbMTo1MV0gXCJBTFwiIFwiQUtcIiBcIkFaXCIgXCJBUlwiIC4uLlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIlN0YXRlL3RlcnJpdG9yeSB3aGVyZSBwYXJ0aWNpcGFudCB3YXMgYm9yblwiXG4gIC4uJCAxNTpMaXN0IG9mIDdcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMTVcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcInNldHRpbmdcIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjVdIFwiTGFiXCIgXCJIb21lXCIgXCJDbGFzc3Jvb21cIiBcIk91dGRvb3JcIiAuLi5cbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJUaGUgcGh5c2ljYWwgY29udGV4dCBvZiB0aGUgcGFydGljaXBhbnQgKHBsZWFzZSBkbyBub3QgdXNlIGZvciBuZXcgZGF0YTogc2VlIHRoZSBjb250ZXh0IGNhdGVnb3J5IGluc3RlYWQpXCJcbiAgLi4kIDE2Okxpc3Qgb2YgNlxuICAuLiAuLiQgaWQgICAgICA6IGludCAxNlxuICAuLiAuLiQgY2F0ZWdvcnk6IGludCAyXG4gIC4uIC4uJCBuYW1lICAgIDogY2hyIFwicGlsb3RcIlxuICAuLiAuLiQgcmVsZWFzZSA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgIDogY2hyIFwidm9pZFwiXG4gIC4uIC4uJCByZXF1aXJlZDogbG9naSBGQUxTRVxuICAuLiQgMTc6TGlzdCBvZiA2XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDE3XG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDJcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJuYW1lXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbGFiZWwgb3IgaWRlbnRpZmllciByZWZlcnJpbmcgdG8gdGhlIHBpbG90IG1ldGhvZFwiXG4gIC4uJCAxODpMaXN0IG9mIDdcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMThcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgMlxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uIG9mIHRoZSBwaWxvdCBtZXRob2RcIlxuICAuLiQgMTk6TGlzdCBvZiA1XG4gIC4uIC4uJCBpZCAgICAgIDogaW50IDE5XG4gIC4uIC4uJCBjYXRlZ29yeTogaW50IDNcbiAgLi4gLi4kIG5hbWUgICAgOiBjaHIgXCJleGNsdWRlZFwiXG4gIC4uIC4uJCByZWxlYXNlIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgOiBjaHIgXCJ2b2lkXCJcbiAgLi4kIDIwOkxpc3Qgb2YgNlxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAyMFxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCAzXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwibmFtZVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxhYmVsIG9yIGlkZW50aWZpZXIgcmVmZXJyaW5nIHRvIHRoZSBleGNsdXNpb24gY3JpdGVyaW9uXCJcbiAgLi4kIDIxOkxpc3Qgb2YgOFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAyMVxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCAzXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwicmVhc29uXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgb3B0aW9ucyAgICA6IGNociBbMTo0XSBcIkRpZCBub3QgbWVldCBpbmNsdXNpb24gY3JpdGVyaWFcIiBcIlByb2NlZHVyYWwvZXhwZXJpbWVudGVyIGVycm9yXCIgXCJXaXRoZHJldy9mdXNzeS90aXJlZFwiIFwiT3V0bGllclwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiVGhlIHJlYXNvbiBmb3IgZXhjbHVkaW5nIHRoZXNlIGRhdGFcIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAgLi4kIDIyOkxpc3Qgb2YgN1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAyMlxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCAzXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiZGVzY3JpcHRpb25cIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBsb25nICAgICAgIDogbG9naSBUUlVFXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQSBsb25nZXIgZXhwbGFuYXRpb24gb3IgZGVzY3JpcHRpb24gb2YgdGhlIHJlYXNvbiBmb3IgZXhjbHVkaW5nIGRhdGFcIlxuICAuLiQgMjM6TGlzdCBvZiA3XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDIzXG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDRcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJuYW1lXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbGFiZWwgb3IgaWRlbnRpZmllciBmb3IgdGhlIGNvbmRpdGlvblwiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBUUlVFXG4gIC4uJCAyNDpMaXN0IG9mIDdcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMjRcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgNFxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uIG9mIHRoZSBjb25kaXRpb25cIlxuICAuLiQgMjU6TGlzdCBvZiA2XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDI1XG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDRcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJpbmZvXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIk90aGVyIGluZm9ybWF0aW9uIG9yIGFsdGVybmF0ZSBpZGVudGlmaWVyXCJcbiAgLi4kIDI2Okxpc3Qgb2YgN1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAyNlxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCA1XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwibmFtZVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxhYmVsIG9yIGlkZW50aWZpZXIgZm9yIHRoZSBncm91cGluZ1wiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBUUlVFXG4gIC4uJCAyNzpMaXN0IG9mIDdcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMjdcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgNVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uIG9mIHRoZSBncm91cGluZ1wiXG4gIC4uJCAyODpMaXN0IG9mIDZcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMjhcbiAgLi4gLi4kIGNhdGVnb3J5ICAgOiBpbnQgNVxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcImluZm9cIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiT3RoZXIgaW5mb3JtYXRpb24gb3IgYWx0ZXJuYXRlIGlkZW50aWZpZXJcIlxuICAuLiQgMjk6TGlzdCBvZiA3XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDI5XG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDZcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJuYW1lXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbGFiZWwgb3IgaWRlbnRpZmllciBmb3IgdGhlIHRhc2tcIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgVFJVRVxuICAuLiQgMzA6TGlzdCBvZiA4XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDMwXG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDZcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJkZXNjcmlwdGlvblwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGxvbmcgICAgICAgOiBsb2dpIFRSVUVcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxvbmdlciBleHBsYW5hdGlvbiBvciBkZXNjcmlwdGlvbiBvZiB0aGUgdGFza1wiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICAuLiQgMzE6TGlzdCBvZiA2XG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDMxXG4gIC4uIC4uJCBjYXRlZ29yeSAgIDogaW50IDZcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJpbmZvXCJcbiAgLi4gLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIk90aGVyIGluZm9ybWF0aW9uIG9yIGFsdGVybmF0ZSBpZGVudGlmaWVyXCJcbiAgLi4kIDMyOkxpc3Qgb2YgNlxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAzMlxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwibmFtZVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxhYmVsIG9yIGlkZW50aWZpZXIgZm9yIHRoZSBjb250ZXh0XCJcbiAgLi4kIDMzOkxpc3Qgb2YgOFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAzM1xuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwic2V0dGluZ1wiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIG9wdGlvbnMgICAgOiBjaHIgWzE6NV0gXCJMYWJcIiBcIkhvbWVcIiBcIkNsYXNzcm9vbVwiIFwiT3V0ZG9vclwiIC4uLlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIlRoZSBwaHlzaWNhbCBjb250ZXh0XCJcbiAgLi4gLi4kIHJlcXVpcmVkICAgOiBsb2dpIFRSVUVcbiAgLi4kIDM0Okxpc3Qgb2YgOFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAzNFxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwibGFuZ3VhZ2VcIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBhc3N1bWVkICAgIDogY2hyIFwiRW5nbGlzaFwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiTGFuZ3VhZ2UgdXNlZCBpbiB0aGlzIGNvbnRleHRcIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAgLi4kIDM1Okxpc3Qgb2YgOFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAzNVxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiY291bnRyeVwiXG4gIC4uIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4gLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4gLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJVU1wiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQ291bnRyeSBvZiBkYXRhIGNvbGxlY3Rpb25cIlxuICAuLiAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAgLi4kIDM2Okxpc3Qgb2YgOFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAzNlxuICAuLiAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwic3RhdGVcIlxuICAuLiAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjUxXSBcIkFMXCIgXCJBS1wiIFwiQVpcIiBcIkFSXCIgLi4uXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiU3RhdGUvdGVycml0b3J5IG9mIGRhdGEgY29sbGVjdGlvblwiXG4gIC4uIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICQgY2F0ZWdvcnkgIDpMaXN0IG9mIDdcbiAgLi4kIDE6TGlzdCBvZiAzXG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDFcbiAgLi4gLi4kIG5hbWUgICAgICAgOiBjaHIgXCJwYXJ0aWNpcGFudFwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQW4gaW5kaXZpZHVhbCBodW1hbiBzdWJqZWN0IHdob3NlIGRhdGEgYXJlIHVzZWQgb3IgcmVwcmVzZW50ZWRcIlxuICAuLiQgMjpMaXN0IG9mIDNcbiAgLi4gLi4kIGlkICAgICAgICAgOiBpbnQgMlxuICAuLiAuLiQgbmFtZSAgICAgICA6IGNociBcInBpbG90XCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJJbmRpY2F0ZXMgdGhhdCB0aGUgbWV0aG9kcyB1c2VkIHdlcmUgbm90IGZpbmFsaXplZCBvciB3ZXJlIG5vbi1zdGFuZGFyZFwiXG4gIC4uJCAzOkxpc3Qgb2YgM1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAzXG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiZXhjbHVzaW9uXCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJJbmRpY2F0ZXMgdGhhdCBkYXRhIHdlcmUgbm90IHVzYWJsZVwiXG4gIC4uJCA0Okxpc3Qgb2YgM1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCA0XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiY29uZGl0aW9uXCJcbiAgLi4gLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBbiBleHBlcmltZW50ZXItZGV0ZXJtaW5lZCBtYW5pcHVsYXRpb24gKHdpdGhpbiBvciBiZXR3ZWVuIHNlc3Npb25zKVwiXG4gIC4uJCA1Okxpc3Qgb2YgM1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCA1XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiZ3JvdXBcIlxuICAuLiAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgZ3JvdXBpbmcgZGV0ZXJtaW5lZCBieSBhbiBhc3BlY3Qgb2YgdGhlIGRhdGEgKHBhcnRpY2lwYW50IGFiaWxpdHksIGFnZSwgZ3JhZGUgbGV2ZWwsIGV4cGVyaWVuY2UsIGxvbmdpdHVkaW5hbFwifCBfX3RydW5jYXRlZF9fXG4gIC4uJCA2Okxpc3Qgb2YgM1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCA2XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwidGFza1wiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQSBwYXJ0aWN1bGFyIHRhc2ssIGFjdGl2aXR5LCBvciBwaGFzZSBvZiB0aGUgc2Vzc2lvbiBvciBzdHVkeVwiXG4gIC4uJCA3Okxpc3Qgb2YgM1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCA3XG4gIC4uIC4uJCBuYW1lICAgICAgIDogY2hyIFwiY29udGV4dFwiXG4gIC4uIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQSBwYXJ0aWN1bGFyIHNldHRpbmcgb3Igb3RoZXIgYXNwZWN0IG9mIHdoZXJlL3doZW4vaG93IGRhdGEgd2VyZSBjb2xsZWN0ZWRcIlxuICQgZm9ybWF0ICAgIDpMaXN0IG9mIDMyXG4gIC4uJCAtODAwOkxpc3Qgb2YgNVxuICAuLiAuLiQgaWQgICAgICAgICAgOiBpbnQgLTgwMFxuICAuLiAuLiQgbWltZXR5cGUgICAgOiBjaHIgXCJ2aWRlby9tcDRcIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJtcDRcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJNUEVHLTQgdmlkZW9cIlxuICAuLiAuLiQgdHJhbnNjb2RhYmxlOiBpbnQgLTgwMFxuICAuLiQgLTcwMDpMaXN0IG9mIDRcbiAgLi4gLi4kIGlkICAgICAgIDogaW50IC03MDBcbiAgLi4gLi4kIG1pbWV0eXBlIDogY2hyIFwiaW1hZ2UvanBlZ1wiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcImpwZ1wiXG4gIC4uIC4uJCBuYW1lICAgICA6IGNociBcIkpQRUcgaW1hZ2VcIlxuICAuLiQgLTYwMDpMaXN0IG9mIDVcbiAgLi4gLi4kIGlkICAgICAgICAgIDogaW50IC02MDBcbiAgLi4gLi4kIG1pbWV0eXBlICAgIDogY2hyIFwiYXVkaW8vbXBlZ1wiXG4gIC4uIC4uJCBleHRlbnNpb24gICA6IGNociBcIm1wM1wiXG4gIC4uIC4uJCBuYW1lICAgICAgICA6IGNociBcIk1QRUctMSBvciBNUEVHLTIgYXVkaW8gbGF5ZXIgSUlJXCJcbiAgLi4gLi4kIHRyYW5zY29kYWJsZTogaW50IC02MDBcbiAgLi4kIDEgICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAxXG4gIC4uIC4uJCBtaW1ldHlwZSA6IGNociBcInRleHQvcGxhaW5cIlxuICAuLiAuLiQgZXh0ZW5zaW9uOiBjaHIgXCJ0eHRcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJQbGFpbiB0ZXh0XCJcbiAgLi4kIDIgICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAyXG4gIC4uIC4uJCBtaW1ldHlwZSA6IGNociBcInRleHQvY3N2XCJcbiAgLi4gLi4kIGV4dGVuc2lvbjogY2hyIFwiY3N2XCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiQ29tbWEtc2VwYXJhdGVkIHZhbHVlc1wiXG4gIC4uJCA0ICAgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgOiBpbnQgNFxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJ0ZXh0L3J0ZlwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcInJ0ZlwiXG4gIC4uIC4uJCBuYW1lICAgICA6IGNociBcIlJpY2ggdGV4dCBmb3JtYXRcIlxuICAuLiQgNSAgIDpMaXN0IG9mIDRcbiAgLi4gLi4kIGlkICAgICAgIDogaW50IDVcbiAgLi4gLi4kIG1pbWV0eXBlIDogY2hyIFwiaW1hZ2UvcG5nXCJcbiAgLi4gLi4kIGV4dGVuc2lvbjogY2hyIFwicG5nXCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiUG9ydGFibGUgbmV0d29yayBncmFwaGljc1wiXG4gIC4uJCA2ICAgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgOiBpbnQgNlxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi9wZGZcIlxuICAuLiAuLiQgZXh0ZW5zaW9uOiBjaHIgXCJwZGZcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJQb3J0YWJsZSBkb2N1bWVudFwiXG4gIC4uJCA3ICAgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgOiBpbnQgN1xuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi9tc3dvcmRcIlxuICAuLiAuLiQgZXh0ZW5zaW9uOiBjaHIgXCJkb2NcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJNaWNyb3NvZnQgV29yZCBkb2N1bWVudFwiXG4gIC4uJCA4ICAgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgOiBpbnQgOFxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQub2FzaXMub3BlbmRvY3VtZW50LnRleHRcIlxuICAuLiAuLiQgZXh0ZW5zaW9uOiBjaHIgXCJvZGZcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJPcGVuRG9jdW1lbnQgdGV4dFwiXG4gIC4uJCA5ICAgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgOiBpbnQgOVxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQub3BlbnhtbGZvcm1hdHMtb2ZmaWNlZG9jdW1lbnQud29yZHByb2Nlc3NpbmdtbC5kb2N1bWVudFwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcImRvY3hcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJNaWNyb3NvZnQgV29yZCAoT2ZmaWNlIE9wZW4gWE1MKSBkb2N1bWVudFwiXG4gIC4uJCAxMCAgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgOiBpbnQgMTBcbiAgLi4gLi4kIG1pbWV0eXBlIDogY2hyIFwiYXBwbGljYXRpb24vdm5kLm1zLWV4Y2VsXCJcbiAgLi4gLi4kIGV4dGVuc2lvbjogY2hyIFwieGxzXCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiTWljcm9zb2Z0IEV4Y2VsIHNwcmVhZHNoZWV0XCJcbiAgLi4kIDExICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAxMVxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQub2FzaXMub3BlbmRvY3VtZW50LnNwcmVhZHNoZWV0XCJcbiAgLi4gLi4kIGV4dGVuc2lvbjogY2hyIFwib2RzXCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiT3BlbkRvY3VtZW50IHNwcmVhZHNoZWV0XCJcbiAgLi4kIDEyICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAxMlxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQub3BlbnhtbGZvcm1hdHMtb2ZmaWNlZG9jdW1lbnQuc3ByZWFkc2hlZXRtbC5zaGVldFwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcInhsc3hcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJNaWNyb3NvZnQgRXhjZWwgKE9mZmljZSBPcGVuIFhNTCkgd29ya2Jvb2tcIlxuICAuLiQgMTMgIDpMaXN0IG9mIDRcbiAgLi4gLi4kIGlkICAgICAgIDogaW50IDEzXG4gIC4uIC4uJCBtaW1ldHlwZSA6IGNociBcImFwcGxpY2F0aW9uL3ZuZC5tcy1wb3dlcnBvaW50XCJcbiAgLi4gLi4kIGV4dGVuc2lvbjogY2hyIFwicHB0XCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiTWljcm9zb2Z0IFBvd2VyUG9pbnQgcHJlc2VudGF0aW9uXCJcbiAgLi4kIDE0ICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAxNFxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQub2FzaXMub3BlbmRvY3VtZW50LnByZXNlbnRhdGlvblwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcIm9kcFwiXG4gIC4uIC4uJCBuYW1lICAgICA6IGNociBcIk9wZW5Eb2N1bWVudCBwcmVzZW50YXRpb25cIlxuICAuLiQgMTUgIDpMaXN0IG9mIDRcbiAgLi4gLi4kIGlkICAgICAgIDogaW50IDE1XG4gIC4uIC4uJCBtaW1ldHlwZSA6IGNociBcImFwcGxpY2F0aW9uL3ZuZC5vcGVueG1sZm9ybWF0cy1vZmZpY2Vkb2N1bWVudC5wcmVzZW50YXRpb25tbC5wcmVzZW50YXRpb25cIlxuICAuLiAuLiQgZXh0ZW5zaW9uOiBjaHIgXCJwcHR4XCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiTWljcm9zb2Z0IFBvd2VyUG9pbnQgKE9mZmljZSBPcGVuIFhNTCkgcHJlc2VudGF0aW9uXCJcbiAgLi4kIDE2ICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAxNlxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQuZGF0YXZ5dVwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcIm9wZlwiXG4gIC4uIC4uJCBuYW1lICAgICA6IGNociBcIkRhdGF2eXVcIlxuICAuLiQgMTggIDpMaXN0IG9mIDVcbiAgLi4gLi4kIGlkICAgICAgICAgIDogaW50IDE4XG4gIC4uIC4uJCBtaW1ldHlwZSAgICA6IGNociBcInZpZGVvL3dlYm1cIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJ3ZWJtXCJcbiAgLi4gLi4kIG5hbWUgICAgICAgIDogY2hyIFwiV2ViTSB2aWRlb1wiXG4gIC4uIC4uJCB0cmFuc2NvZGFibGU6IGludCAtODAwXG4gIC4uJCAxOSAgOkxpc3Qgb2YgNVxuICAuLiAuLiQgaWQgICAgICAgICAgOiBpbnQgMTlcbiAgLi4gLi4kIG1pbWV0eXBlICAgIDogY2hyIFwidmlkZW8vbXBlZ1wiXG4gIC4uIC4uJCBleHRlbnNpb24gICA6IGNociBcIm1wZ1wiXG4gIC4uIC4uJCBuYW1lICAgICAgICA6IGNociBcIk1QRUcgcHJvZ3JhbSBzdHJlYW0gKE1QRUctMS9NUEVHLTIgdmlkZW8pXCJcbiAgLi4gLi4kIHRyYW5zY29kYWJsZTogaW50IC04MDBcbiAgLi4kIDIwICA6TGlzdCBvZiA1XG4gIC4uIC4uJCBpZCAgICAgICAgICA6IGludCAyMFxuICAuLiAuLiQgbWltZXR5cGUgICAgOiBjaHIgXCJ2aWRlby9xdWlja3RpbWVcIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJtb3ZcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJRdWlja1RpbWUgdmlkZW9cIlxuICAuLiAuLiQgdHJhbnNjb2RhYmxlOiBpbnQgLTgwMFxuICAuLiQgMjEgIDpMaXN0IG9mIDVcbiAgLi4gLi4kIGlkICAgICAgICAgIDogaW50IDIxXG4gIC4uIC4uJCBtaW1ldHlwZSAgICA6IGNociBcInZpZGVvL21wMnRcIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJtdHNcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJNUEVHIHRyYW5zcG9ydCBzdHJlYW1cIlxuICAuLiAuLiQgdHJhbnNjb2RhYmxlOiBpbnQgLTgwMFxuICAuLiQgMjIgIDpMaXN0IG9mIDVcbiAgLi4gLi4kIGlkICAgICAgICAgIDogaW50IDIyXG4gIC4uIC4uJCBtaW1ldHlwZSAgICA6IGNociBcInZpZGVvL2F2aVwiXG4gIC4uIC4uJCBleHRlbnNpb24gICA6IGNociBcImF2aVwiXG4gIC4uIC4uJCBuYW1lICAgICAgICA6IGNociBcIkF1ZGlvIFZpZGVvIEludGVybGVhdmVcIlxuICAuLiAuLiQgdHJhbnNjb2RhYmxlOiBpbnQgLTgwMFxuICAuLiQgMjMgIDpMaXN0IG9mIDRcbiAgLi4gLi4kIGlkICAgICAgIDogaW50IDIzXG4gIC4uIC4uJCBtaW1ldHlwZSA6IGNociBcImFwcGxpY2F0aW9uL3gtc3Bzcy1zYXZcIlxuICAuLiAuLiQgZXh0ZW5zaW9uOiBjaHIgXCJzYXZcIlxuICAuLiAuLiQgbmFtZSAgICAgOiBjaHIgXCJTUFNTIFN5c3RlbSBGaWxlXCJcbiAgLi4kIDI0ICA6TGlzdCBvZiA1XG4gIC4uIC4uJCBpZCAgICAgICAgICA6IGludCAyNFxuICAuLiAuLiQgbWltZXR5cGUgICAgOiBjaHIgXCJhdWRpby93YXZcIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJ3YXZcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJXYXZlZm9ybSBhdWRpb1wiXG4gIC4uIC4uJCB0cmFuc2NvZGFibGU6IGludCAtNjAwXG4gIC4uJCAyNSAgOkxpc3Qgb2YgNVxuICAuLiAuLiQgaWQgICAgICAgICAgOiBpbnQgMjVcbiAgLi4gLi4kIG1pbWV0eXBlICAgIDogY2hyIFwidmlkZW8veC1tcy13bXZcIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJ3bXZcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJXaW5kb3dzIE1lZGlhIHZpZGVvXCJcbiAgLi4gLi4kIHRyYW5zY29kYWJsZTogaW50IC04MDBcbiAgLi4kIDI2ICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAyNlxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJ0ZXh0L3gtY2hhdFwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcImNoYVwiXG4gIC4uIC4uJCBuYW1lICAgICA6IGNociBcIkNvZGVzIGZvciB0aGUgSHVtYW4gQW5hbHlzaXMgb2YgVHJhbnNjcmlwdHNcIlxuICAuLiQgMjcgIDpMaXN0IG9mIDVcbiAgLi4gLi4kIGlkICAgICAgICAgIDogaW50IDI3XG4gIC4uIC4uJCBtaW1ldHlwZSAgICA6IGNociBcImF1ZGlvL2FhY1wiXG4gIC4uIC4uJCBleHRlbnNpb24gICA6IGNociBcImFhY1wiXG4gIC4uIC4uJCBuYW1lICAgICAgICA6IGNociBcIkFkdmFuY2VkIEF1ZGlvIENvZGluZ1wiXG4gIC4uIC4uJCB0cmFuc2NvZGFibGU6IGludCAtNjAwXG4gIC4uJCAyOCAgOkxpc3Qgb2YgNVxuICAuLiAuLiQgaWQgICAgICAgICAgOiBpbnQgMjhcbiAgLi4gLi4kIG1pbWV0eXBlICAgIDogY2hyIFwiYXVkaW8veC1tcy13bWFcIlxuICAuLiAuLiQgZXh0ZW5zaW9uICAgOiBjaHIgXCJ3bWFcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJXaW5kb3dzIE1lZGlhIGF1ZGlvXCJcbiAgLi4gLi4kIHRyYW5zY29kYWJsZTogaW50IC02MDBcbiAgLi4kIDI5ICA6TGlzdCBvZiA0XG4gIC4uIC4uJCBpZCAgICAgICA6IGludCAyOVxuICAuLiAuLiQgbWltZXR5cGUgOiBjaHIgXCJhcHBsaWNhdGlvbi92bmQubGVuYS5pbnRlcnByZXRlZC10aW1lLXNlZ21lbnRzXCJcbiAgLi4gLi4kIGV4dGVuc2lvbjogY2hyIFwiaXRzXCJcbiAgLi4gLi4kIG5hbWUgICAgIDogY2hyIFwiTEVOQSBJbnRlcnByZXRlZCBUaW1lIFNlZ21lbnRzXCJcbiAgLi4kIDMwICA6TGlzdCBvZiA1XG4gIC4uIC4uJCBpZCAgICAgICAgICA6IGludCAzMFxuICAuLiAuLiQgbWltZXR5cGUgICAgOiBjaHIgXCJ2aWRlby94LWR2XCJcbiAgLi4gLi4kIGV4dGVuc2lvbiAgIDogY2hyIFwiZHZcIlxuICAuLiAuLiQgbmFtZSAgICAgICAgOiBjaHIgXCJEaWdpdGFsIEludGVyZmFjZSBGb3JtYXQgdmlkZW9cIlxuICAuLiAuLiQgdHJhbnNjb2RhYmxlOiBpbnQgLTgwMFxuICAuLiQgMzEgIDpMaXN0IG9mIDRcbiAgLi4gLi4kIGlkICAgICAgIDogaW50IDMxXG4gIC4uIC4uJCBtaW1ldHlwZSA6IGNociBcInRleHQvZWxhblwiXG4gIC4uIC4uJCBleHRlbnNpb246IGNociBcImVhZlwiXG4gIC4uIC4uJCBuYW1lICAgICA6IGNociBcIkVMQU4gLSBMaW5ndWlzdGljIEFubm90YXRvclwiXG4gJCBwYXJ0eSAgICAgOkxpc3Qgb2YgM1xuICAuLiQgbm9ib2R5Okxpc3Qgb2YgM1xuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAtMVxuICAuLiAuLiQgc29ydG5hbWUgICA6IGNociBcIkV2ZXJ5Ym9keVwiXG4gIC4uIC4uJCBpbnN0aXR1dGlvbjogbG9naSBUUlVFXG4gIC4uJCByb290ICA6TGlzdCBvZiAzXG4gIC4uIC4uJCBpZCAgICAgICAgIDogaW50IDBcbiAgLi4gLi4kIHNvcnRuYW1lICAgOiBjaHIgXCJEYXRhYnJhcnlcIlxuICAuLiAuLiQgaW5zdGl0dXRpb246IGxvZ2kgVFJVRVxuICAuLiQgc3RhZmYgOkxpc3Qgb2YgNFxuICAuLiAuLiQgaWQgICAgICAgICA6IGludCAyXG4gIC4uIC4uJCBzb3J0bmFtZSAgIDogY2hyIFwiU3RhZmZcIlxuICAuLiAuLiQgYWZmaWxpYXRpb246IGNociBcIkRhdGFicmFyeVwiXG4gIC4uIC4uJCBpbnN0aXR1dGlvbjogbG9naSBUUlVFXG4gJCBub3RpY2UgICAgOkxpc3Qgb2YgMjNcbiAgLi4kIFZvbHVtZUFjY2VzcyAgICAgICAgICA6IGludCAxNFxuICAuLiQgUmVsZWFzZUV4Y2VycHQgICAgICAgIDogaW50IDE3XG4gIC4uJCBBdXRob3JpemVDaGlsZEV4cGlyaW5nOiBpbnQgOFxuICAuLiQgVm9sdW1lQXNzaXN0ICAgICAgICAgIDogaW50IDEwXG4gIC4uJCBBdXRob3JpemVSZXF1ZXN0ICAgICAgOiBpbnQgMlxuICAuLiQgVGFnVm9sdW1lICAgICAgICAgICAgIDogaW50IDIxXG4gIC4uJCBWb2x1bWVBY2Nlc3NPdGhlciAgICAgOiBpbnQgMTNcbiAgLi4kIFZvbHVtZUNyZWF0ZWQgICAgICAgICA6IGludCAxMVxuICAuLiQgU2hhcmVkVm9sdW1lICAgICAgICAgIDogaW50IDIyXG4gIC4uJCBOZXdzbGV0dGVyICAgICAgICAgICAgOiBpbnQgMjNcbiAgLi4kIENvbW1lbnRSZXBseSAgICAgICAgICA6IGludCAyMFxuICAuLiQgQXV0aG9yaXplR3JhbnRlZCAgICAgIDogaW50IDNcbiAgLi4kIEF1dGhvcml6ZUV4cGlyZWQgICAgICA6IGludCA1XG4gIC4uJCBBY2NvdW50Q2hhbmdlICAgICAgICAgOiBpbnQgMVxuICAuLiQgRXhjZXJwdFZvbHVtZSAgICAgICAgIDogaW50IDE4XG4gIC4uJCBSZWxlYXNlU2xvdCAgICAgICAgICAgOiBpbnQgMTVcbiAgLi4kIEF1dGhvcml6ZUV4cGlyaW5nICAgICA6IGludCA0XG4gIC4uJCBWb2x1bWVTaGFyaW5nICAgICAgICAgOiBpbnQgMTJcbiAgLi4kIEF1dGhvcml6ZUNoaWxkUmVxdWVzdCA6IGludCA2XG4gIC4uJCBDb21tZW50Vm9sdW1lICAgICAgICAgOiBpbnQgMTlcbiAgLi4kIEF1dGhvcml6ZUNoaWxkRXhwaXJlZCA6IGludCA5XG4gIC4uJCBBdXRob3JpemVDaGlsZEdyYW50ZWQgOiBpbnQgN1xuICAuLiQgUmVsZWFzZUFzc2V0ICAgICAgICAgIDogaW50IDE2XG4gJCBkZWxpdmVyeSAgOiBjaHIgWzE6NV0gXCJub25lXCIgXCJzaXRlXCIgXCJ3ZWVrbHlcIiBcImRhaWx5XCIgLi4uXG4gJCB2ZXJzaW9uICAgOiBjaHIgXCIxXCJcbiJ9 -->
+<pre><code>List of 9
+ $ permission: chr [1:6] &quot;NONE&quot; &quot;PUBLIC&quot; &quot;SHARED&quot; &quot;READ&quot; ...
+ $ release   : chr [1:4] &quot;PRIVATE&quot; &quot;SHARED&quot; &quot;EXCERPTS&quot; &quot;PUBLIC&quot;
+ $ metric    :List of 36
+  ..$ 1 :List of 7
+  .. ..$ id         : int 1
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;ID&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A unique, anonymized, primary identifier, such as participant ID&quot;
+  .. ..$ required   : logi TRUE
+  ..$ 2 :List of 6
+  .. ..$ id         : int 2
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;info&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;Other information or alternate identifier&quot;
+  ..$ 3 :List of 7
+  .. ..$ id         : int 3
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;description&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ long       : logi TRUE
+  .. ..$ description: chr &quot;A longer explanation or description&quot;
+  ..$ 4 :List of 6
+  .. ..$ id         : int 4
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;birthdate&quot;
+  .. ..$ type       : chr &quot;date&quot;
+  .. ..$ description: chr &quot;Date of birth (used with session date to calculate age; you can also use the group category to designate age groups)&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 5 :List of 8
+  .. ..$ id         : int 5
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;gender&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:2] &quot;Female&quot; &quot;Male&quot;
+  .. ..$ description: chr &quot;\&quot;Male\&quot;, \&quot;Female\&quot;, or any other relevant gender&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 6 :List of 8
+  .. ..$ id         : int 6
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;race&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:7] &quot;American Indian or Alaska Native&quot; &quot;Asian&quot; &quot;Native Hawaiian or Other Pacific Islander&quot; &quot;Black or African American&quot; ...
+  .. ..$ description: chr &quot;As classified by NIH, or user-defined classification&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 7 :List of 8
+  .. ..$ id         : int 7
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;ethnicity&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:3] &quot;Not Hispanic or Latino&quot; &quot;Hispanic or Latino&quot; &quot;Unknown or not reported&quot;
+  .. ..$ description: chr &quot;As classified by NIH (Hispanic/Non-Hispanic), or user-defined classification&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 8 :List of 6
+  .. ..$ id         : int 8
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;gestational age&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;numeric&quot;
+  .. ..$ description: chr &quot;Pregnancy age in weeks between last menstrual period and birth (or pre-natal observation)&quot;
+  ..$ 9 :List of 8
+  .. ..$ id         : int 9
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;pregnancy term&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:2] &quot;Full term&quot; &quot;Preterm&quot;
+  .. ..$ assumed    : chr &quot;Full term&quot;
+  .. ..$ description: chr &quot;\&quot;Full term\&quot;, \&quot;Preterm\&quot;, or other gestational term&quot;
+  ..$ 10:List of 6
+  .. ..$ id         : int 10
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;birth weight&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;numeric&quot;
+  .. ..$ description: chr &quot;Weight at birth (in grams, e.g., 3250)&quot;
+  ..$ 11:List of 7
+  .. ..$ id         : int 11
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;disability&quot;
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ assumed    : chr &quot;typical&quot;
+  .. ..$ description: chr &quot;Any developmental, physical, or mental disability or disabilities&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 12:List of 8
+  .. ..$ id         : int 12
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;language&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ assumed    : chr &quot;English&quot;
+  .. ..$ description: chr &quot;Primary language(s) spoken by and to participant&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 13:List of 7
+  .. ..$ id         : int 13
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;country&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ assumed    : chr &quot;US&quot;
+  .. ..$ description: chr &quot;Country where participant was born&quot;
+  ..$ 14:List of 7
+  .. ..$ id         : int 14
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;state&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:51] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+  .. ..$ description: chr &quot;State/territory where participant was born&quot;
+  ..$ 15:List of 7
+  .. ..$ id         : int 15
+  .. ..$ category   : int 1
+  .. ..$ name       : chr &quot;setting&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:5] &quot;Lab&quot; &quot;Home&quot; &quot;Classroom&quot; &quot;Outdoor&quot; ...
+  .. ..$ description: chr &quot;The physical context of the participant (please do not use for new data: see the context category instead)&quot;
+  ..$ 16:List of 6
+  .. ..$ id      : int 16
+  .. ..$ category: int 2
+  .. ..$ name    : chr &quot;pilot&quot;
+  .. ..$ release : int 3
+  .. ..$ type    : chr &quot;void&quot;
+  .. ..$ required: logi FALSE
+  ..$ 17:List of 6
+  .. ..$ id         : int 17
+  .. ..$ category   : int 2
+  .. ..$ name       : chr &quot;name&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A label or identifier referring to the pilot method&quot;
+  ..$ 18:List of 7
+  .. ..$ id         : int 18
+  .. ..$ category   : int 2
+  .. ..$ name       : chr &quot;description&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ long       : logi TRUE
+  .. ..$ description: chr &quot;A longer explanation or description of the pilot method&quot;
+  ..$ 19:List of 5
+  .. ..$ id      : int 19
+  .. ..$ category: int 3
+  .. ..$ name    : chr &quot;excluded&quot;
+  .. ..$ release : int 3
+  .. ..$ type    : chr &quot;void&quot;
+  ..$ 20:List of 6
+  .. ..$ id         : int 20
+  .. ..$ category   : int 3
+  .. ..$ name       : chr &quot;name&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A label or identifier referring to the exclusion criterion&quot;
+  ..$ 21:List of 8
+  .. ..$ id         : int 21
+  .. ..$ category   : int 3
+  .. ..$ name       : chr &quot;reason&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:4] &quot;Did not meet inclusion criteria&quot; &quot;Procedural/experimenter error&quot; &quot;Withdrew/fussy/tired&quot; &quot;Outlier&quot;
+  .. ..$ description: chr &quot;The reason for excluding these data&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 22:List of 7
+  .. ..$ id         : int 22
+  .. ..$ category   : int 3
+  .. ..$ name       : chr &quot;description&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ long       : logi TRUE
+  .. ..$ description: chr &quot;A longer explanation or description of the reason for excluding data&quot;
+  ..$ 23:List of 7
+  .. ..$ id         : int 23
+  .. ..$ category   : int 4
+  .. ..$ name       : chr &quot;name&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A label or identifier for the condition&quot;
+  .. ..$ required   : logi TRUE
+  ..$ 24:List of 7
+  .. ..$ id         : int 24
+  .. ..$ category   : int 4
+  .. ..$ name       : chr &quot;description&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ long       : logi TRUE
+  .. ..$ description: chr &quot;A longer explanation or description of the condition&quot;
+  ..$ 25:List of 6
+  .. ..$ id         : int 25
+  .. ..$ category   : int 4
+  .. ..$ name       : chr &quot;info&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;Other information or alternate identifier&quot;
+  ..$ 26:List of 7
+  .. ..$ id         : int 26
+  .. ..$ category   : int 5
+  .. ..$ name       : chr &quot;name&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A label or identifier for the grouping&quot;
+  .. ..$ required   : logi TRUE
+  ..$ 27:List of 7
+  .. ..$ id         : int 27
+  .. ..$ category   : int 5
+  .. ..$ name       : chr &quot;description&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ long       : logi TRUE
+  .. ..$ description: chr &quot;A longer explanation or description of the grouping&quot;
+  ..$ 28:List of 6
+  .. ..$ id         : int 28
+  .. ..$ category   : int 5
+  .. ..$ name       : chr &quot;info&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;Other information or alternate identifier&quot;
+  ..$ 29:List of 7
+  .. ..$ id         : int 29
+  .. ..$ category   : int 6
+  .. ..$ name       : chr &quot;name&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A label or identifier for the task&quot;
+  .. ..$ required   : logi TRUE
+  ..$ 30:List of 8
+  .. ..$ id         : int 30
+  .. ..$ category   : int 6
+  .. ..$ name       : chr &quot;description&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ long       : logi TRUE
+  .. ..$ description: chr &quot;A longer explanation or description of the task&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 31:List of 6
+  .. ..$ id         : int 31
+  .. ..$ category   : int 6
+  .. ..$ name       : chr &quot;info&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;Other information or alternate identifier&quot;
+  ..$ 32:List of 6
+  .. ..$ id         : int 32
+  .. ..$ category   : int 7
+  .. ..$ name       : chr &quot;name&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ description: chr &quot;A label or identifier for the context&quot;
+  ..$ 33:List of 8
+  .. ..$ id         : int 33
+  .. ..$ category   : int 7
+  .. ..$ name       : chr &quot;setting&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:5] &quot;Lab&quot; &quot;Home&quot; &quot;Classroom&quot; &quot;Outdoor&quot; ...
+  .. ..$ description: chr &quot;The physical context&quot;
+  .. ..$ required   : logi TRUE
+  ..$ 34:List of 8
+  .. ..$ id         : int 34
+  .. ..$ category   : int 7
+  .. ..$ name       : chr &quot;language&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ assumed    : chr &quot;English&quot;
+  .. ..$ description: chr &quot;Language used in this context&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 35:List of 8
+  .. ..$ id         : int 35
+  .. ..$ category   : int 7
+  .. ..$ name       : chr &quot;country&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ assumed    : chr &quot;US&quot;
+  .. ..$ description: chr &quot;Country of data collection&quot;
+  .. ..$ required   : logi FALSE
+  ..$ 36:List of 8
+  .. ..$ id         : int 36
+  .. ..$ category   : int 7
+  .. ..$ name       : chr &quot;state&quot;
+  .. ..$ release    : int 3
+  .. ..$ type       : chr &quot;text&quot;
+  .. ..$ options    : chr [1:51] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+  .. ..$ description: chr &quot;State/territory of data collection&quot;
+  .. ..$ required   : logi FALSE
+ $ category  :List of 7
+  ..$ 1:List of 3
+  .. ..$ id         : int 1
+  .. ..$ name       : chr &quot;participant&quot;
+  .. ..$ description: chr &quot;An individual human subject whose data are used or represented&quot;
+  ..$ 2:List of 3
+  .. ..$ id         : int 2
+  .. ..$ name       : chr &quot;pilot&quot;
+  .. ..$ description: chr &quot;Indicates that the methods used were not finalized or were non-standard&quot;
+  ..$ 3:List of 3
+  .. ..$ id         : int 3
+  .. ..$ name       : chr &quot;exclusion&quot;
+  .. ..$ description: chr &quot;Indicates that data were not usable&quot;
+  ..$ 4:List of 3
+  .. ..$ id         : int 4
+  .. ..$ name       : chr &quot;condition&quot;
+  .. ..$ description: chr &quot;An experimenter-determined manipulation (within or between sessions)&quot;
+  ..$ 5:List of 3
+  .. ..$ id         : int 5
+  .. ..$ name       : chr &quot;group&quot;
+  .. ..$ description: chr &quot;A grouping determined by an aspect of the data (participant ability, age, grade level, experience, longitudinal&quot;| __truncated__
+  ..$ 6:List of 3
+  .. ..$ id         : int 6
+  .. ..$ name       : chr &quot;task&quot;
+  .. ..$ description: chr &quot;A particular task, activity, or phase of the session or study&quot;
+  ..$ 7:List of 3
+  .. ..$ id         : int 7
+  .. ..$ name       : chr &quot;context&quot;
+  .. ..$ description: chr &quot;A particular setting or other aspect of where/when/how data were collected&quot;
+ $ format    :List of 32
+  ..$ -800:List of 5
+  .. ..$ id          : int -800
+  .. ..$ mimetype    : chr &quot;video/mp4&quot;
+  .. ..$ extension   : chr &quot;mp4&quot;
+  .. ..$ name        : chr &quot;MPEG-4 video&quot;
+  .. ..$ transcodable: int -800
+  ..$ -700:List of 4
+  .. ..$ id       : int -700
+  .. ..$ mimetype : chr &quot;image/jpeg&quot;
+  .. ..$ extension: chr &quot;jpg&quot;
+  .. ..$ name     : chr &quot;JPEG image&quot;
+  ..$ -600:List of 5
+  .. ..$ id          : int -600
+  .. ..$ mimetype    : chr &quot;audio/mpeg&quot;
+  .. ..$ extension   : chr &quot;mp3&quot;
+  .. ..$ name        : chr &quot;MPEG-1 or MPEG-2 audio layer III&quot;
+  .. ..$ transcodable: int -600
+  ..$ 1   :List of 4
+  .. ..$ id       : int 1
+  .. ..$ mimetype : chr &quot;text/plain&quot;
+  .. ..$ extension: chr &quot;txt&quot;
+  .. ..$ name     : chr &quot;Plain text&quot;
+  ..$ 2   :List of 4
+  .. ..$ id       : int 2
+  .. ..$ mimetype : chr &quot;text/csv&quot;
+  .. ..$ extension: chr &quot;csv&quot;
+  .. ..$ name     : chr &quot;Comma-separated values&quot;
+  ..$ 4   :List of 4
+  .. ..$ id       : int 4
+  .. ..$ mimetype : chr &quot;text/rtf&quot;
+  .. ..$ extension: chr &quot;rtf&quot;
+  .. ..$ name     : chr &quot;Rich text format&quot;
+  ..$ 5   :List of 4
+  .. ..$ id       : int 5
+  .. ..$ mimetype : chr &quot;image/png&quot;
+  .. ..$ extension: chr &quot;png&quot;
+  .. ..$ name     : chr &quot;Portable network graphics&quot;
+  ..$ 6   :List of 4
+  .. ..$ id       : int 6
+  .. ..$ mimetype : chr &quot;application/pdf&quot;
+  .. ..$ extension: chr &quot;pdf&quot;
+  .. ..$ name     : chr &quot;Portable document&quot;
+  ..$ 7   :List of 4
+  .. ..$ id       : int 7
+  .. ..$ mimetype : chr &quot;application/msword&quot;
+  .. ..$ extension: chr &quot;doc&quot;
+  .. ..$ name     : chr &quot;Microsoft Word document&quot;
+  ..$ 8   :List of 4
+  .. ..$ id       : int 8
+  .. ..$ mimetype : chr &quot;application/vnd.oasis.opendocument.text&quot;
+  .. ..$ extension: chr &quot;odf&quot;
+  .. ..$ name     : chr &quot;OpenDocument text&quot;
+  ..$ 9   :List of 4
+  .. ..$ id       : int 9
+  .. ..$ mimetype : chr &quot;application/vnd.openxmlformats-officedocument.wordprocessingml.document&quot;
+  .. ..$ extension: chr &quot;docx&quot;
+  .. ..$ name     : chr &quot;Microsoft Word (Office Open XML) document&quot;
+  ..$ 10  :List of 4
+  .. ..$ id       : int 10
+  .. ..$ mimetype : chr &quot;application/vnd.ms-excel&quot;
+  .. ..$ extension: chr &quot;xls&quot;
+  .. ..$ name     : chr &quot;Microsoft Excel spreadsheet&quot;
+  ..$ 11  :List of 4
+  .. ..$ id       : int 11
+  .. ..$ mimetype : chr &quot;application/vnd.oasis.opendocument.spreadsheet&quot;
+  .. ..$ extension: chr &quot;ods&quot;
+  .. ..$ name     : chr &quot;OpenDocument spreadsheet&quot;
+  ..$ 12  :List of 4
+  .. ..$ id       : int 12
+  .. ..$ mimetype : chr &quot;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&quot;
+  .. ..$ extension: chr &quot;xlsx&quot;
+  .. ..$ name     : chr &quot;Microsoft Excel (Office Open XML) workbook&quot;
+  ..$ 13  :List of 4
+  .. ..$ id       : int 13
+  .. ..$ mimetype : chr &quot;application/vnd.ms-powerpoint&quot;
+  .. ..$ extension: chr &quot;ppt&quot;
+  .. ..$ name     : chr &quot;Microsoft PowerPoint presentation&quot;
+  ..$ 14  :List of 4
+  .. ..$ id       : int 14
+  .. ..$ mimetype : chr &quot;application/vnd.oasis.opendocument.presentation&quot;
+  .. ..$ extension: chr &quot;odp&quot;
+  .. ..$ name     : chr &quot;OpenDocument presentation&quot;
+  ..$ 15  :List of 4
+  .. ..$ id       : int 15
+  .. ..$ mimetype : chr &quot;application/vnd.openxmlformats-officedocument.presentationml.presentation&quot;
+  .. ..$ extension: chr &quot;pptx&quot;
+  .. ..$ name     : chr &quot;Microsoft PowerPoint (Office Open XML) presentation&quot;
+  ..$ 16  :List of 4
+  .. ..$ id       : int 16
+  .. ..$ mimetype : chr &quot;application/vnd.datavyu&quot;
+  .. ..$ extension: chr &quot;opf&quot;
+  .. ..$ name     : chr &quot;Datavyu&quot;
+  ..$ 18  :List of 5
+  .. ..$ id          : int 18
+  .. ..$ mimetype    : chr &quot;video/webm&quot;
+  .. ..$ extension   : chr &quot;webm&quot;
+  .. ..$ name        : chr &quot;WebM video&quot;
+  .. ..$ transcodable: int -800
+  ..$ 19  :List of 5
+  .. ..$ id          : int 19
+  .. ..$ mimetype    : chr &quot;video/mpeg&quot;
+  .. ..$ extension   : chr &quot;mpg&quot;
+  .. ..$ name        : chr &quot;MPEG program stream (MPEG-1/MPEG-2 video)&quot;
+  .. ..$ transcodable: int -800
+  ..$ 20  :List of 5
+  .. ..$ id          : int 20
+  .. ..$ mimetype    : chr &quot;video/quicktime&quot;
+  .. ..$ extension   : chr &quot;mov&quot;
+  .. ..$ name        : chr &quot;QuickTime video&quot;
+  .. ..$ transcodable: int -800
+  ..$ 21  :List of 5
+  .. ..$ id          : int 21
+  .. ..$ mimetype    : chr &quot;video/mp2t&quot;
+  .. ..$ extension   : chr &quot;mts&quot;
+  .. ..$ name        : chr &quot;MPEG transport stream&quot;
+  .. ..$ transcodable: int -800
+  ..$ 22  :List of 5
+  .. ..$ id          : int 22
+  .. ..$ mimetype    : chr &quot;video/avi&quot;
+  .. ..$ extension   : chr &quot;avi&quot;
+  .. ..$ name        : chr &quot;Audio Video Interleave&quot;
+  .. ..$ transcodable: int -800
+  ..$ 23  :List of 4
+  .. ..$ id       : int 23
+  .. ..$ mimetype : chr &quot;application/x-spss-sav&quot;
+  .. ..$ extension: chr &quot;sav&quot;
+  .. ..$ name     : chr &quot;SPSS System File&quot;
+  ..$ 24  :List of 5
+  .. ..$ id          : int 24
+  .. ..$ mimetype    : chr &quot;audio/wav&quot;
+  .. ..$ extension   : chr &quot;wav&quot;
+  .. ..$ name        : chr &quot;Waveform audio&quot;
+  .. ..$ transcodable: int -600
+  ..$ 25  :List of 5
+  .. ..$ id          : int 25
+  .. ..$ mimetype    : chr &quot;video/x-ms-wmv&quot;
+  .. ..$ extension   : chr &quot;wmv&quot;
+  .. ..$ name        : chr &quot;Windows Media video&quot;
+  .. ..$ transcodable: int -800
+  ..$ 26  :List of 4
+  .. ..$ id       : int 26
+  .. ..$ mimetype : chr &quot;text/x-chat&quot;
+  .. ..$ extension: chr &quot;cha&quot;
+  .. ..$ name     : chr &quot;Codes for the Human Analysis of Transcripts&quot;
+  ..$ 27  :List of 5
+  .. ..$ id          : int 27
+  .. ..$ mimetype    : chr &quot;audio/aac&quot;
+  .. ..$ extension   : chr &quot;aac&quot;
+  .. ..$ name        : chr &quot;Advanced Audio Coding&quot;
+  .. ..$ transcodable: int -600
+  ..$ 28  :List of 5
+  .. ..$ id          : int 28
+  .. ..$ mimetype    : chr &quot;audio/x-ms-wma&quot;
+  .. ..$ extension   : chr &quot;wma&quot;
+  .. ..$ name        : chr &quot;Windows Media audio&quot;
+  .. ..$ transcodable: int -600
+  ..$ 29  :List of 4
+  .. ..$ id       : int 29
+  .. ..$ mimetype : chr &quot;application/vnd.lena.interpreted-time-segments&quot;
+  .. ..$ extension: chr &quot;its&quot;
+  .. ..$ name     : chr &quot;LENA Interpreted Time Segments&quot;
+  ..$ 30  :List of 5
+  .. ..$ id          : int 30
+  .. ..$ mimetype    : chr &quot;video/x-dv&quot;
+  .. ..$ extension   : chr &quot;dv&quot;
+  .. ..$ name        : chr &quot;Digital Interface Format video&quot;
+  .. ..$ transcodable: int -800
+  ..$ 31  :List of 4
+  .. ..$ id       : int 31
+  .. ..$ mimetype : chr &quot;text/elan&quot;
+  .. ..$ extension: chr &quot;eaf&quot;
+  .. ..$ name     : chr &quot;ELAN - Linguistic Annotator&quot;
+ $ party     :List of 3
+  ..$ nobody:List of 3
+  .. ..$ id         : int -1
+  .. ..$ sortname   : chr &quot;Everybody&quot;
+  .. ..$ institution: logi TRUE
+  ..$ root  :List of 3
+  .. ..$ id         : int 0
+  .. ..$ sortname   : chr &quot;Databrary&quot;
+  .. ..$ institution: logi TRUE
+  ..$ staff :List of 4
+  .. ..$ id         : int 2
+  .. ..$ sortname   : chr &quot;Staff&quot;
+  .. ..$ affiliation: chr &quot;Databrary&quot;
+  .. ..$ institution: logi TRUE
+ $ notice    :List of 23
+  ..$ VolumeAccess          : int 14
+  ..$ ReleaseExcerpt        : int 17
+  ..$ AuthorizeChildExpiring: int 8
+  ..$ VolumeAssist          : int 10
+  ..$ AuthorizeRequest      : int 2
+  ..$ TagVolume             : int 21
+  ..$ VolumeAccessOther     : int 13
+  ..$ VolumeCreated         : int 11
+  ..$ SharedVolume          : int 22
+  ..$ Newsletter            : int 23
+  ..$ CommentReply          : int 20
+  ..$ AuthorizeGranted      : int 3
+  ..$ AuthorizeExpired      : int 5
+  ..$ AccountChange         : int 1
+  ..$ ExcerptVolume         : int 18
+  ..$ ReleaseSlot           : int 15
+  ..$ AuthorizeExpiring     : int 4
+  ..$ VolumeSharing         : int 12
+  ..$ AuthorizeChildRequest : int 6
+  ..$ CommentVolume         : int 19
+  ..$ AuthorizeChildExpired : int 9
+  ..$ AuthorizeChildGranted : int 7
+  ..$ ReleaseAsset          : int 16
+ $ delivery  : chr [1:5] &quot;none&quot; &quot;site&quot; &quot;weekly&quot; &quot;daily&quot; ...
+ $ version   : chr &quot;1&quot;</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>It’s pretty straightforward. The <code>permission</code> is one of NONE, PUBLIC, SHARED, READ, EDIT, ADMIN. I have EDIT because it’s my profile, possibly.</p>
 <p>Yes, that’s right. See what happens when I query Karen’s:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9wYXJ0eSg1KVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9wYXJ0eSg1KSJ9 -->
 <pre class="r"><code>databraryapi::download_party(5)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiJGlkXG5bMV0gNVxuXG4kc29ydG5hbWVcblsxXSBcIkFkb2xwaFwiXG5cbiRwcmVuYW1lXG5bMV0gXCJLYXJlblwiXG5cbiRhZmZpbGlhdGlvblxuWzFdIFwiTmV3IFlvcmsgVW5pdmVyc2l0eVwiXG5cbiR1cmxcblsxXSBcImh0dHA6Ly93d3cucHN5Y2gubnl1LmVkdS9hZG9scGgvXCJcblxuJGVtYWlsXG5bMV0gXCJrYXJlbi5hZG9scGhAbnl1LmVkdVwiXG4ifQ== -->
+<pre><code>$id
+[1] 5
+
+$sortname
+[1] &quot;Adolph&quot;
+
+$prename
+[1] &quot;Karen&quot;
+
+$affiliation
+[1] &quot;New York University&quot;
+
+$url
+[1] &quot;http://www.psych.nyu.edu/adolph/&quot;
+
+$email
+[1] &quot;karen.adolph@nyu.edu&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiQWRvbHBoXG4ifQ== -->
+<pre><code>Adolph</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiS2FyZW5cbiJ9 -->
+<pre><code>Karen</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTmV3IFlvcmsgVW5pdmVyc2l0eVxuIn0= -->
+<pre><code>New York University</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaHR0cDovL3d3dy5wc3ljaC5ueXUuZWR1L2Fkb2xwaC9cbiJ9 -->
+<pre><code>http://www.psych.nyu.edu/adolph/</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoia2FyZW4uYWRvbHBoQG55dS5lZHVcbiJ9 -->
+<pre><code>karen.adolph@nyu.edu</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>There is no <code>permission</code> defined. I’m not sure how we’ll map this in the new schema.</p>
@@ -3189,7 +3811,7 @@ str(db_const)</code></pre>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YWJyYXJ5IDIuMCBzY2hlbWEgZGV2ZWxvcG1lbnQiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazoKICAgIHRvYzogdHJ1ZQogICAgdG9jX2Zsb2F0OiB0cnVlCiAgICB0b2NfZGVwdGg6IDMKICAgIGNvZGVfZm9sZGluZzogaGlkZQpwYXJhbXM6CiAgZGJfbG9naW46IHlvdXJAZW1haWwuY29tCi0tLQoKIyBQdXJwb3NlCgpUbyBkb2N1bWVudCBSaWNrIEdpbG1vcmUncyB3b3JrIG9uIHRoZSBEYXRhYnJhcnkgMi4wIHNjaGVtYS4KCiMgUmVzb3VyY2VzCgpKZWZmIFNwaWVzLCBTd2FwbmFhIEpheWFyYW1hbiwgYW5kIFJpY2sgR2lsbW9yZSBhcmUgYWxzbyB1c2luZyB0aGlzIEdvb2dsZSBEb2MgYXMgYSB3b3JraW5nIGRvY3VtZW50OgoKaHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xX2JlY1hENllYNmxxZ240TEswSWhnV0lJNUNfcEJ6Y1FXRkdETHgtU1lfWS9lZGl0P3VzcD1zaGFyaW5nCgpJJ20gdXNpbmcgREIxIHRvIHJlZmVyIHRvIERhdGFicmFyeSAxLjAgYW5kIERCMiB0byByZWZlciB0byBEYXRhYnJhcnkgMi4wLgoKIyBUeXBlIGJ5IHR5cGUKCkxvZ2luIHRvIERhdGFicmFyeSBieSBydW5uaW5nIGBybWFya2Rvd246OnJlbmRlcigic2NoZW1hLWRldmVsb3BtZW50LlJtZCIsIHBhcmFtcyA9IGxpc3QoZGJfbG9naW49IllPVVJFTUFJTEBQUk9WSURFUi5DT00iKSlgIGZyb20gdGhlIFJTdHVkaW8gY29uc29sZS4KCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmxvZ2luX2RiKHBhcmFtcyRkYl9sb2dpbikKYGBgCgojIyBJbnN0aXR1dGlvbnMKCkluIERCMSwgYWxsIEluc3RpdHV0aW9ucyBhcmUgaW5zdGFuY2VzIG9mIGBwYXJ0eWAsIGJ1dCB3aXRoIHNvbWUgc3BlY2lhbCBwcm9wZXJ0aWVzLgoKVGhlIERCMSBBUEkgcmV0dXJucyB0aGUgZm9sbG93aW5nIGRhdGEgZm9yIGFuIEluc3RpdHV0aW9uIGxpa2UgTllVLgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoOCkKYGBgCgojIyMgU2NoZW1hIHN1Z2dlc3Rpb25zCgpJIHN1Z2dlc3QgdGhlIGZvbGxvd2luZyBtYXBwaW5nczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgIHwgVXNlIHN0cnVjdHVyZWQgc2NoZW1lIGZvciBpbnN0aXR1dGlvbmFsIElEcyB8CnwgYHNvcnRuYW1lYCAgICB8IGBhbHRlcm5hdGVOYW1lYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvYWx0ZXJuYXRlTmFtZSB8IEFkZCBvZmZpY2lhbCBuYW1lIGFzIHNlcGFyYXRlIGVudGl0eSB8ICAgICAgICAgICAgICAgICAgICAgICAgIAp8IGB1cmxgICAgICAgICAgfCBgdXJsYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3VybCAgICAgICAgICAgfCB8CnwgYGluc3RpdHV0aW9uYCB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IEJvb2xlYW4gdmFsdWUgaW4gREIxOyBuZWVkZWQgaW4gREIyPyB8CnwgaHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy9wYXJ0eS84L2F2YXRhcj9zaXplPTUwMCB8IGBsb2dvYCB8IGh0dHA6Ly9zY2hlbWEub3JnL2xvZ28gfCB8CgphbmQgYSBzaW1wbGUgYWRkaXRpb24KCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8ICAgICAgICAgICAgICAgfCBgbmFtZWAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL25hbWUgfCBOZXcgZmllbGQgd2l0aCBvZmZpY2lhbCBuYW1lLCBoZXJlIE5ldyBZb3JrIFVuaXZlcnNpdHkgfAoKIyMgQWNjb3VudEhvbGRlcnMKCkluIERCMSwgYWxsIHVzZXJzIGFyZSBpbnN0YW5jZXMgb2YgYHBhcnR5YC4KCkhlcmUsIGZvciBleGFtcGxlLCBpcyB3aGF0IHRoZSBEQjEgQVBJIHJldHVybnMgZm9yIFJpY2sgR2lsbW9yZToKCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmRvd25sb2FkX3BhcnR5KDYpCmBgYAoKVGhlc2UgYXJlIGxhcmdlbHkgc2VsZi1leHBsYW5hdG9yeSBleGNlcHQgZm9yIGBwZXJtaXNzaW9uYC4gCkxldCdzIGludmVzdGlnYXRlIHRoaXMuCgpgYGB7cn0KZGJfY29uc3QgPC0gZGF0YWJyYXJ5YXBpOjphc3NpZ25fY29uc3RhbnRzKCkKc3RyKGRiX2NvbnN0KQpgYGAKCkl0J3MgcHJldHR5IHN0cmFpZ2h0Zm9yd2FyZC4KVGhlIGBwZXJtaXNzaW9uYCBpcyBvbmUgb2YgYHIgZGJfY29uc3QkcGVybWlzc2lvbmAuIEkgaGF2ZSBgciBkYl9jb25zdCRwZXJtaXNzaW9uWzVdYCBiZWNhdXNlIGl0J3MgbXkgcHJvZmlsZSwgcG9zc2libHkuCgpZZXMsIHRoYXQncyByaWdodC4KU2VlIHdoYXQgaGFwcGVucyB3aGVuIEkgcXVlcnkgS2FyZW4nczoKCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmRvd25sb2FkX3BhcnR5KDUpCmBgYAoKVGhlcmUgaXMgbm8gYHBlcm1pc3Npb25gIGRlZmluZWQuCkknbSBub3Qgc3VyZSBob3cgd2UnbGwgbWFwIHRoaXMgaW4gdGhlIG5ldyBzY2hlbWEuCgojIyMgU2NoZW1hIHN1Z2dlc3Rpb25zCgp8IERCMSAgICAgICAgICAgfCBTdWdnZXN0ZWQgbWFwcGluZyB8IFNjaGVtYSBVUkwgfCBDb21tZW50cyB8CnwtLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS18LS0tLS0tLS0tLXwKfCBgaWRgICAgICAgICAgIHwgYGlkZW50aWZpZXJgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9pZGVudGlmaWVyIHwgVXNlIHN0cnVjdHVyZWQgc2NoZW1lIGZvciBJRHMgb2YgcGVvcGxlLCBtYXliZSBwcmVmaXggY3VycmVudCBwYXJ0eSBJRCB3aXRoIGBwYCB8CnwgYHNvcnRuYW1lYCAgICB8IGBmYW1pbHlOYW1lYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZmFtaWx5TmFtZSB8ICB8IAp8IGBwcmVuYW1lYCAgICAgfCBgZ2l2ZW5OYW1lYCAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2dpdmVuTmFtZSAgfCB8CnwgYG9yY2lkYCAgICAgICB8ICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IHwKfCBgYWZmaWxpYXRpb25gIHwgIGB3b3Jrc0ZvcmAgICAgIHwgIGh0dHA6Ly9zY2hlbWEub3JnL3dvcmtzRm9yICB8IHwKfCBgdXJsYCAgICAgICAgIHwgYHVybGAgICAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy91cmwgICAgICAgICAgIHwgfAp8IGBlbWFpbGAgICAgICAgfCBgZW1haWxgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2VtYWlsICAgICAgICAgfCB8CnwgYHBlcm1pc3Npb25gICB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IHwKfCBodHRwczovL255dS5kYXRhYnJhcnkub3JnL3BhcnR5LzYvYXZhdGFyP3NpemU9NTAwIHwgYGltYWdlYCB8IGh0dHA6Ly9zY2hlbWEub3JnL2xvZ28gfCB8CgpXaXRoIHRoZSBmb2xsb3dpbmcgYWRkaXRpb24ocyk6Cgp8IERCMSAgICAgICAgICAgfCBTdWdnZXN0ZWQgbWFwcGluZyB8IFNjaGVtYSBVUkwgfCBDb21tZW50cyB8CnwtLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS18LS0tLS0tLS0tLXwKfCAgICAgICAgICAgICAgIHwgYGFkZHJlc3NgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9hZGRyZXNzIHwgfAp8ICAgICAgICAgICAgICAgfCBgYWRkaXRpb25hbE5hbWVgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9hZGRpdGlvbmFsTmFtZSB8IE1pZGRsZSBuYW1lIHwKfCAgICAgICAgICAgICAgIHwgYGhvbm9yaWZpY1ByZWZpeGAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaG9ub3JpZmljUHJlZml4IHwgZS5nLiwgRHIuIHwKfCAgICAgICAgICAgICAgIHwgYGhvbm9yaWZpY1N1ZmZpeGAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaG9ub3JpZmljU3VmZml4IHwgZS5nLiwgUGguRC4gfAp8ICAgICAgICAgICAgICAgfCBgam9iVGl0bGVgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9qb2JUaXRsZSB8IHwKfCAgICAgICAgICAgICAgIHwgYHRlbGVwaG9uZWAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvdGVsZXBob25lIHwgfAo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YWJyYXJ5IDIuMCBzY2hlbWEgZGV2ZWxvcG1lbnQiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazoKICAgIHRvYzogdHJ1ZQogICAgdG9jX2Zsb2F0OiB0cnVlCiAgICB0b2NfZGVwdGg6IDMKICAgIGNvZGVfZm9sZGluZzogaGlkZQpwYXJhbXM6CiAgZGJfbG9naW46IHlvdXJAZW1haWwuY29tCi0tLQoKIyBQdXJwb3NlCgpUbyBkb2N1bWVudCBSaWNrIEdpbG1vcmUncyB3b3JrIG9uIHRoZSBEYXRhYnJhcnkgMi4wIHNjaGVtYS4KCiMgUmVzb3VyY2VzCgpKZWZmIFNwaWVzLCBTd2FwbmFhIEpheWFyYW1hbiwgYW5kIFJpY2sgR2lsbW9yZSBhcmUgYWxzbyB1c2luZyB0aGlzIEdvb2dsZSBEb2MgYXMgYSB3b3JraW5nIGRvY3VtZW50OgoKaHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xX2JlY1hENllYNmxxZ240TEswSWhnV0lJNUNfcEJ6Y1FXRkdETHgtU1lfWS9lZGl0P3VzcD1zaGFyaW5nCgpJJ20gdXNpbmcgREIxIHRvIHJlZmVyIHRvIERhdGFicmFyeSAxLjAgYW5kIERCMiB0byByZWZlciB0byBEYXRhYnJhcnkgMi4wLgoKIyBUeXBlIGJ5IHR5cGUKCkxvZ2luIHRvIERhdGFicmFyeSBieSBydW5uaW5nIGBybWFya2Rvd246OnJlbmRlcigic2NoZW1hLWRldmVsb3BtZW50LlJtZCIsIHBhcmFtcyA9IGxpc3QoZGJfbG9naW49IllPVVJFTUFJTEBQUk9WSURFUi5DT00iKSlgIGZyb20gdGhlIFJTdHVkaW8gY29uc29sZS4KCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmxvZ2luX2RiKHBhcmFtcyRkYl9sb2dpbikKYGBgCgojIyBJbnN0aXR1dGlvbnMKCkluIERCMSwgYWxsIEluc3RpdHV0aW9ucyBhcmUgaW5zdGFuY2VzIG9mIGBwYXJ0eWAsIGJ1dCB3aXRoIHNvbWUgc3BlY2lhbCBwcm9wZXJ0aWVzLgoKVGhlIERCMSBBUEkgcmV0dXJucyB0aGUgZm9sbG93aW5nIGRhdGEgZm9yIGFuIEluc3RpdHV0aW9uIGxpa2UgTllVLgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoOCkKYGBgCgojIyMgU2NoZW1hIHN1Z2dlc3Rpb25zCgpCYXNlZCBvbiB0aGUgQ29sbGVnZU9yVW5pdmVyc2l0eSBzY2hlbWEgKGh0dHA6Ly9zY2hlbWEub3JnL0NvbGxlZ2VPclVuaXZlcnNpdHkpLCBJIHN1Z2dlc3QgdGhlIGZvbGxvd2luZyBtYXBwaW5nczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgIHwgVXNlIHN0cnVjdHVyZWQgc2NoZW1lIGZvciBpbnN0aXR1dGlvbmFsIElEcyB8CnwgYHNvcnRuYW1lYCAgICB8IGBhbHRlcm5hdGVOYW1lYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvYWx0ZXJuYXRlTmFtZSB8IEFkZCBvZmZpY2lhbCBuYW1lIGFzIHNlcGFyYXRlIGVudGl0eSB8ICAgICAgICAgICAgICAgICAgICAgICAgIAp8IGB1cmxgICAgICAgICAgfCBgdXJsYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3VybCAgICAgICAgICAgfCB8CnwgYGluc3RpdHV0aW9uYCB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IEJvb2xlYW4gdmFsdWUgaW4gREIxOyBuZWVkZWQgaW4gREIyPyB8CnwgaHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy9wYXJ0eS84L2F2YXRhcj9zaXplPTUwMCB8IGBsb2dvYCB8IGh0dHA6Ly9zY2hlbWEub3JnL2xvZ28gfCB8CgpJIGFsc28gc3VnZ2VzdCB0aGUgZm9sbG93aW5nIGFkZGl0aW9uczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8ICAgICAgICAgICAgICAgfCBgbmFtZWAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL25hbWUgfCBOZXcgZmllbGQgd2l0aCBvZmZpY2lhbCBuYW1lLCBoZXJlIE5ldyBZb3JrIFVuaXZlcnNpdHkgfAp8ICAgICAgICAgICAgICAgfCBgYWRkcmVzc2AgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZHJlc3MgfCB8CnwgICAgICAgICAgICAgICB8IGBjb250YWN0UG9pbnRgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY29udGFjdFBvaW50ICB8ICB8CgojIyBBY2NvdW50SG9sZGVycwoKSW4gREIxLCBhbGwgdXNlcnMgYXJlIGluc3RhbmNlcyBvZiBgcGFydHlgLgoKSGVyZSwgZm9yIGV4YW1wbGUsIGlzIHdoYXQgdGhlIERCMSBBUEkgcmV0dXJucyBmb3IgUmljayBHaWxtb3JlOgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoNikKYGBgCgpUaGVzZSBhcmUgbGFyZ2VseSBzZWxmLWV4cGxhbmF0b3J5IGV4Y2VwdCBmb3IgYHBlcm1pc3Npb25gLiAKTGV0J3MgaW52ZXN0aWdhdGUgdGhpcy4KCmBgYHtyfQpkYl9jb25zdCA8LSBkYXRhYnJhcnlhcGk6OmFzc2lnbl9jb25zdGFudHMoKQpzdHIoZGJfY29uc3QpCmBgYAoKSXQncyBwcmV0dHkgc3RyYWlnaHRmb3J3YXJkLgpUaGUgYHBlcm1pc3Npb25gIGlzIG9uZSBvZiBgciBkYl9jb25zdCRwZXJtaXNzaW9uYC4gSSBoYXZlIGByIGRiX2NvbnN0JHBlcm1pc3Npb25bNV1gIGJlY2F1c2UgaXQncyBteSBwcm9maWxlLCBwb3NzaWJseS4KClllcywgdGhhdCdzIHJpZ2h0LgpTZWUgd2hhdCBoYXBwZW5zIHdoZW4gSSBxdWVyeSBLYXJlbidzOgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoNSkKYGBgCgpUaGVyZSBpcyBubyBgcGVybWlzc2lvbmAgZGVmaW5lZC4KSSdtIG5vdCBzdXJlIGhvdyB3ZSdsbCBtYXAgdGhpcyBpbiB0aGUgbmV3IHNjaGVtYS4KCiMjIyBTY2hlbWEgc3VnZ2VzdGlvbnMKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgfCBVc2Ugc3RydWN0dXJlZCBzY2hlbWUgZm9yIElEcyBvZiBwZW9wbGUsIG1heWJlIHByZWZpeCBjdXJyZW50IHBhcnR5IElEIHdpdGggYHBgIHwKfCBgc29ydG5hbWVgICAgIHwgYGZhbWlseU5hbWVgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9mYW1pbHlOYW1lIHwgIHwgCnwgYHByZW5hbWVgICAgICB8IGBnaXZlbk5hbWVgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZ2l2ZW5OYW1lICB8IHwKfCBgb3JjaWRgICAgICAgIHwgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgfAp8IGBhZmZpbGlhdGlvbmAgfCAgYHdvcmtzRm9yYCAgICAgfCAgaHR0cDovL3NjaGVtYS5vcmcvd29ya3NGb3IgIHwgfAp8IGB1cmxgICAgICAgICAgfCBgdXJsYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3VybCAgICAgICAgICAgfCB8CnwgYGVtYWlsYCAgICAgICB8IGBlbWFpbGAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZW1haWwgICAgICAgICB8IHwKfCBgcGVybWlzc2lvbmAgIHwgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgfAp8IGh0dHBzOi8vbnl1LmRhdGFicmFyeS5vcmcvcGFydHkvNi9hdmF0YXI/c2l6ZT01MDAgfCBgaW1hZ2VgIHwgaHR0cDovL3NjaGVtYS5vcmcvbG9nbyB8IHwKCldpdGggdGhlIGZvbGxvd2luZyBhZGRpdGlvbihzKToKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8ICAgICAgICAgICAgICAgfCBgYWRkcmVzc2AgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZHJlc3MgfCB8CnwgICAgICAgICAgICAgICB8IGBhZGRpdGlvbmFsTmFtZWAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZGl0aW9uYWxOYW1lIHwgTWlkZGxlIG5hbWUgfAp8ICAgICAgICAgICAgICAgfCBgaG9ub3JpZmljUHJlZml4YCAgfCBodHRwOi8vc2NoZW1hLm9yZy9ob25vcmlmaWNQcmVmaXggfCBlLmcuLCBEci4gfAp8ICAgICAgICAgICAgICAgfCBgaG9ub3JpZmljU3VmZml4YCAgfCBodHRwOi8vc2NoZW1hLm9yZy9ob25vcmlmaWNTdWZmaXggfCBlLmcuLCBQaC5ELiB8CnwgICAgICAgICAgICAgICB8IGBqb2JUaXRsZWAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2pvYlRpdGxlIHwgfAp8ICAgICAgICAgICAgICAgfCBgdGVsZXBob25lYCAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy90ZWxlcGhvbmUgfCB8Cg==</div>
 
 
 </div>

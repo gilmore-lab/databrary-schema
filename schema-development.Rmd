@@ -42,7 +42,7 @@ databraryapi::download_party(8)
 
 ### Schema suggestions
 
-I suggest the following mappings:
+Based on the CollegeOrUniversity schema (http://schema.org/CollegeOrUniversity), I suggest the following mappings:
 
 | DB1           | Suggested mapping | Schema URL | Comments |
 |---------------|-------------------|------------|----------|
@@ -52,11 +52,13 @@ I suggest the following mappings:
 | `institution` |                   |                                 | Boolean value in DB1; needed in DB2? |
 | https://nyu.databrary.org/party/8/avatar?size=500 | `logo` | http://schema.org/logo | |
 
-and a simple addition
+I also suggest the following additions:
 
 | DB1           | Suggested mapping | Schema URL | Comments |
 |---------------|-------------------|------------|----------|
 |               | `name`            | http://schema.org/name | New field with official name, here New York University |
+|               | `address`         | http://schema.org/address | |
+|               | `contactPoint`    | http://schema.org/contactPoint  |  |
 
 ## AccountHolders
 
