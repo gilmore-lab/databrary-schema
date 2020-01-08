@@ -1,0 +1,115 @@
+---
+title: "Databrary 2.0 schema development"
+output: 
+  html_notebook:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+params:
+  db_login: your@email.com
+---
+
+# Purpose
+
+To document Rick Gilmore's work on the Databrary 2.0 schema.
+
+# Resources
+
+Jeff Spies, Swapnaa Jayaraman, and Rick Gilmore are also using this Google Doc as a working document:
+
+https://docs.google.com/document/d/1_becXD6YX6lqgn4LK0IhgWII5C_pBzcQWFGDLx-SY_Y/edit?usp=sharing
+
+I'm using DB1 to refer to Databrary 1.0 and DB2 to refer to Databrary 2.0.
+
+# Type by type
+
+Login to Databrary by running `rmarkdown::render("schema-development.Rmd", params = list(db_login="YOUREMAIL@PROVIDER.COM"))` from the RStudio console.
+
+```{r}
+databraryapi::login_db(params$db_login)
+```
+
+## Institutions
+
+In DB1, all Institutions are instances of `party`, but with some special properties.
+
+The DB1 API returns the following data for an Institution like NYU.
+
+```{r}
+databraryapi::download_party(8)
+```
+
+### Schema suggestions
+
+I suggest the following mappings:
+
+| DB1           | Suggested mapping | Schema URL | Comments |
+|---------------|-------------------|------------|----------|
+| `id`          | `identifier`      | http://schema.org/identifier  | Use structured scheme for institutional IDs |
+| `sortname`    | `alternateName`   | http://schema.org/alternateName | Add official name as separate entity |                         
+| `url`         | `url`             | http://schema.org/url           | |
+| `institution` |                   |                                 | Boolean value in DB1; needed in DB2? |
+| https://nyu.databrary.org/party/8/avatar?size=500 | `logo` | http://schema.org/logo | |
+
+and a simple addition
+
+| DB1           | Suggested mapping | Schema URL | Comments |
+|---------------|-------------------|------------|----------|
+|               | `name`            | http://schema.org/name | New field with official name, here New York University |
+
+## AccountHolders
+
+In DB1, all users are instances of `party`.
+
+Here, for example, is what the DB1 API returns for Rick Gilmore:
+
+```{r}
+databraryapi::download_party(6)
+```
+
+These are largely self-explanatory except for `permission`. 
+Let's investigate this.
+
+```{r}
+db_const <- databraryapi::assign_constants()
+str(db_const)
+```
+
+It's pretty straightforward.
+The `permission` is one of `r db_const$permission`. I have `r db_const$permission[5]` because it's my profile, possibly.
+
+Yes, that's right.
+See what happens when I query Karen's:
+
+```{r}
+databraryapi::download_party(5)
+```
+
+There is no `permission` defined.
+I'm not sure how we'll map this in the new schema.
+
+### Schema suggestions
+
+| DB1           | Suggested mapping | Schema URL | Comments |
+|---------------|-------------------|------------|----------|
+| `id`          | `identifier`      | http://schema.org/identifier | Use structured scheme for IDs of people, maybe prefix current party ID with `p` |
+| `sortname`    | `familyName`   | http://schema.org/familyName |  | 
+| `prename`     | `givenName`    | http://schema.org/givenName  | |
+| `orcid`       |                |                              | |
+| `affiliation` |  `worksFor`     |  http://schema.org/worksFor  | |
+| `url`         | `url`             | http://schema.org/url           | |
+| `email`       | `email`           | http://schema.org/email         | |
+| `permission`  |                   |                                 | |
+| https://nyu.databrary.org/party/6/avatar?size=500 | `image` | http://schema.org/logo | |
+
+With the following addition(s):
+
+| DB1           | Suggested mapping | Schema URL | Comments |
+|---------------|-------------------|------------|----------|
+|               | `address`         | http://schema.org/address | |
+|               | `additionalName`   | http://schema.org/additionalName | Middle name |
+|               | `honorificPrefix`  | http://schema.org/honorificPrefix | e.g., Dr. |
+|               | `honorificSuffix`  | http://schema.org/honorificSuffix | e.g., Ph.D. |
+|               | `jobTitle`         | http://schema.org/jobTitle | |
+|               | `telephone`        | http://schema.org/telephone | |
