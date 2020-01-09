@@ -2896,6 +2896,8 @@ div.tocify {
 
 
 <!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
 <div id="purpose" class="section level1">
 <h1>Purpose</h1>
 <p>To document Rick Gilmore’s work on the Databrary 2.0 schema.</p>
@@ -2904,7 +2906,17 @@ div.tocify {
 <h1>Resources</h1>
 <p>Jeff Spies, Swapnaa Jayaraman, and Rick Gilmore are also using this Google Doc as a working document:</p>
 <p><a href="https://docs.google.com/document/d/1_becXD6YX6lqgn4LK0IhgWII5C_pBzcQWFGDLx-SY_Y/edit?usp=sharing" class="uri">https://docs.google.com/document/d/1_becXD6YX6lqgn4LK0IhgWII5C_pBzcQWFGDLx-SY_Y/edit?usp=sharing</a></p>
+<div id="sites" class="section level2">
+<h2>Sites</h2>
+<ul>
+<li><a href="https://re3data.org" class="uri">https://re3data.org</a></li>
+<li>DataCite: <a href="https://www.datacite.org" class="uri">https://www.datacite.org</a>
+<ul>
+<li>DataCite Metadata Schema v4.3 Properties Overview. <a href="https://support.datacite.org/docs/schema-properties-overview-v43" class="uri">https://support.datacite.org/docs/schema-properties-overview-v43</a></li>
+</ul></li>
+</ul>
 <p>I’m using DB1 to refer to Databrary 1.0 and DB2 to refer to Databrary 2.0.</p>
+</div>
 </div>
 <div id="type-by-type" class="section level1">
 <h1>Type by type</h1>
@@ -2922,8 +2934,14 @@ div.tocify {
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="repository-wide" class="section level1">
+<h1>Repository-wide</h1>
+<p>The re3data.org specification adds some metadata elements that may be helpful to support.</p>
 <div id="institutions" class="section level2">
 <h2>Institutions</h2>
+<div id="db1" class="section level3">
+<h3>DB1</h3>
 <p>In DB1, all Institutions are instances of <code>party</code>, but with some special properties.</p>
 <p>The DB1 API returns the following data for an Institution like NYU.</p>
 <!-- rnb-text-end -->
@@ -2952,6 +2970,7 @@ $institution
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
 <div id="schema-suggestions" class="section level3">
 <h3>Schema suggestions</h3>
 <p>Based on the CollegeOrUniversity schema (<a href="http://schema.org/CollegeOrUniversity" class="uri">http://schema.org/CollegeOrUniversity</a>), I suggest the following mappings:</p>
@@ -3042,9 +3061,11 @@ $institution
 </table>
 </div>
 </div>
-<div id="accountholders" class="section level2">
-<h2>AccountHolders</h2>
-<p>In DB1, all users are instances of <code>party</code>.</p>
+<div id="users" class="section level2">
+<h2>Users</h2>
+<p>In DB1, all users are instances of <code>party</code>. For DB2, we are considering creating a special type of <code>Person</code> called an <code>AccountHolder</code>.</p>
+<div id="db1-1" class="section level3">
+<h3>DB1</h3>
 <p>Here, for example, is what the DB1 API returns for Rick Gilmore:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -3683,6 +3704,7 @@ $email
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>There is no <code>permission</code> defined. I’m not sure how we’ll map this in the new schema.</p>
+</div>
 <div id="schema-suggestions-1" class="section level3">
 <h3>Schema suggestions</h3>
 <table>
@@ -3808,8 +3830,11 @@ $email
 </table>
 </div>
 </div>
-<div id="volume-project" class="section level2">
-<h2>Volume (Project)</h2>
+<div id="volumes" class="section level2">
+<h2>Volumes</h2>
+<p>In DB1, we use the term volume, and so does the API. We are considering using the term <code>Project</code> in DB2.</p>
+<div id="db1-2" class="section level3">
+<h3>DB1</h3>
 <p>Here is the structure of the output from the DB1 API for a volume, in this case, the default is volume 1 (<a href="https://nyu.databrary.org/volume/1" class="uri">https://nyu.databrary.org/volume/1</a>):</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
@@ -3844,15 +3869,24 @@ $email
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>We also have the project’s icon at <a href="https://nyu.databrary.org/volume/1/thumb?size" class="uri">https://nyu.databrary.org/volume/1/thumb?size</a>, so apparently the <code>thumb</code> variable holds the icon.</p>
+<div id="questions" class="section level4">
+<h4>Questions</h4>
+<ol style="list-style-type: decimal">
+<li>How is the date added information represented?</li>
+<li>How are external links represented?</li>
+<li>Is the HOW TO CITE generated from a function or is it represented separately as data?</li>
+</ol>
+</div>
+</div>
 <div id="schema-suggestions-2" class="section level3">
 <h3>Schema suggestions</h3>
 <p>Let’s try the DataCatalog (<a href="http://schema.org/DataCatalog" class="uri">http://schema.org/DataCatalog</a>) schema to start mapping the volume-level items.</p>
 <table>
 <colgroup>
-<col width="26%"></col>
-<col width="33%"></col>
-<col width="21%"></col>
-<col width="17%"></col>
+<col width="30%"></col>
+<col width="32%"></col>
+<col width="20%"></col>
+<col width="16%"></col>
 </colgroup>
 <thead>
 <tr class="header">
@@ -3883,9 +3917,9 @@ $email
 </tr>
 <tr class="even">
 <td><code>doi</code></td>
+<td><code>doi</code></td>
+<td>from re3data.org (property ID 1.2)</td>
 <td></td>
-<td></td>
-<td>Use <code>citation</code> or ?</td>
 </tr>
 <tr class="odd">
 <td><code>creation</code></td>
@@ -4059,12 +4093,644 @@ $email
 </tr>
 </tbody>
 </table>
+</div>
+<div id="datacite-recommendations" class="section level3">
+<h3>DataCite recommendations</h3>
+<p>The DataCite Metadata Schema v4.3 Properties Overview. <a href="https://support.datacite.org/docs/schema-properties-overview-v43" class="uri">https://support.datacite.org/docs/schema-properties-overview-v43</a> makes specific recommendations about what properties are mandatory, which are recommended, and which are optional.</p>
+<table>
+<colgroup>
+<col width="11%"></col>
+<col width="27%"></col>
+<col width="33%"></col>
+<col width="27%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Property</th>
+<th>Obligation</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Identifier (with mandatory type sub-property)</td>
+<td>M</td>
+<td>Maps to <code>identifier</code></td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Creator (with optional name identifier and affiliation sub-properties)</td>
+<td>M</td>
+<td>Maps to <code>creator</code></td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Title (with optional type sub-properties)</td>
+<td>M</td>
+<td>Maps to <code>name</code></td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Publisher</td>
+<td>M</td>
+<td><code>publisher</code> in schema.org</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>PublicationYear</td>
+<td>M</td>
+<td><code>datePublished</code> in schema.org</td>
+</tr>
+<tr class="even">
+<td>10</td>
+<td>ResourceType (with mandatory general type description sub-property)</td>
+<td>M</td>
+<td><code>additionalType</code> from schema.org?</td>
+</tr>
+</tbody>
+</table>
+<p>It seems prudent to try to include the mandatory DataCite properties.</p>
+<p>The recommended (R) and optional (O) properties are as follows:</p>
+<table>
+<colgroup>
+<col width="7%"></col>
+<col width="50%"></col>
+<col width="22%"></col>
+<col width="18%"></col>
+</colgroup>
+<thead>
+<tr class="header">
+<th>ID</th>
+<th>Property</th>
+<th>Obligation</th>
+<th>Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>6</td>
+<td>Subject (with scheme sub-property)</td>
+<td>R</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>Contributor (with type, name identifier, and affiliation sub-properties)</td>
+<td>R</td>
+<td><code>contributor</code></td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>Date (with type sub-property)</td>
+<td>R</td>
+<td>Use more specific <code>dateModified</code>, etc.?</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Language</td>
+<td>O</td>
+<td><code>inLanguage</code></td>
+</tr>
+<tr class="odd">
+<td>11</td>
+<td>AlternateIdentifier (with type sub-property)</td>
+<td>O</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>12</td>
+<td>RelatedIdentifier (with type and relation type sub-properties)</td>
+<td>R</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Size</td>
+<td>O</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>14</td>
+<td>Format</td>
+<td>O</td>
+<td>Relevant since Projects are heterogeneous?</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td>Version</td>
+<td>O</td>
+<td><code>version</code> in schema.org</td>
+</tr>
+<tr class="even">
+<td>16</td>
+<td>Rights</td>
+<td>O</td>
+<td>Support with some version of Databrary access rights?</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>Description (with type sub-property)</td>
+<td>R</td>
+<td>What is relationship to <code>abstract</code>?</td>
+</tr>
+<tr class="even">
+<td>18</td>
+<td>GeoLocation (with point, box and polygon sub-properties)</td>
+<td>R</td>
+<td>Derived from individual components of collection?</td>
+</tr>
+<tr class="odd">
+<td>19</td>
+<td>FundingReference (with name, identifier, and award related sub-properties)</td>
+<td>O</td>
+<td>Extension of <code>funder</code>?</td>
+</tr>
+</tbody>
+</table>
+<p>Here is a sample XML file for a simple dataset: <a href="http://schema.datacite.org/meta/kernel-4.3/example/datacite-example-dataset-v4.xml" class="uri">http://schema.datacite.org/meta/kernel-4.3/example/datacite-example-dataset-v4.xml</a></p>
+</div>
+</div>
+<div id="sessions" class="section level2">
+<h2>Sessions</h2>
+<p>In DB1, we show collections of data in a spreadsheet-like interface. A collection of data involving people observed on a specific date and time in a particular location doing similar things is called a <em>session</em>. The DB1 API indexes sessions as <code>slot</code>s. Each <code>slot</code> is given a unique integer ID. For example, <a href="https://nyu.databrary.org/volume/1/slot/25952/-" class="uri">https://nyu.databrary.org/volume/1/slot/25952/-</a> links to <code>slot</code> 25952 in volume 1, the volume that contains information about Databrary’s board meetings.</p>
+<div id="db1-3" class="section level3">
+<h3>DB1</h3>
+<p>The API returns a table called <code>containers</code>:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInZvbDEgPC0gZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9jb250YWluZXJzX3JlY29yZHMoKSIsInN0cih2b2wxKSJdfQ== -->
+<pre class="r"><code>vol1 &lt;- databraryapi::download_containers_records()
+str(vol1)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlzdCBvZiAxMVxuICQgaWQgICAgICAgICAgICAgOiBpbnQgMVxuICQgbmFtZSAgICAgICAgICAgOiBjaHIgXCJEYXRhYnJhcnkgc3BvbnNvcmVkIHdvcmtzaG9wcyBhbmQgZXZlbnRzXCJcbiAkIGJvZHkgICAgICAgICAgIDogY2hyIFwiT3VyIG1pc3Npb24gaXMgdG8gcHJvbW90ZSBzaGFyaW5nIGFuZCByZXVzZSBvZiB2aWRlbyBkYXRhLiBNb3N0IGRldmVsb3BtZW50YWwgc2NpZW50aXN0cyByZWx5IG9uIHZpZGVvIHJlY29yZGluXCJ8IF9fdHJ1bmNhdGVkX19cbiAkIGRvaSAgICAgICAgICAgIDogY2hyIFwiMTAuMTc5MTAvQjcxNTlRXCJcbiAkIGNyZWF0aW9uICAgICAgIDogY2hyIFwiMjAxMy0wMS0xMVQxMDoyNjo0MFpcIlxuICQgb3duZXJzICAgICAgICAgOidkYXRhLmZyYW1lJzpcdDQgb2JzLiBvZiAgMiB2YXJpYWJsZXM6XG4gIC4uJCBuYW1lOiBjaHIgWzE6NF0gXCJBZG9scGgsIEthcmVuXCIgXCJHaWxtb3JlLCBSaWNrIE8uXCIgXCJTdGFmZlwiIFwiQWRtaW4sIERhdGFicmFyeVwiXG4gIC4uJCBpZCAgOiBpbnQgWzE6NF0gNSA2IDMwOCAzMzQxXG4gJCBwZXJtaXNzaW9uICAgICA6IGludCA1XG4gJCBwdWJsaWNzaGFyZWZ1bGw6IE5VTExcbiAkIHB1YmxpY2FjY2VzcyAgIDogY2hyIFwiZnVsbFwiXG4gJCBjb250YWluZXJzICAgICA6J2RhdGEuZnJhbWUnOlx0MjYgb2JzLiBvZiAgNSB2YXJpYWJsZXM6XG4gIC4uJCBpZCAgICAgOiBpbnQgWzE6MjZdIDEgNjI1NiA2MjU3IDY1NDAgNzgyMSA4NDYwIDkyMjQgOTU3OCA5ODA3IDEwMDY4IC4uLlxuICAuLiQgdG9wICAgIDogbG9naSBbMToyNl0gVFJVRSBOQSBOQSBOQSBOQSBOQSAuLi5cbiAgLi4kIG5hbWUgICA6IGNociBbMToyNl0gTkEgXCJBZHZpc29yeSBCb2FyZCBNZWV0aW5nXCIgXCJBZHZpc29yeSBCb2FyZCBNZWV0aW5nXCIgXCJBZHZpc29yeSBCb2FyZCBNZWV0aW5nXCIgLi4uXG4gIC4uJCBkYXRlICAgOiBjaHIgWzE6MjZdIE5BIFwiMjAxMy0xMC0yOFwiIFwiMjAxNC0wNC0wN1wiIFwiMjAxNC0xMC0xN1wiIC4uLlxuICAuLiQgcmVsZWFzZTogaW50IFsxOjI2XSBOQSAzIDMgMyAzIDMgMyAzIE5BIDMgLi4uXG4gJCByZWNvcmRzICAgICAgICA6J2RhdGEuZnJhbWUnOlx0NCBvYnMuIG9mICAzIHZhcmlhYmxlczpcbiAgLi4kIGlkICAgICAgOiBpbnQgWzE6NF0gNTQ4MSA1NDgwIDU0NzkgNTQ3OFxuICAuLiQgY2F0ZWdvcnk6IGludCBbMTo0XSA2IDYgNiA2XG4gIC4uJCBtZWFzdXJlczonZGF0YS5mcmFtZSc6XHQ0IG9icy4gb2YgIDEgdmFyaWFibGU6XG4gIC4uIC4uJCAyOTogY2hyIFsxOjRdIFwiRGF0YXZ5dSAmIEJlc3QgUHJhY3RpY2VzIGZvciBDb2RpbmcgVmlkZW9cIiBcIk1hbmFnaW5nIERhdGEgd2l0aCBEYXRhYnJhcnlcIiBcIlBvbGljaWVzIGZvciBTaGFyaW5nIElkZW50aWZpYWJsZSBWaWRlb1wiIFwiSW50cm9kdWN0aW9uIHRvIERhdGFicmFyeVwiXG4ifQ== -->
+<pre><code>List of 11
+ $ id             : int 1
+ $ name           : chr &quot;Databrary sponsored workshops and events&quot;
+ $ body           : chr &quot;Our mission is to promote sharing and reuse of video data. Most developmental scientists rely on video recordin&quot;| __truncated__
+ $ doi            : chr &quot;10.17910/B7159Q&quot;
+ $ creation       : chr &quot;2013-01-11T10:26:40Z&quot;
+ $ owners         :'data.frame':    4 obs. of  2 variables:
+  ..$ name: chr [1:4] &quot;Adolph, Karen&quot; &quot;Gilmore, Rick O.&quot; &quot;Staff&quot; &quot;Admin, Databrary&quot;
+  ..$ id  : int [1:4] 5 6 308 3341
+ $ permission     : int 5
+ $ publicsharefull: NULL
+ $ publicaccess   : chr &quot;full&quot;
+ $ containers     :'data.frame':    26 obs. of  5 variables:
+  ..$ id     : int [1:26] 1 6256 6257 6540 7821 8460 9224 9578 9807 10068 ...
+  ..$ top    : logi [1:26] TRUE NA NA NA NA NA ...
+  ..$ name   : chr [1:26] NA &quot;Advisory Board Meeting&quot; &quot;Advisory Board Meeting&quot; &quot;Advisory Board Meeting&quot; ...
+  ..$ date   : chr [1:26] NA &quot;2013-10-28&quot; &quot;2014-04-07&quot; &quot;2014-10-17&quot; ...
+  ..$ release: int [1:26] NA 3 3 3 3 3 3 3 NA 3 ...
+ $ records        :'data.frame':    4 obs. of  3 variables:
+  ..$ id      : int [1:4] 5481 5480 5479 5478
+  ..$ category: int [1:4] 6 6 6 6
+  ..$ measures:'data.frame':    4 obs. of  1 variable:
+  .. ..$ 29: chr [1:4] &quot;Datavyu &amp; Best Practices for Coding Video&quot; &quot;Managing Data with Databrary&quot; &quot;Policies for Sharing Identifiable Video&quot; &quot;Introduction to Databrary&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The <code>containers</code> table contains the following fields.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInZvbDFfY29udCA8LSB2b2wxJGNvbnRhaW5lcnMiLCJuYW1lcyh2b2wxX2NvbnQpIl19 -->
+<pre class="r"><code>vol1_cont &lt;- vol1$containers
+names(vol1_cont)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiaWRcIiAgICAgIFwidG9wXCIgICAgIFwibmFtZVwiICAgIFwiZGF0ZVwiICAgIFwicmVsZWFzZVwiXG4ifQ== -->
+<pre><code>[1] &quot;id&quot;      &quot;top&quot;     &quot;name&quot;    &quot;date&quot;    &quot;release&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjpbImlkXG4iLCJ0b3BcbiIsIm5hbWVcbiIsImRhdGVcbiIsInJlbGVhc2VcbiJdfQ== -->
+<pre><code>id
+
+top
+
+name
+
+date
+
+release</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>For volume 1, this is an array of with dimensions 26, 5, one row for each of the “folders” or slots/sessions in the volume. The <code>id</code> variable holds the <code>slot</code> index.</p>
+<p>The number of variables collected for each session/<code>slot</code> varies across studies. Consider one of the PLAY datasets, for example.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInZvbDg5OSA8LSBkYXRhYnJhcnlhcGk6OmRvd25sb2FkX2NvbnRhaW5lcnNfcmVjb3Jkcyg4OTkpIiwidm9sODk5X2NvbnRhaW5lcnMgPC0gdm9sODk5JGNvbnRhaW5lcnMiLCJuYW1lcyh2b2w4OTlfY29udGFpbmVycykiXX0= -->
+<pre class="r"><code>vol899 &lt;- databraryapi::download_containers_records(899)
+vol899_containers &lt;- vol899$containers
+names(vol899_containers)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiaWRcIiAgICAgIFwidG9wXCIgICAgIFwibmFtZVwiICAgIFwiZGF0ZVwiICAgIFwicmVsZWFzZVwiXG4ifQ== -->
+<pre><code>[1] &quot;id&quot;      &quot;top&quot;     &quot;name&quot;    &quot;date&quot;    &quot;release&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjpbImlkXG4iLCJ0b3BcbiIsIm5hbWVcbiIsImRhdGVcbiIsInJlbGVhc2VcbiJdfQ== -->
+<pre><code>id
+
+top
+
+name
+
+date
+
+release</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The variables for the session/<code>slot</code> are identical to those for volume 1.</p>
+<p>However, the data returned in the spreadsheet about the participants are stored in a <code>records</code> table with three variables:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbInZvbDg5OV9yZWNvcmRzIDwtIHZvbDg5OSRyZWNvcmRzIiwidm9sODk5X3JlY29yZHMiXX0= -->
+<pre class="r"><code>vol899_records &lt;- vol899$records
+vol899_records</code></pre>
+<!-- rnb-source-end -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["id"],"name":[1],"type":["int"],"align":["right"]},{"label":["category"],"name":[2],"type":["int"],"align":["right"]},{"label":["measures"],"name":[3],"type":["data.frame"],"align":["right"]}],"data":[{"1":"24504","2":"1","3":"<data.frame [30 × 14]>","_rn_":"1"},{"1":"24758","2":"1","3":"<data.frame [30 × 14]>","_rn_":"2"},{"1":"24462","2":"1","3":"<data.frame [30 × 14]>","_rn_":"3"},{"1":"24457","2":"3","3":"<data.frame [30 × 14]>","_rn_":"4"},{"1":"24456","2":"3","3":"<data.frame [30 × 14]>","_rn_":"5"},{"1":"24455","2":"1","3":"<data.frame [30 × 14]>","_rn_":"6"},{"1":"22445","2":"1","3":"<data.frame [30 × 14]>","_rn_":"7"},{"1":"22444","2":"1","3":"<data.frame [30 × 14]>","_rn_":"8"},{"1":"22792","2":"1","3":"<data.frame [30 × 14]>","_rn_":"9"},{"1":"24454","2":"5","3":"<data.frame [30 × 14]>","_rn_":"10"},{"1":"24453","2":"3","3":"<data.frame [30 × 14]>","_rn_":"11"},{"1":"24452","2":"2","3":"<data.frame [30 × 14]>","_rn_":"12"},{"1":"24451","2":"1","3":"<data.frame [30 × 14]>","_rn_":"13"},{"1":"24449","2":"1","3":"<data.frame [30 × 14]>","_rn_":"14"},{"1":"24448","2":"1","3":"<data.frame [30 × 14]>","_rn_":"15"},{"1":"24447","2":"1","3":"<data.frame [30 × 14]>","_rn_":"16"},{"1":"24446","2":"1","3":"<data.frame [30 × 14]>","_rn_":"17"},{"1":"23330","2":"6","3":"<data.frame [30 × 14]>","_rn_":"18"},{"1":"22922","2":"5","3":"<data.frame [30 × 14]>","_rn_":"19"},{"1":"22921","2":"5","3":"<data.frame [30 × 14]>","_rn_":"20"},{"1":"22920","2":"1","3":"<data.frame [30 × 14]>","_rn_":"21"},{"1":"22830","2":"7","3":"<data.frame [30 × 14]>","_rn_":"22"},{"1":"22789","2":"1","3":"<data.frame [30 × 14]>","_rn_":"23"},{"1":"22788","2":"1","3":"<data.frame [30 × 14]>","_rn_":"24"},{"1":"22829","2":"1","3":"<data.frame [30 × 14]>","_rn_":"25"},{"1":"22806","2":"1","3":"<data.frame [30 × 14]>","_rn_":"26"},{"1":"22793","2":"5","3":"<data.frame [30 × 14]>","_rn_":"27"},{"1":"22791","2":"1","3":"<data.frame [30 × 14]>","_rn_":"28"},{"1":"22790","2":"1","3":"<data.frame [30 × 14]>","_rn_":"29"},{"1":"22443","2":"1","3":"<data.frame [30 × 14]>","_rn_":"30"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The <code>measures</code> variable is a data.frame. The <code>category</code> variable refers to the type of information recorded in the spreadsheet:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjpbImRiX2NvbnN0IDwtIGRhdGFicmFyeWFwaTo6YXNzaWduX2NvbnN0YW50cygpIiwic3RyKGRiX2NvbnN0JG1ldHJpYykiXX0= -->
+<pre class="r"><code>db_const &lt;- databraryapi::assign_constants()
+str(db_const$metric)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlzdCBvZiAzNlxuICQgMSA6TGlzdCBvZiA3XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDFcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcIklEXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgdW5pcXVlLCBhbm9ueW1pemVkLCBwcmltYXJ5IGlkZW50aWZpZXIsIHN1Y2ggYXMgcGFydGljaXBhbnQgSURcIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgVFJVRVxuICQgMiA6TGlzdCBvZiA2XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDJcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImluZm9cIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiT3RoZXIgaW5mb3JtYXRpb24gb3IgYWx0ZXJuYXRlIGlkZW50aWZpZXJcIlxuICQgMyA6TGlzdCBvZiA3XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDNcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uXCJcbiAkIDQgOkxpc3Qgb2YgNlxuICAuLiQgaWQgICAgICAgICA6IGludCA0XG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJiaXJ0aGRhdGVcIlxuICAuLiQgdHlwZSAgICAgICA6IGNociBcImRhdGVcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkRhdGUgb2YgYmlydGggKHVzZWQgd2l0aCBzZXNzaW9uIGRhdGUgdG8gY2FsY3VsYXRlIGFnZTsgeW91IGNhbiBhbHNvIHVzZSB0aGUgZ3JvdXAgY2F0ZWdvcnkgdG8gZGVzaWduYXRlIGFnZSBncm91cHMpXCJcbiAgLi4kIHJlcXVpcmVkICAgOiBsb2dpIEZBTFNFXG4gJCA1IDpMaXN0IG9mIDhcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgNVxuICAuLiQgY2F0ZWdvcnkgICA6IGludCAxXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwiZ2VuZGVyXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgb3B0aW9ucyAgICA6IGNociBbMToyXSBcIkZlbWFsZVwiIFwiTWFsZVwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiXFxcIk1hbGVcXFwiLCBcXFwiRmVtYWxlXFxcIiwgb3IgYW55IG90aGVyIHJlbGV2YW50IGdlbmRlclwiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICQgNiA6TGlzdCBvZiA4XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDZcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcInJhY2VcIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjddIFwiQW1lcmljYW4gSW5kaWFuIG9yIEFsYXNrYSBOYXRpdmVcIiBcIkFzaWFuXCIgXCJOYXRpdmUgSGF3YWlpYW4gb3IgT3RoZXIgUGFjaWZpYyBJc2xhbmRlclwiIFwiQmxhY2sgb3IgQWZyaWNhbiBBbWVyaWNhblwiIC4uLlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkFzIGNsYXNzaWZpZWQgYnkgTklILCBvciB1c2VyLWRlZmluZWQgY2xhc3NpZmljYXRpb25cIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAkIDcgOkxpc3Qgb2YgOFxuICAuLiQgaWQgICAgICAgICA6IGludCA3XG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJldGhuaWNpdHlcIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjNdIFwiTm90IEhpc3BhbmljIG9yIExhdGlub1wiIFwiSGlzcGFuaWMgb3IgTGF0aW5vXCIgXCJVbmtub3duIG9yIG5vdCByZXBvcnRlZFwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQXMgY2xhc3NpZmllZCBieSBOSUggKEhpc3BhbmljL05vbi1IaXNwYW5pYyksIG9yIHVzZXItZGVmaW5lZCBjbGFzc2lmaWNhdGlvblwiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICQgOCA6TGlzdCBvZiA2XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDhcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImdlc3RhdGlvbmFsIGFnZVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJudW1lcmljXCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJQcmVnbmFuY3kgYWdlIGluIHdlZWtzIGJldHdlZW4gbGFzdCBtZW5zdHJ1YWwgcGVyaW9kIGFuZCBiaXJ0aCAob3IgcHJlLW5hdGFsIG9ic2VydmF0aW9uKVwiXG4gJCA5IDpMaXN0IG9mIDhcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgOVxuICAuLiQgY2F0ZWdvcnkgICA6IGludCAxXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwicHJlZ25hbmN5IHRlcm1cIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjJdIFwiRnVsbCB0ZXJtXCIgXCJQcmV0ZXJtXCJcbiAgLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJGdWxsIHRlcm1cIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIlxcXCJGdWxsIHRlcm1cXFwiLCBcXFwiUHJldGVybVxcXCIsIG9yIG90aGVyIGdlc3RhdGlvbmFsIHRlcm1cIlxuICQgMTA6TGlzdCBvZiA2XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDEwXG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJiaXJ0aCB3ZWlnaHRcIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwibnVtZXJpY1wiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiV2VpZ2h0IGF0IGJpcnRoIChpbiBncmFtcywgZS5nLiwgMzI1MClcIlxuICQgMTE6TGlzdCBvZiA3XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDExXG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJkaXNhYmlsaXR5XCJcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJ0eXBpY2FsXCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBbnkgZGV2ZWxvcG1lbnRhbCwgcGh5c2ljYWwsIG9yIG1lbnRhbCBkaXNhYmlsaXR5IG9yIGRpc2FiaWxpdGllc1wiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICQgMTI6TGlzdCBvZiA4XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDEyXG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDFcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJsYW5ndWFnZVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJFbmdsaXNoXCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJQcmltYXJ5IGxhbmd1YWdlKHMpIHNwb2tlbiBieSBhbmQgdG8gcGFydGljaXBhbnRcIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAkIDEzOkxpc3Qgb2YgN1xuICAuLiQgaWQgICAgICAgICA6IGludCAxM1xuICAuLiQgY2F0ZWdvcnkgICA6IGludCAxXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwiY291bnRyeVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJVU1wiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQ291bnRyeSB3aGVyZSBwYXJ0aWNpcGFudCB3YXMgYm9yblwiXG4gJCAxNDpMaXN0IG9mIDdcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgMTRcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcInN0YXRlXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgb3B0aW9ucyAgICA6IGNociBbMTo1MV0gXCJBTFwiIFwiQUtcIiBcIkFaXCIgXCJBUlwiIC4uLlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIlN0YXRlL3RlcnJpdG9yeSB3aGVyZSBwYXJ0aWNpcGFudCB3YXMgYm9yblwiXG4gJCAxNTpMaXN0IG9mIDdcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgMTVcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcInNldHRpbmdcIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjVdIFwiTGFiXCIgXCJIb21lXCIgXCJDbGFzc3Jvb21cIiBcIk91dGRvb3JcIiAuLi5cbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJUaGUgcGh5c2ljYWwgY29udGV4dCBvZiB0aGUgcGFydGljaXBhbnQgKHBsZWFzZSBkbyBub3QgdXNlIGZvciBuZXcgZGF0YTogc2VlIHRoZSBjb250ZXh0IGNhdGVnb3J5IGluc3RlYWQpXCJcbiAkIDE2Okxpc3Qgb2YgNlxuICAuLiQgaWQgICAgICA6IGludCAxNlxuICAuLiQgY2F0ZWdvcnk6IGludCAyXG4gIC4uJCBuYW1lICAgIDogY2hyIFwicGlsb3RcIlxuICAuLiQgcmVsZWFzZSA6IGludCAzXG4gIC4uJCB0eXBlICAgIDogY2hyIFwidm9pZFwiXG4gIC4uJCByZXF1aXJlZDogbG9naSBGQUxTRVxuICQgMTc6TGlzdCBvZiA2XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDE3XG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDJcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJuYW1lXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbGFiZWwgb3IgaWRlbnRpZmllciByZWZlcnJpbmcgdG8gdGhlIHBpbG90IG1ldGhvZFwiXG4gJCAxODpMaXN0IG9mIDdcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgMThcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgMlxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uIG9mIHRoZSBwaWxvdCBtZXRob2RcIlxuICQgMTk6TGlzdCBvZiA1XG4gIC4uJCBpZCAgICAgIDogaW50IDE5XG4gIC4uJCBjYXRlZ29yeTogaW50IDNcbiAgLi4kIG5hbWUgICAgOiBjaHIgXCJleGNsdWRlZFwiXG4gIC4uJCByZWxlYXNlIDogaW50IDNcbiAgLi4kIHR5cGUgICAgOiBjaHIgXCJ2b2lkXCJcbiAkIDIwOkxpc3Qgb2YgNlxuICAuLiQgaWQgICAgICAgICA6IGludCAyMFxuICAuLiQgY2F0ZWdvcnkgICA6IGludCAzXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwibmFtZVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxhYmVsIG9yIGlkZW50aWZpZXIgcmVmZXJyaW5nIHRvIHRoZSBleGNsdXNpb24gY3JpdGVyaW9uXCJcbiAkIDIxOkxpc3Qgb2YgOFxuICAuLiQgaWQgICAgICAgICA6IGludCAyMVxuICAuLiQgY2F0ZWdvcnkgICA6IGludCAzXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwicmVhc29uXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgb3B0aW9ucyAgICA6IGNociBbMTo0XSBcIkRpZCBub3QgbWVldCBpbmNsdXNpb24gY3JpdGVyaWFcIiBcIlByb2NlZHVyYWwvZXhwZXJpbWVudGVyIGVycm9yXCIgXCJXaXRoZHJldy9mdXNzeS90aXJlZFwiIFwiT3V0bGllclwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiVGhlIHJlYXNvbiBmb3IgZXhjbHVkaW5nIHRoZXNlIGRhdGFcIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAkIDIyOkxpc3Qgb2YgN1xuICAuLiQgaWQgICAgICAgICA6IGludCAyMlxuICAuLiQgY2F0ZWdvcnkgICA6IGludCAzXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwiZGVzY3JpcHRpb25cIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBsb25nICAgICAgIDogbG9naSBUUlVFXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQSBsb25nZXIgZXhwbGFuYXRpb24gb3IgZGVzY3JpcHRpb24gb2YgdGhlIHJlYXNvbiBmb3IgZXhjbHVkaW5nIGRhdGFcIlxuICQgMjM6TGlzdCBvZiA3XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDIzXG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDRcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJuYW1lXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbGFiZWwgb3IgaWRlbnRpZmllciBmb3IgdGhlIGNvbmRpdGlvblwiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBUUlVFXG4gJCAyNDpMaXN0IG9mIDdcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgMjRcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgNFxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uIG9mIHRoZSBjb25kaXRpb25cIlxuICQgMjU6TGlzdCBvZiA2XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDI1XG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDRcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJpbmZvXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIk90aGVyIGluZm9ybWF0aW9uIG9yIGFsdGVybmF0ZSBpZGVudGlmaWVyXCJcbiAkIDI2Okxpc3Qgb2YgN1xuICAuLiQgaWQgICAgICAgICA6IGludCAyNlxuICAuLiQgY2F0ZWdvcnkgICA6IGludCA1XG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwibmFtZVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxhYmVsIG9yIGlkZW50aWZpZXIgZm9yIHRoZSBncm91cGluZ1wiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBUUlVFXG4gJCAyNzpMaXN0IG9mIDdcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgMjdcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgNVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImRlc2NyaXB0aW9uXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgbG9uZyAgICAgICA6IGxvZ2kgVFJVRVxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbG9uZ2VyIGV4cGxhbmF0aW9uIG9yIGRlc2NyaXB0aW9uIG9mIHRoZSBncm91cGluZ1wiXG4gJCAyODpMaXN0IG9mIDZcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgMjhcbiAgLi4kIGNhdGVnb3J5ICAgOiBpbnQgNVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImluZm9cIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiT3RoZXIgaW5mb3JtYXRpb24gb3IgYWx0ZXJuYXRlIGlkZW50aWZpZXJcIlxuICQgMjk6TGlzdCBvZiA3XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDI5XG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDZcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJuYW1lXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgbGFiZWwgb3IgaWRlbnRpZmllciBmb3IgdGhlIHRhc2tcIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgVFJVRVxuICQgMzA6TGlzdCBvZiA4XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDMwXG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDZcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJkZXNjcmlwdGlvblwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGxvbmcgICAgICAgOiBsb2dpIFRSVUVcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxvbmdlciBleHBsYW5hdGlvbiBvciBkZXNjcmlwdGlvbiBvZiB0aGUgdGFza1wiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuICQgMzE6TGlzdCBvZiA2XG4gIC4uJCBpZCAgICAgICAgIDogaW50IDMxXG4gIC4uJCBjYXRlZ29yeSAgIDogaW50IDZcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJpbmZvXCJcbiAgLi4kIHJlbGVhc2UgICAgOiBpbnQgM1xuICAuLiQgdHlwZSAgICAgICA6IGNociBcInRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIk90aGVyIGluZm9ybWF0aW9uIG9yIGFsdGVybmF0ZSBpZGVudGlmaWVyXCJcbiAkIDMyOkxpc3Qgb2YgNlxuICAuLiQgaWQgICAgICAgICA6IGludCAzMlxuICAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwibmFtZVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGxhYmVsIG9yIGlkZW50aWZpZXIgZm9yIHRoZSBjb250ZXh0XCJcbiAkIDMzOkxpc3Qgb2YgOFxuICAuLiQgaWQgICAgICAgICA6IGludCAzM1xuICAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwic2V0dGluZ1wiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIG9wdGlvbnMgICAgOiBjaHIgWzE6NV0gXCJMYWJcIiBcIkhvbWVcIiBcIkNsYXNzcm9vbVwiIFwiT3V0ZG9vclwiIC4uLlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIlRoZSBwaHlzaWNhbCBjb250ZXh0XCJcbiAgLi4kIHJlcXVpcmVkICAgOiBsb2dpIFRSVUVcbiAkIDM0Okxpc3Qgb2YgOFxuICAuLiQgaWQgICAgICAgICA6IGludCAzNFxuICAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwibGFuZ3VhZ2VcIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBhc3N1bWVkICAgIDogY2hyIFwiRW5nbGlzaFwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiTGFuZ3VhZ2UgdXNlZCBpbiB0aGlzIGNvbnRleHRcIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAkIDM1Okxpc3Qgb2YgOFxuICAuLiQgaWQgICAgICAgICA6IGludCAzNVxuICAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwiY291bnRyeVwiXG4gIC4uJCByZWxlYXNlICAgIDogaW50IDNcbiAgLi4kIHR5cGUgICAgICAgOiBjaHIgXCJ0ZXh0XCJcbiAgLi4kIGFzc3VtZWQgICAgOiBjaHIgXCJVU1wiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQ291bnRyeSBvZiBkYXRhIGNvbGxlY3Rpb25cIlxuICAuLiQgcmVxdWlyZWQgICA6IGxvZ2kgRkFMU0VcbiAkIDM2Okxpc3Qgb2YgOFxuICAuLiQgaWQgICAgICAgICA6IGludCAzNlxuICAuLiQgY2F0ZWdvcnkgICA6IGludCA3XG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwic3RhdGVcIlxuICAuLiQgcmVsZWFzZSAgICA6IGludCAzXG4gIC4uJCB0eXBlICAgICAgIDogY2hyIFwidGV4dFwiXG4gIC4uJCBvcHRpb25zICAgIDogY2hyIFsxOjUxXSBcIkFMXCIgXCJBS1wiIFwiQVpcIiBcIkFSXCIgLi4uXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiU3RhdGUvdGVycml0b3J5IG9mIGRhdGEgY29sbGVjdGlvblwiXG4gIC4uJCByZXF1aXJlZCAgIDogbG9naSBGQUxTRVxuIn0= -->
+<pre><code>List of 36
+ $ 1 :List of 7
+  ..$ id         : int 1
+  ..$ category   : int 1
+  ..$ name       : chr &quot;ID&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A unique, anonymized, primary identifier, such as participant ID&quot;
+  ..$ required   : logi TRUE
+ $ 2 :List of 6
+  ..$ id         : int 2
+  ..$ category   : int 1
+  ..$ name       : chr &quot;info&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;Other information or alternate identifier&quot;
+ $ 3 :List of 7
+  ..$ id         : int 3
+  ..$ category   : int 1
+  ..$ name       : chr &quot;description&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ long       : logi TRUE
+  ..$ description: chr &quot;A longer explanation or description&quot;
+ $ 4 :List of 6
+  ..$ id         : int 4
+  ..$ category   : int 1
+  ..$ name       : chr &quot;birthdate&quot;
+  ..$ type       : chr &quot;date&quot;
+  ..$ description: chr &quot;Date of birth (used with session date to calculate age; you can also use the group category to designate age groups)&quot;
+  ..$ required   : logi FALSE
+ $ 5 :List of 8
+  ..$ id         : int 5
+  ..$ category   : int 1
+  ..$ name       : chr &quot;gender&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:2] &quot;Female&quot; &quot;Male&quot;
+  ..$ description: chr &quot;\&quot;Male\&quot;, \&quot;Female\&quot;, or any other relevant gender&quot;
+  ..$ required   : logi FALSE
+ $ 6 :List of 8
+  ..$ id         : int 6
+  ..$ category   : int 1
+  ..$ name       : chr &quot;race&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:7] &quot;American Indian or Alaska Native&quot; &quot;Asian&quot; &quot;Native Hawaiian or Other Pacific Islander&quot; &quot;Black or African American&quot; ...
+  ..$ description: chr &quot;As classified by NIH, or user-defined classification&quot;
+  ..$ required   : logi FALSE
+ $ 7 :List of 8
+  ..$ id         : int 7
+  ..$ category   : int 1
+  ..$ name       : chr &quot;ethnicity&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:3] &quot;Not Hispanic or Latino&quot; &quot;Hispanic or Latino&quot; &quot;Unknown or not reported&quot;
+  ..$ description: chr &quot;As classified by NIH (Hispanic/Non-Hispanic), or user-defined classification&quot;
+  ..$ required   : logi FALSE
+ $ 8 :List of 6
+  ..$ id         : int 8
+  ..$ category   : int 1
+  ..$ name       : chr &quot;gestational age&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;numeric&quot;
+  ..$ description: chr &quot;Pregnancy age in weeks between last menstrual period and birth (or pre-natal observation)&quot;
+ $ 9 :List of 8
+  ..$ id         : int 9
+  ..$ category   : int 1
+  ..$ name       : chr &quot;pregnancy term&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:2] &quot;Full term&quot; &quot;Preterm&quot;
+  ..$ assumed    : chr &quot;Full term&quot;
+  ..$ description: chr &quot;\&quot;Full term\&quot;, \&quot;Preterm\&quot;, or other gestational term&quot;
+ $ 10:List of 6
+  ..$ id         : int 10
+  ..$ category   : int 1
+  ..$ name       : chr &quot;birth weight&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;numeric&quot;
+  ..$ description: chr &quot;Weight at birth (in grams, e.g., 3250)&quot;
+ $ 11:List of 7
+  ..$ id         : int 11
+  ..$ category   : int 1
+  ..$ name       : chr &quot;disability&quot;
+  ..$ type       : chr &quot;text&quot;
+  ..$ assumed    : chr &quot;typical&quot;
+  ..$ description: chr &quot;Any developmental, physical, or mental disability or disabilities&quot;
+  ..$ required   : logi FALSE
+ $ 12:List of 8
+  ..$ id         : int 12
+  ..$ category   : int 1
+  ..$ name       : chr &quot;language&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ assumed    : chr &quot;English&quot;
+  ..$ description: chr &quot;Primary language(s) spoken by and to participant&quot;
+  ..$ required   : logi FALSE
+ $ 13:List of 7
+  ..$ id         : int 13
+  ..$ category   : int 1
+  ..$ name       : chr &quot;country&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ assumed    : chr &quot;US&quot;
+  ..$ description: chr &quot;Country where participant was born&quot;
+ $ 14:List of 7
+  ..$ id         : int 14
+  ..$ category   : int 1
+  ..$ name       : chr &quot;state&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:51] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+  ..$ description: chr &quot;State/territory where participant was born&quot;
+ $ 15:List of 7
+  ..$ id         : int 15
+  ..$ category   : int 1
+  ..$ name       : chr &quot;setting&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:5] &quot;Lab&quot; &quot;Home&quot; &quot;Classroom&quot; &quot;Outdoor&quot; ...
+  ..$ description: chr &quot;The physical context of the participant (please do not use for new data: see the context category instead)&quot;
+ $ 16:List of 6
+  ..$ id      : int 16
+  ..$ category: int 2
+  ..$ name    : chr &quot;pilot&quot;
+  ..$ release : int 3
+  ..$ type    : chr &quot;void&quot;
+  ..$ required: logi FALSE
+ $ 17:List of 6
+  ..$ id         : int 17
+  ..$ category   : int 2
+  ..$ name       : chr &quot;name&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A label or identifier referring to the pilot method&quot;
+ $ 18:List of 7
+  ..$ id         : int 18
+  ..$ category   : int 2
+  ..$ name       : chr &quot;description&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ long       : logi TRUE
+  ..$ description: chr &quot;A longer explanation or description of the pilot method&quot;
+ $ 19:List of 5
+  ..$ id      : int 19
+  ..$ category: int 3
+  ..$ name    : chr &quot;excluded&quot;
+  ..$ release : int 3
+  ..$ type    : chr &quot;void&quot;
+ $ 20:List of 6
+  ..$ id         : int 20
+  ..$ category   : int 3
+  ..$ name       : chr &quot;name&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A label or identifier referring to the exclusion criterion&quot;
+ $ 21:List of 8
+  ..$ id         : int 21
+  ..$ category   : int 3
+  ..$ name       : chr &quot;reason&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:4] &quot;Did not meet inclusion criteria&quot; &quot;Procedural/experimenter error&quot; &quot;Withdrew/fussy/tired&quot; &quot;Outlier&quot;
+  ..$ description: chr &quot;The reason for excluding these data&quot;
+  ..$ required   : logi FALSE
+ $ 22:List of 7
+  ..$ id         : int 22
+  ..$ category   : int 3
+  ..$ name       : chr &quot;description&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ long       : logi TRUE
+  ..$ description: chr &quot;A longer explanation or description of the reason for excluding data&quot;
+ $ 23:List of 7
+  ..$ id         : int 23
+  ..$ category   : int 4
+  ..$ name       : chr &quot;name&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A label or identifier for the condition&quot;
+  ..$ required   : logi TRUE
+ $ 24:List of 7
+  ..$ id         : int 24
+  ..$ category   : int 4
+  ..$ name       : chr &quot;description&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ long       : logi TRUE
+  ..$ description: chr &quot;A longer explanation or description of the condition&quot;
+ $ 25:List of 6
+  ..$ id         : int 25
+  ..$ category   : int 4
+  ..$ name       : chr &quot;info&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;Other information or alternate identifier&quot;
+ $ 26:List of 7
+  ..$ id         : int 26
+  ..$ category   : int 5
+  ..$ name       : chr &quot;name&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A label or identifier for the grouping&quot;
+  ..$ required   : logi TRUE
+ $ 27:List of 7
+  ..$ id         : int 27
+  ..$ category   : int 5
+  ..$ name       : chr &quot;description&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ long       : logi TRUE
+  ..$ description: chr &quot;A longer explanation or description of the grouping&quot;
+ $ 28:List of 6
+  ..$ id         : int 28
+  ..$ category   : int 5
+  ..$ name       : chr &quot;info&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;Other information or alternate identifier&quot;
+ $ 29:List of 7
+  ..$ id         : int 29
+  ..$ category   : int 6
+  ..$ name       : chr &quot;name&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A label or identifier for the task&quot;
+  ..$ required   : logi TRUE
+ $ 30:List of 8
+  ..$ id         : int 30
+  ..$ category   : int 6
+  ..$ name       : chr &quot;description&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ long       : logi TRUE
+  ..$ description: chr &quot;A longer explanation or description of the task&quot;
+  ..$ required   : logi FALSE
+ $ 31:List of 6
+  ..$ id         : int 31
+  ..$ category   : int 6
+  ..$ name       : chr &quot;info&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;Other information or alternate identifier&quot;
+ $ 32:List of 6
+  ..$ id         : int 32
+  ..$ category   : int 7
+  ..$ name       : chr &quot;name&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ description: chr &quot;A label or identifier for the context&quot;
+ $ 33:List of 8
+  ..$ id         : int 33
+  ..$ category   : int 7
+  ..$ name       : chr &quot;setting&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:5] &quot;Lab&quot; &quot;Home&quot; &quot;Classroom&quot; &quot;Outdoor&quot; ...
+  ..$ description: chr &quot;The physical context&quot;
+  ..$ required   : logi TRUE
+ $ 34:List of 8
+  ..$ id         : int 34
+  ..$ category   : int 7
+  ..$ name       : chr &quot;language&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ assumed    : chr &quot;English&quot;
+  ..$ description: chr &quot;Language used in this context&quot;
+  ..$ required   : logi FALSE
+ $ 35:List of 8
+  ..$ id         : int 35
+  ..$ category   : int 7
+  ..$ name       : chr &quot;country&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ assumed    : chr &quot;US&quot;
+  ..$ description: chr &quot;Country of data collection&quot;
+  ..$ required   : logi FALSE
+ $ 36:List of 8
+  ..$ id         : int 36
+  ..$ category   : int 7
+  ..$ name       : chr &quot;state&quot;
+  ..$ release    : int 3
+  ..$ type       : chr &quot;text&quot;
+  ..$ options    : chr [1:51] &quot;AL&quot; &quot;AK&quot; &quot;AZ&quot; &quot;AR&quot; ...
+  ..$ description: chr &quot;State/territory of data collection&quot;
+  ..$ required   : logi FALSE</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The mappings are stored in a site-wide array af constants I access using <code>databraryapi::assign_constants</code>. This is a well-structured array that we can probably map to open schema.</p>
+</div>
+<div id="questions-1" class="section level3">
+<h3>Questions</h3>
+<ol style="list-style-type: decimal">
+<li>What do the <code>id</code> and <code>category</code> variables within the <code>records</code> table refer to?</li>
+</ol>
+<p>The ID appears to refer to these session/<code>slot</code> data, independent of the <code>measures</code>. I believe this is because it’s possible that there could be more than one person recorded in a session/<code>slot</code>. So, there must be a way to link multiple <code>records$id</code>s to a <code>containers$id</code>.</p>
+<p>The <code>category</code> refers to the same grouping of participant-level variables as described below.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>What do the <code>category</code> and <code>release</code> variables within the <code>metrics</code> do?</li>
+</ol>
+<p>Based on the following…</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoic3RyKGRiX2NvbnN0JGNhdGVnb3J5KSJ9 -->
+<pre class="r"><code>str(db_const$category)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTGlzdCBvZiA3XG4gJCAxOkxpc3Qgb2YgM1xuICAuLiQgaWQgICAgICAgICA6IGludCAxXG4gIC4uJCBuYW1lICAgICAgIDogY2hyIFwicGFydGljaXBhbnRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkFuIGluZGl2aWR1YWwgaHVtYW4gc3ViamVjdCB3aG9zZSBkYXRhIGFyZSB1c2VkIG9yIHJlcHJlc2VudGVkXCJcbiAkIDI6TGlzdCBvZiAzXG4gIC4uJCBpZCAgICAgICAgIDogaW50IDJcbiAgLi4kIG5hbWUgICAgICAgOiBjaHIgXCJwaWxvdFwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiSW5kaWNhdGVzIHRoYXQgdGhlIG1ldGhvZHMgdXNlZCB3ZXJlIG5vdCBmaW5hbGl6ZWQgb3Igd2VyZSBub24tc3RhbmRhcmRcIlxuICQgMzpMaXN0IG9mIDNcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgM1xuICAuLiQgbmFtZSAgICAgICA6IGNociBcImV4Y2x1c2lvblwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiSW5kaWNhdGVzIHRoYXQgZGF0YSB3ZXJlIG5vdCB1c2FibGVcIlxuICQgNDpMaXN0IG9mIDNcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgNFxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImNvbmRpdGlvblwiXG4gIC4uJCBkZXNjcmlwdGlvbjogY2hyIFwiQW4gZXhwZXJpbWVudGVyLWRldGVybWluZWQgbWFuaXB1bGF0aW9uICh3aXRoaW4gb3IgYmV0d2VlbiBzZXNzaW9ucylcIlxuICQgNTpMaXN0IG9mIDNcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgNVxuICAuLiQgbmFtZSAgICAgICA6IGNociBcImdyb3VwXCJcbiAgLi4kIGRlc2NyaXB0aW9uOiBjaHIgXCJBIGdyb3VwaW5nIGRldGVybWluZWQgYnkgYW4gYXNwZWN0IG9mIHRoZSBkYXRhIChwYXJ0aWNpcGFudCBhYmlsaXR5LCBhZ2UsIGdyYWRlIGxldmVsLCBleHBlcmllbmNlLCBsb25naXR1ZGluYWxcInwgX190cnVuY2F0ZWRfX1xuICQgNjpMaXN0IG9mIDNcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgNlxuICAuLiQgbmFtZSAgICAgICA6IGNociBcInRhc2tcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgcGFydGljdWxhciB0YXNrLCBhY3Rpdml0eSwgb3IgcGhhc2Ugb2YgdGhlIHNlc3Npb24gb3Igc3R1ZHlcIlxuICQgNzpMaXN0IG9mIDNcbiAgLi4kIGlkICAgICAgICAgOiBpbnQgN1xuICAuLiQgbmFtZSAgICAgICA6IGNociBcImNvbnRleHRcIlxuICAuLiQgZGVzY3JpcHRpb246IGNociBcIkEgcGFydGljdWxhciBzZXR0aW5nIG9yIG90aGVyIGFzcGVjdCBvZiB3aGVyZS93aGVuL2hvdyBkYXRhIHdlcmUgY29sbGVjdGVkXCJcbiJ9 -->
+<pre><code>List of 7
+ $ 1:List of 3
+  ..$ id         : int 1
+  ..$ name       : chr &quot;participant&quot;
+  ..$ description: chr &quot;An individual human subject whose data are used or represented&quot;
+ $ 2:List of 3
+  ..$ id         : int 2
+  ..$ name       : chr &quot;pilot&quot;
+  ..$ description: chr &quot;Indicates that the methods used were not finalized or were non-standard&quot;
+ $ 3:List of 3
+  ..$ id         : int 3
+  ..$ name       : chr &quot;exclusion&quot;
+  ..$ description: chr &quot;Indicates that data were not usable&quot;
+ $ 4:List of 3
+  ..$ id         : int 4
+  ..$ name       : chr &quot;condition&quot;
+  ..$ description: chr &quot;An experimenter-determined manipulation (within or between sessions)&quot;
+ $ 5:List of 3
+  ..$ id         : int 5
+  ..$ name       : chr &quot;group&quot;
+  ..$ description: chr &quot;A grouping determined by an aspect of the data (participant ability, age, grade level, experience, longitudinal&quot;| __truncated__
+ $ 6:List of 3
+  ..$ id         : int 6
+  ..$ name       : chr &quot;task&quot;
+  ..$ description: chr &quot;A particular task, activity, or phase of the session or study&quot;
+ $ 7:List of 3
+  ..$ id         : int 7
+  ..$ name       : chr &quot;context&quot;
+  ..$ description: chr &quot;A particular setting or other aspect of where/when/how data were collected&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>It looks like the <code>category</code> refers to an aggregation of data about the session. The relevant values are in {‘participant’, ‘pilot’, ‘exclusion’, ‘condition’, ‘group’, ‘task’, ‘context’}.</p>
+<p>Similarly, <code>release</code> is one of the following values:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiZGJfY29uc3QkcmVsZWFzZSJ9 -->
+<pre class="r"><code>db_const$release</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiUFJJVkFURVwiICBcIlNIQVJFRFwiICAgXCJFWENFUlBUU1wiIFwiUFVCTElDXCIgIFxuIn0= -->
+<pre><code>[1] &quot;PRIVATE&quot;  &quot;SHARED&quot;   &quot;EXCERPTS&quot; &quot;PUBLIC&quot;  </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjpbIlBSSVZBVEVcbiIsIlNIQVJFRFxuIiwiRVhDRVJQVFNcbiIsIlBVQkxJQ1xuIl19 -->
+<pre><code>PRIVATE
+
+SHARED
+
+EXCERPTS
+
+PUBLIC</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Since most of the data items contain a value of 3, except for <code>birthdate</code> and <code>disability</code>, I’m guessing that this is used to filter these variables from being shown when the study is shared.</p>
 <!-- rnb-text-end -->
 </div>
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YWJyYXJ5IDIuMCBzY2hlbWEgZGV2ZWxvcG1lbnQiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazoKICAgIHRvYzogdHJ1ZQogICAgdG9jX2Zsb2F0OiB0cnVlCiAgICB0b2NfZGVwdGg6IDMKICAgIGNvZGVfZm9sZGluZzogaGlkZQpwYXJhbXM6CiAgZGJfbG9naW46IHlvdXJAZW1haWwuY29tCi0tLQoKIyBQdXJwb3NlCgpUbyBkb2N1bWVudCBSaWNrIEdpbG1vcmUncyB3b3JrIG9uIHRoZSBEYXRhYnJhcnkgMi4wIHNjaGVtYS4KCiMgUmVzb3VyY2VzCgpKZWZmIFNwaWVzLCBTd2FwbmFhIEpheWFyYW1hbiwgYW5kIFJpY2sgR2lsbW9yZSBhcmUgYWxzbyB1c2luZyB0aGlzIEdvb2dsZSBEb2MgYXMgYSB3b3JraW5nIGRvY3VtZW50OgoKaHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xX2JlY1hENllYNmxxZ240TEswSWhnV0lJNUNfcEJ6Y1FXRkdETHgtU1lfWS9lZGl0P3VzcD1zaGFyaW5nCgpJJ20gdXNpbmcgREIxIHRvIHJlZmVyIHRvIERhdGFicmFyeSAxLjAgYW5kIERCMiB0byByZWZlciB0byBEYXRhYnJhcnkgMi4wLgoKIyBUeXBlIGJ5IHR5cGUKCkxvZ2luIHRvIERhdGFicmFyeSBieSBydW5uaW5nIGBybWFya2Rvd246OnJlbmRlcigic2NoZW1hLWRldmVsb3BtZW50LlJtZCIsIHBhcmFtcyA9IGxpc3QoZGJfbG9naW49IllPVVJFTUFJTEBQUk9WSURFUi5DT00iKSlgIGZyb20gdGhlIFJTdHVkaW8gY29uc29sZS4KCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmxvZ2luX2RiKHBhcmFtcyRkYl9sb2dpbikKYGBgCgojIyBJbnN0aXR1dGlvbnMKCkluIERCMSwgYWxsIEluc3RpdHV0aW9ucyBhcmUgaW5zdGFuY2VzIG9mIGBwYXJ0eWAsIGJ1dCB3aXRoIHNvbWUgc3BlY2lhbCBwcm9wZXJ0aWVzLgoKVGhlIERCMSBBUEkgcmV0dXJucyB0aGUgZm9sbG93aW5nIGRhdGEgZm9yIGFuIEluc3RpdHV0aW9uIGxpa2UgTllVLgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoOCkKYGBgCgojIyMgU2NoZW1hIHN1Z2dlc3Rpb25zCgpCYXNlZCBvbiB0aGUgQ29sbGVnZU9yVW5pdmVyc2l0eSBzY2hlbWEgKGh0dHA6Ly9zY2hlbWEub3JnL0NvbGxlZ2VPclVuaXZlcnNpdHkpLCBJIHN1Z2dlc3QgdGhlIGZvbGxvd2luZyBtYXBwaW5nczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgIHwgVXNlIHN0cnVjdHVyZWQgc2NoZW1lIGZvciBpbnN0aXR1dGlvbmFsIElEcyB8CnwgYHNvcnRuYW1lYCAgICB8IGBhbHRlcm5hdGVOYW1lYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvYWx0ZXJuYXRlTmFtZSB8IEFkZCBvZmZpY2lhbCBuYW1lIGFzIHNlcGFyYXRlIGVudGl0eSB8ICAgICAgICAgICAgICAgICAgICAgICAgIAp8IGB1cmxgICAgICAgICAgfCBgdXJsYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3VybCAgICAgICAgICAgfCB8CnwgYGluc3RpdHV0aW9uYCB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IEJvb2xlYW4gdmFsdWUgaW4gREIxOyBuZWVkZWQgaW4gREIyPyB8CnwgaHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy9wYXJ0eS84L2F2YXRhcj9zaXplPTUwMCB8IGBsb2dvYCB8IGh0dHA6Ly9zY2hlbWEub3JnL2xvZ28gfCB8CgpJIGFsc28gc3VnZ2VzdCB0aGUgZm9sbG93aW5nIGFkZGl0aW9uczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8ICAgICAgICAgICAgICAgfCBgbmFtZWAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL25hbWUgfCBOZXcgZmllbGQgd2l0aCBvZmZpY2lhbCBuYW1lLCBoZXJlIE5ldyBZb3JrIFVuaXZlcnNpdHkgfAp8ICAgICAgICAgICAgICAgfCBgYWRkcmVzc2AgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZHJlc3MgfCB8CnwgICAgICAgICAgICAgICB8IGBjb250YWN0UG9pbnRgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY29udGFjdFBvaW50ICB8ICB8CgojIyBBY2NvdW50SG9sZGVycwoKSW4gREIxLCBhbGwgdXNlcnMgYXJlIGluc3RhbmNlcyBvZiBgcGFydHlgLgoKSGVyZSwgZm9yIGV4YW1wbGUsIGlzIHdoYXQgdGhlIERCMSBBUEkgcmV0dXJucyBmb3IgUmljayBHaWxtb3JlOgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoNikKYGBgCgpUaGVzZSBhcmUgbGFyZ2VseSBzZWxmLWV4cGxhbmF0b3J5IGV4Y2VwdCBmb3IgYHBlcm1pc3Npb25gLiAKTGV0J3MgaW52ZXN0aWdhdGUgdGhpcy4KCmBgYHtyfQpkYl9jb25zdCA8LSBkYXRhYnJhcnlhcGk6OmFzc2lnbl9jb25zdGFudHMoKQpzdHIoZGJfY29uc3QpCmBgYAoKSXQncyBwcmV0dHkgc3RyYWlnaHRmb3J3YXJkLgpUaGUgYHBlcm1pc3Npb25gIGlzIG9uZSBvZiBgciBkYl9jb25zdCRwZXJtaXNzaW9uYC4gSSBoYXZlIGByIGRiX2NvbnN0JHBlcm1pc3Npb25bNV1gIGJlY2F1c2UgaXQncyBteSBwcm9maWxlLCBwb3NzaWJseS4KClllcywgdGhhdCdzIHJpZ2h0LgpTZWUgd2hhdCBoYXBwZW5zIHdoZW4gSSBxdWVyeSBLYXJlbidzOgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoNSkKYGBgCgpUaGVyZSBpcyBubyBgcGVybWlzc2lvbmAgZGVmaW5lZC4KSSdtIG5vdCBzdXJlIGhvdyB3ZSdsbCBtYXAgdGhpcyBpbiB0aGUgbmV3IHNjaGVtYS4KCiMjIyBTY2hlbWEgc3VnZ2VzdGlvbnMKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgfCBVc2Ugc3RydWN0dXJlZCBzY2hlbWUgZm9yIElEcyBvZiBwZW9wbGUsIG1heWJlIHByZWZpeCBjdXJyZW50IHBhcnR5IElEIHdpdGggYHBgIHwKfCBgc29ydG5hbWVgICAgIHwgYGZhbWlseU5hbWVgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9mYW1pbHlOYW1lIHwgIHwgCnwgYHByZW5hbWVgICAgICB8IGBnaXZlbk5hbWVgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZ2l2ZW5OYW1lICB8IHwKfCBgb3JjaWRgICAgICAgIHwgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgfAp8IGBhZmZpbGlhdGlvbmAgfCAgYHdvcmtzRm9yYCAgICAgfCAgaHR0cDovL3NjaGVtYS5vcmcvd29ya3NGb3IgIHwgfAp8IGB1cmxgICAgICAgICAgfCBgdXJsYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3VybCAgICAgICAgICAgfCB8CnwgYGVtYWlsYCAgICAgICB8IGBlbWFpbGAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZW1haWwgICAgICAgICB8IHwKfCBgcGVybWlzc2lvbmAgIHwgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgfAp8IGh0dHBzOi8vbnl1LmRhdGFicmFyeS5vcmcvcGFydHkvNi9hdmF0YXI/c2l6ZT01MDAgfCBgaW1hZ2VgIHwgaHR0cDovL3NjaGVtYS5vcmcvbG9nbyB8IHwKCldpdGggdGhlIGZvbGxvd2luZyBhZGRpdGlvbihzKToKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8ICAgICAgICAgICAgICAgfCBgYWRkcmVzc2AgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZHJlc3MgfCB8CnwgICAgICAgICAgICAgICB8IGBhZGRpdGlvbmFsTmFtZWAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZGl0aW9uYWxOYW1lIHwgTWlkZGxlIG5hbWUgfAp8ICAgICAgICAgICAgICAgfCBgaG9ub3JpZmljUHJlZml4YCAgfCBodHRwOi8vc2NoZW1hLm9yZy9ob25vcmlmaWNQcmVmaXggfCBlLmcuLCBEci4gfAp8ICAgICAgICAgICAgICAgfCBgaG9ub3JpZmljU3VmZml4YCAgfCBodHRwOi8vc2NoZW1hLm9yZy9ob25vcmlmaWNTdWZmaXggfCBlLmcuLCBQaC5ELiB8CnwgICAgICAgICAgICAgICB8IGBqb2JUaXRsZWAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2pvYlRpdGxlIHwgfAp8ICAgICAgICAgICAgICAgfCBgdGVsZXBob25lYCAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy90ZWxlcGhvbmUgfCB8CgojIyBWb2x1bWUgKFByb2plY3QpCgpIZXJlIGlzIHRoZSBzdHJ1Y3R1cmUgb2YgdGhlIG91dHB1dCBmcm9tIHRoZSBEQjEgQVBJIGZvciBhIHZvbHVtZSwgaW4gdGhpcyBjYXNlLCB0aGUgZGVmYXVsdCBpcyB2b2x1bWUgMSAoaHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy92b2x1bWUvMSk6CgpgYGB7cn0Kc3RyKGRhdGFicmFyeWFwaTo6ZG93bmxvYWRfY29udGFpbmVyc19yZWNvcmRzKCkpCmBgYAoKV2UgYWxzbyBoYXZlIHRoZSBwcm9qZWN0J3MgaWNvbiBhdCA8aHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy92b2x1bWUvMS90aHVtYj9zaXplPiwgc28gYXBwYXJlbnRseSB0aGUgYHRodW1iYCB2YXJpYWJsZSBob2xkcyB0aGUgaWNvbi4KCiMjIyBTY2hlbWEgc3VnZ2VzdGlvbnMKCkxldCdzIHRyeSB0aGUgRGF0YUNhdGFsb2cgKGh0dHA6Ly9zY2hlbWEub3JnL0RhdGFDYXRhbG9nKSBzY2hlbWEgdG8gc3RhcnQgbWFwcGluZyB0aGUgdm9sdW1lLWxldmVsIGl0ZW1zLgoKfCBEQjEgICAgICAgICAgIHwgU3VnZ2VzdGVkIG1hcHBpbmcgfCBTY2hlbWEgVVJMIHwgQ29tbWVudHMgfAp8LS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tfC0tLS0tLS0tLS18CnwgYGlkYCAgICAgICAgICB8IGBpZGVudGlmaWVyYCAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaWRlbnRpZmllciB8IHwKfCBgbmFtZWAgICAgICAgIHwgYG5hbWVgICAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9uYW1lIHx8CnwgYGJvZHlgICAgICAgICB8IGBhYnN0cmFjdGAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvYWJzdHJhY3QgfHwKfCBgZG9pYCAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgfCB8IFVzZSBgY2l0YXRpb25gIG9yID8gfAp8IGBjcmVhdGlvbmAgICAgfCBgZGF0ZUNyZWF0ZWRgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2RhdGVDcmVhdGVkIHx8CnwgYG93bmVyc2AgICAgICB8IGBjcmVhdG9yYCAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY3JlYXRvciB8IEhvdyB0byBoYW5kbGUgZGlmZmVyZW50IHR5cGVzIG9mICdvd25lcnNoaXAnIHwKfCBgcGVybWlzc2lvbmAgIHwgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgU2VlIHJlbGF0ZWQgZGlzY3Vzc2lvbiBhYm92ZSB8CnwgYHB1YmxpY3NoYXJlZnVsYCB8ICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCB8CnwgYHB1YmxpY2FjY2Vzc2AgICB8ICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IHwKfCBodHRwczovL255dS5kYXRhYnJhcnkub3JnL3ZvbHVtZS8xL3RodW1iP3NpemUgICAgICAgICAgICAgICAgfCBgdGh1bWJuYWlsVXJsYCB8IGh0dHA6Ly9zY2hlbWEub3JnL3RodW1ibmFpbFVybCB8IHwgICAgICAgICAgCgpXZSdsbCBkZWFsIHdpdGggdGhlIGBjb250YWluZXJzYCBhcnJheSBzZXBhcmF0ZWx5LCBhcyB0aGF0IGlzIHdoZXJlIHRoZSBzcHJlYWRzaGVldC9zZXNzaW9uIGRhdGEgcmVzaWRlLgoKVGhlIGZvbGxvd2luZyBzZWVtIGxpa2UgbG9naWNhbCBhZGRpdGlvbnMgdG8gdGhlIHZvbHVtZSBsZXZlbCBzY2hlbWE6Cgp8IERCMSAgICAgICAgICAgfCBTdWdnZXN0ZWQgbWFwcGluZyB8IFNjaGVtYSBVUkwgfCBDb21tZW50cyB8CnwtLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS18LS0tLS0tLS0tLXwKfCAgICAgICAgICAgICAgIHwgYGRhdGVNb2RpZmllZGAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9kYXRlTW9kaWZpZWQgfCB8CnwgICAgICAgICAgICAgICB8IGBkYXRlUHVibGlzaGVkYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZGF0ZVB1Ymxpc2hlZCB8IHwKfCAgICAgICAgICAgICAgIHwgYGRhdGFzZXRgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9kYXRhc2V0IHwgfAp8ICAgICAgICAgICAgICAgfCBgbWVhc3VyZW1lbnRUZWNobmlxdWVgIHwgaHR0cDovL3BlbmRpbmcuc2NoZW1hLm9yZy9tZWFzdXJlbWVudFRlY2huaXF1ZSB8IHwKfCAgICAgICAgICAgICAgIHwgYGNpdGF0aW9uYCAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9jaXRhdGlvbiB8IEJ1dCBzZWUgYGRvaWAgcXVlcnkgfAp8ICAgICAgICAgICAgICAgfCBgY29uZGl0aW9uc09mQWNjZXNzYCB8IGh0dHA6Ly9wZW5kaW5nLnNjaGVtYS5vcmcvY29uZGl0aW9uc09mQWNjZXNzIHwgfAp8ICAgICAgICAgICAgICAgfCBgY29udHJpYnV0b3JgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY29udHJpYnV0b3IgfCBQb3NzaWJseSB1c2UgZm9yIG5vbi1hdXRob3JpYWwvY2l0YXRpb24gY29udHJpYnV0b3JzIHwKfCAgICAgICAgICAgICAgIHwgYGNvcHlyaWdodEhvbGRlcmAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9jb3B5cmlnaHRIb2xkZXIgfCB8CnwgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY29weXJpZ2h0WWVhciB8IHwKfCAgICAgICAgICAgICAgIHwgYGNyZWF0aXZlV29ya1N0YXR1c2AgfCBodHRwOi8vcGVuZGluZy5zY2hlbWEub3JnL2NyZWF0aXZlV29ya1N0YXR1cyB8IHwKfCAgICAgICAgICAgICAgICB8IGBmdW5kZXJgICAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZnVuZGVyIHwgTm90IHN1cmUgaG93IGZ1bmRlcnMgYXJlIGhhbmRsZWQgbm93IHwKfCAgICAgICAgICAgICAgICB8IGBoYXNQYXJ0YCAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaGFzUGFydCB8IEZvciBzdWJjb21wb25lbnRzIHwKfCAgICAgICAgICAgICAgICB8IGBpbkxhbmd1YWdlYCAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaW5MYW5ndWFnZSB8IHwKfCAgICAgICAgICAgICAgICB8IGBpbnRlcmFjdGlvblN0YXRpc3RpY2AgfCBodHRwOi8vc2NoZW1hLm9yZy9pbnRlcmFjdGlvblN0YXRpc3RpYyB8ICBGb3Igdmlldy9kb3dubG9hZCBjb3VudHMgfAp8ICAgICAgICAgICAgICAgIHwgYGlzUGFydE9mYCAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9pc1BhcnRPZiB8IEZvciByZWxhdGlvbnMgYmV0d2VlbiBwcm9qZWN0cyB8CnwgICAgICAgICAgICAgICAgfCBga2V5d29yZHNgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2tleXdvcmRzIHwgfAp8ICAgICAgICAgICAgICAgIHwgYHB1YmxpY2F0aW9uYCAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvcHVibGljYXRpb24gfCB8CnwgICAgICAgICAgICAgICAgfCBgdmVyc2lvbmAgICAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy92ZXJzaW9uIHwgfAp8ICAgICAgICAgICAgICAgIHwgYHNhbWVBc2AgICAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvc2FtZUFzIHwgfAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiRGF0YWJyYXJ5IDIuMCBzY2hlbWEgZGV2ZWxvcG1lbnQiCm91dHB1dDogCiAgaHRtbF9ub3RlYm9vazoKICAgIHRvYzogdHJ1ZQogICAgdG9jX2Zsb2F0OiB0cnVlCiAgICB0b2NfZGVwdGg6IDMKICAgIGNvZGVfZm9sZGluZzogaGlkZQpwYXJhbXM6CiAgZGJfbG9naW46IHlvdXJAZW1haWwuY29tCi0tLQoKYGBge3Igc2V0LXVwLCBpbmNsdWRlPUZBTFNFfQpsaWJyYXJ5KHRpZHl2ZXJzZSkKYGBgCgojIFB1cnBvc2UKClRvIGRvY3VtZW50IFJpY2sgR2lsbW9yZSdzIHdvcmsgb24gdGhlIERhdGFicmFyeSAyLjAgc2NoZW1hLgoKIyBSZXNvdXJjZXMKCkplZmYgU3BpZXMsIFN3YXBuYWEgSmF5YXJhbWFuLCBhbmQgUmljayBHaWxtb3JlIGFyZSBhbHNvIHVzaW5nIHRoaXMgR29vZ2xlIERvYyBhcyBhIHdvcmtpbmcgZG9jdW1lbnQ6Cgo8aHR0cHM6Ly9kb2NzLmdvb2dsZS5jb20vZG9jdW1lbnQvZC8xX2JlY1hENllYNmxxZ240TEswSWhnV0lJNUNfcEJ6Y1FXRkdETHgtU1lfWS9lZGl0P3VzcD1zaGFyaW5nPgoKIyMgU2l0ZXMKCi0gPGh0dHBzOi8vcmUzZGF0YS5vcmc+Ci0gRGF0YUNpdGU6IDxodHRwczovL3d3dy5kYXRhY2l0ZS5vcmc+CiAgICAtIERhdGFDaXRlIE1ldGFkYXRhIFNjaGVtYSB2NC4zIFByb3BlcnRpZXMgT3ZlcnZpZXcuIDxodHRwczovL3N1cHBvcnQuZGF0YWNpdGUub3JnL2RvY3Mvc2NoZW1hLXByb3BlcnRpZXMtb3ZlcnZpZXctdjQzPgoKSSdtIHVzaW5nIERCMSB0byByZWZlciB0byBEYXRhYnJhcnkgMS4wIGFuZCBEQjIgdG8gcmVmZXIgdG8gRGF0YWJyYXJ5IDIuMC4KCiMgVHlwZSBieSB0eXBlCgpMb2dpbiB0byBEYXRhYnJhcnkgYnkgcnVubmluZyBgcm1hcmtkb3duOjpyZW5kZXIoInNjaGVtYS1kZXZlbG9wbWVudC5SbWQiLCBwYXJhbXMgPSBsaXN0KGRiX2xvZ2luPSJZT1VSRU1BSUxAUFJPVklERVIuQ09NIikpYCBmcm9tIHRoZSBSU3R1ZGlvIGNvbnNvbGUuCgpgYGB7cn0KZGF0YWJyYXJ5YXBpOjpsb2dpbl9kYihwYXJhbXMkZGJfbG9naW4pCmBgYAoKIyBSZXBvc2l0b3J5LXdpZGUKClRoZSByZTNkYXRhLm9yZyBzcGVjaWZpY2F0aW9uIGFkZHMgc29tZSBtZXRhZGF0YSBlbGVtZW50cyB0aGF0IG1heSBiZSBoZWxwZnVsIHRvIHN1cHBvcnQuCgojIyBJbnN0aXR1dGlvbnMKCiMjIyBEQjEKCkluIERCMSwgYWxsIEluc3RpdHV0aW9ucyBhcmUgaW5zdGFuY2VzIG9mIGBwYXJ0eWAsIGJ1dCB3aXRoIHNvbWUgc3BlY2lhbCBwcm9wZXJ0aWVzLgoKVGhlIERCMSBBUEkgcmV0dXJucyB0aGUgZm9sbG93aW5nIGRhdGEgZm9yIGFuIEluc3RpdHV0aW9uIGxpa2UgTllVLgoKYGBge3J9CmRhdGFicmFyeWFwaTo6ZG93bmxvYWRfcGFydHkoOCkKYGBgCgojIyMgU2NoZW1hIHN1Z2dlc3Rpb25zCgpCYXNlZCBvbiB0aGUgQ29sbGVnZU9yVW5pdmVyc2l0eSBzY2hlbWEgKGh0dHA6Ly9zY2hlbWEub3JnL0NvbGxlZ2VPclVuaXZlcnNpdHkpLCBJIHN1Z2dlc3QgdGhlIGZvbGxvd2luZyBtYXBwaW5nczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgIHwgVXNlIHN0cnVjdHVyZWQgc2NoZW1lIGZvciBpbnN0aXR1dGlvbmFsIElEcyB8CnwgYHNvcnRuYW1lYCAgICB8IGBhbHRlcm5hdGVOYW1lYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvYWx0ZXJuYXRlTmFtZSB8IEFkZCBvZmZpY2lhbCBuYW1lIGFzIHNlcGFyYXRlIGVudGl0eSB8ICAgICAgICAgICAgICAgICAgICAgICAgIAp8IGB1cmxgICAgICAgICAgfCBgdXJsYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3VybCAgICAgICAgICAgfCB8CnwgYGluc3RpdHV0aW9uYCB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IEJvb2xlYW4gdmFsdWUgaW4gREIxOyBuZWVkZWQgaW4gREIyPyB8CnwgaHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy9wYXJ0eS84L2F2YXRhcj9zaXplPTUwMCB8IGBsb2dvYCB8IGh0dHA6Ly9zY2hlbWEub3JnL2xvZ28gfCB8CgpJIGFsc28gc3VnZ2VzdCB0aGUgZm9sbG93aW5nIGFkZGl0aW9uczoKCnwgREIxICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8ICAgICAgICAgICAgICAgfCBgbmFtZWAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL25hbWUgfCBOZXcgZmllbGQgd2l0aCBvZmZpY2lhbCBuYW1lLCBoZXJlIE5ldyBZb3JrIFVuaXZlcnNpdHkgfAp8ICAgICAgICAgICAgICAgfCBgYWRkcmVzc2AgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2FkZHJlc3MgfCB8CnwgICAgICAgICAgICAgICB8IGBjb250YWN0UG9pbnRgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY29udGFjdFBvaW50ICB8ICB8CgojIyBVc2VycwoKSW4gREIxLCBhbGwgdXNlcnMgYXJlIGluc3RhbmNlcyBvZiBgcGFydHlgLiBGb3IgREIyLCB3ZSBhcmUgY29uc2lkZXJpbmcgY3JlYXRpbmcgYSBzcGVjaWFsIHR5cGUgb2YgYFBlcnNvbmAgY2FsbGVkIGFuIGBBY2NvdW50SG9sZGVyYC4KCiMjIyBEQjEKCkhlcmUsIGZvciBleGFtcGxlLCBpcyB3aGF0IHRoZSBEQjEgQVBJIHJldHVybnMgZm9yIFJpY2sgR2lsbW9yZToKCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmRvd25sb2FkX3BhcnR5KDYpCmBgYAoKVGhlc2UgYXJlIGxhcmdlbHkgc2VsZi1leHBsYW5hdG9yeSBleGNlcHQgZm9yIGBwZXJtaXNzaW9uYC4gCkxldCdzIGludmVzdGlnYXRlIHRoaXMuCgpgYGB7cn0KZGJfY29uc3QgPC0gZGF0YWJyYXJ5YXBpOjphc3NpZ25fY29uc3RhbnRzKCkKc3RyKGRiX2NvbnN0KQpgYGAKCkl0J3MgcHJldHR5IHN0cmFpZ2h0Zm9yd2FyZC4KVGhlIGBwZXJtaXNzaW9uYCBpcyBvbmUgb2YgYHIgZGJfY29uc3QkcGVybWlzc2lvbmAuIEkgaGF2ZSBgciBkYl9jb25zdCRwZXJtaXNzaW9uWzVdYCBiZWNhdXNlIGl0J3MgbXkgcHJvZmlsZSwgcG9zc2libHkuCgpZZXMsIHRoYXQncyByaWdodC4KU2VlIHdoYXQgaGFwcGVucyB3aGVuIEkgcXVlcnkgS2FyZW4nczoKCmBgYHtyfQpkYXRhYnJhcnlhcGk6OmRvd25sb2FkX3BhcnR5KDUpCmBgYAoKVGhlcmUgaXMgbm8gYHBlcm1pc3Npb25gIGRlZmluZWQuCkknbSBub3Qgc3VyZSBob3cgd2UnbGwgbWFwIHRoaXMgaW4gdGhlIG5ldyBzY2hlbWEuCgojIyMgU2NoZW1hIHN1Z2dlc3Rpb25zCgp8IERCMSAgICAgICAgICAgfCBTdWdnZXN0ZWQgbWFwcGluZyB8IFNjaGVtYSBVUkwgfCBDb21tZW50cyB8CnwtLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS18LS0tLS0tLS0tLXwKfCBgaWRgICAgICAgICAgIHwgYGlkZW50aWZpZXJgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9pZGVudGlmaWVyIHwgVXNlIHN0cnVjdHVyZWQgc2NoZW1lIGZvciBJRHMgb2YgcGVvcGxlLCBtYXliZSBwcmVmaXggY3VycmVudCBwYXJ0eSBJRCB3aXRoIGBwYCB8CnwgYHNvcnRuYW1lYCAgICB8IGBmYW1pbHlOYW1lYCAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZmFtaWx5TmFtZSB8ICB8IAp8IGBwcmVuYW1lYCAgICAgfCBgZ2l2ZW5OYW1lYCAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2dpdmVuTmFtZSAgfCB8CnwgYG9yY2lkYCAgICAgICB8ICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IHwKfCBgYWZmaWxpYXRpb25gIHwgIGB3b3Jrc0ZvcmAgICAgIHwgIGh0dHA6Ly9zY2hlbWEub3JnL3dvcmtzRm9yICB8IHwKfCBgdXJsYCAgICAgICAgIHwgYHVybGAgICAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy91cmwgICAgICAgICAgIHwgfAp8IGBlbWFpbGAgICAgICAgfCBgZW1haWxgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2VtYWlsICAgICAgICAgfCB8CnwgYHBlcm1pc3Npb25gICB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IHwKfCBodHRwczovL255dS5kYXRhYnJhcnkub3JnL3BhcnR5LzYvYXZhdGFyP3NpemU9NTAwIHwgYGltYWdlYCB8IGh0dHA6Ly9zY2hlbWEub3JnL2xvZ28gfCB8CgpXaXRoIHRoZSBmb2xsb3dpbmcgYWRkaXRpb24ocyk6Cgp8IERCMSAgICAgICAgICAgfCBTdWdnZXN0ZWQgbWFwcGluZyB8IFNjaGVtYSBVUkwgfCBDb21tZW50cyB8CnwtLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS18LS0tLS0tLS0tLXwKfCAgICAgICAgICAgICAgIHwgYGFkZHJlc3NgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9hZGRyZXNzIHwgfAp8ICAgICAgICAgICAgICAgfCBgYWRkaXRpb25hbE5hbWVgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9hZGRpdGlvbmFsTmFtZSB8IE1pZGRsZSBuYW1lIHwKfCAgICAgICAgICAgICAgIHwgYGhvbm9yaWZpY1ByZWZpeGAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaG9ub3JpZmljUHJlZml4IHwgZS5nLiwgRHIuIHwKfCAgICAgICAgICAgICAgIHwgYGhvbm9yaWZpY1N1ZmZpeGAgIHwgaHR0cDovL3NjaGVtYS5vcmcvaG9ub3JpZmljU3VmZml4IHwgZS5nLiwgUGguRC4gfAp8ICAgICAgICAgICAgICAgfCBgam9iVGl0bGVgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9qb2JUaXRsZSB8IHwKfCAgICAgICAgICAgICAgIHwgYHRlbGVwaG9uZWAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvdGVsZXBob25lIHwgfAoKIyMgVm9sdW1lcwoKSW4gREIxLCB3ZSB1c2UgdGhlIHRlcm0gdm9sdW1lLCBhbmQgc28gZG9lcyB0aGUgQVBJLiBXZSBhcmUgY29uc2lkZXJpbmcgdXNpbmcgdGhlIHRlcm0gYFByb2plY3RgIGluIERCMi4KCiMjIyBEQjEKCkhlcmUgaXMgdGhlIHN0cnVjdHVyZSBvZiB0aGUgb3V0cHV0IGZyb20gdGhlIERCMSBBUEkgZm9yIGEgdm9sdW1lLCBpbiB0aGlzIGNhc2UsIHRoZSBkZWZhdWx0IGlzIHZvbHVtZSAxIChodHRwczovL255dS5kYXRhYnJhcnkub3JnL3ZvbHVtZS8xKToKCmBgYHtyfQpzdHIoZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9jb250YWluZXJzX3JlY29yZHMoKSkKYGBgCgpXZSBhbHNvIGhhdmUgdGhlIHByb2plY3QncyBpY29uIGF0IDxodHRwczovL255dS5kYXRhYnJhcnkub3JnL3ZvbHVtZS8xL3RodW1iP3NpemU+LCBzbyBhcHBhcmVudGx5IHRoZSBgdGh1bWJgIHZhcmlhYmxlIGhvbGRzIHRoZSBpY29uLgoKIyMjIyBRdWVzdGlvbnMKCjEuIEhvdyBpcyB0aGUgZGF0ZSBhZGRlZCBpbmZvcm1hdGlvbiByZXByZXNlbnRlZD8KMi4gSG93IGFyZSBleHRlcm5hbCBsaW5rcyByZXByZXNlbnRlZD8KMy4gSXMgdGhlIEhPVyBUTyBDSVRFIGdlbmVyYXRlZCBmcm9tIGEgZnVuY3Rpb24gb3IgaXMgaXQgcmVwcmVzZW50ZWQgc2VwYXJhdGVseSBhcyBkYXRhPwoKIyMjIFNjaGVtYSBzdWdnZXN0aW9ucwoKTGV0J3MgdHJ5IHRoZSBEYXRhQ2F0YWxvZyAoaHR0cDovL3NjaGVtYS5vcmcvRGF0YUNhdGFsb2cpIHNjaGVtYSB0byBzdGFydCBtYXBwaW5nIHRoZSB2b2x1bWUtbGV2ZWwgaXRlbXMuCgp8IERCMSAgICAgICAgICAgICB8IFN1Z2dlc3RlZCBtYXBwaW5nIHwgU2NoZW1hIFVSTCB8IENvbW1lbnRzIHwKfC0tLS0tLS0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IGBpZGAgICAgICAgICAgICAgfCBgaWRlbnRpZmllcmAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lkZW50aWZpZXIgfCB8CnwgYG5hbWVgICAgICAgICAgICB8IGBuYW1lYCAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvbmFtZSAgICAgICB8IHwKfCBgYm9keWAgICAgICAgICAgIHwgYGFic3RyYWN0YCAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9hYnN0cmFjdCAgIHwgfAp8IGBkb2lgICAgICAgICAgICAgfCBgZG9pYCAgICAgICAgICAgICB8IGZyb20gcmUzZGF0YS5vcmcgKHByb3BlcnR5IElEIDEuMikgfCAgfAp8IGBjcmVhdGlvbmAgICAgICAgfCBgZGF0ZUNyZWF0ZWRgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2RhdGVDcmVhdGVkIHx8CnwgYG93bmVyc2AgICAgICAgICB8IGBjcmVhdG9yYCAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY3JlYXRvciAgICAgfCBIb3cgdG8gaGFuZGxlIGRpZmZlcmVudCB0eXBlcyBvZiAnb3duZXJzaGlwJyB8CnwgYHBlcm1pc3Npb25gICAgICB8ICAgICAgICAgICAgICAgICAgIHwgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBTZWUgcmVsYXRlZCBkaXNjdXNzaW9uIGFib3ZlIHwKfCBgcHVibGljc2hhcmVmdWxgIHwgICAgICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8fAp8IGBwdWJsaWNhY2Nlc3NgICAgfCAgICAgICAgICAgICAgICAgICB8ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHx8CnwgaHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy92b2x1bWUvMS90aHVtYj9zaXplIHwgYHRodW1ibmFpbFVybGAgfCBodHRwOi8vc2NoZW1hLm9yZy90aHVtYm5haWxVcmwgfCB8ICAgICAgICAgIAoKV2UnbGwgZGVhbCB3aXRoIHRoZSBgY29udGFpbmVyc2AgYXJyYXkgc2VwYXJhdGVseSwgYXMgdGhhdCBpcyB3aGVyZSB0aGUgc3ByZWFkc2hlZXQvc2Vzc2lvbiBkYXRhIHJlc2lkZS4KClRoZSBmb2xsb3dpbmcgc2VlbSBsaWtlIGxvZ2ljYWwgYWRkaXRpb25zIHRvIHRoZSB2b2x1bWUgbGV2ZWwgc2NoZW1hOgoKfCBEQjEgICAgICAgICAgIHwgU3VnZ2VzdGVkIG1hcHBpbmcgfCBTY2hlbWEgVVJMIHwgQ29tbWVudHMgfAp8LS0tLS0tLS0tLS0tLS0tfC0tLS0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tfC0tLS0tLS0tLS18CnwgICAgICAgICAgICAgICB8IGBkYXRlTW9kaWZpZWRgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZGF0ZU1vZGlmaWVkIHwgfAp8ICAgICAgICAgICAgICAgfCBgZGF0ZVB1Ymxpc2hlZGAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2RhdGVQdWJsaXNoZWQgfCB8CnwgICAgICAgICAgICAgICB8IGBkYXRhc2V0YCAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZGF0YXNldCB8IHwKfCAgICAgICAgICAgICAgIHwgYG1lYXN1cmVtZW50VGVjaG5pcXVlYCB8IGh0dHA6Ly9wZW5kaW5nLnNjaGVtYS5vcmcvbWVhc3VyZW1lbnRUZWNobmlxdWUgfCB8CnwgICAgICAgICAgICAgICB8IGBjaXRhdGlvbmAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY2l0YXRpb24gfCBCdXQgc2VlIGBkb2lgIHF1ZXJ5IHwKfCAgICAgICAgICAgICAgIHwgYGNvbmRpdGlvbnNPZkFjY2Vzc2AgfCBodHRwOi8vcGVuZGluZy5zY2hlbWEub3JnL2NvbmRpdGlvbnNPZkFjY2VzcyB8IHwKfCAgICAgICAgICAgICAgIHwgYGNvbnRyaWJ1dG9yYCAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2NvbnRyaWJ1dG9yIHwgUG9zc2libHkgdXNlIGZvciBub24tYXV0aG9yaWFsL2NpdGF0aW9uIGNvbnRyaWJ1dG9ycyB8CnwgICAgICAgICAgICAgICB8IGBjb3B5cmlnaHRIb2xkZXJgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvY29weXJpZ2h0SG9sZGVyIHwgfAp8ICAgICAgICAgICAgICAgfCAgICAgICAgICAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2NvcHlyaWdodFllYXIgfCB8CnwgICAgICAgICAgICAgICB8IGBjcmVhdGl2ZVdvcmtTdGF0dXNgIHwgaHR0cDovL3BlbmRpbmcuc2NoZW1hLm9yZy9jcmVhdGl2ZVdvcmtTdGF0dXMgfCB8CnwgICAgICAgICAgICAgICB8IGBmdW5kZXJgICAgICAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvZnVuZGVyIHwgTm90IHN1cmUgaG93IGZ1bmRlcnMgYXJlIGhhbmRsZWQgbm93IHwKfCAgICAgICAgICAgICAgIHwgYGhhc1BhcnRgICAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9oYXNQYXJ0IHwgRm9yIHN1YmNvbXBvbmVudHMgfAp8ICAgICAgICAgICAgICAgfCBgaW5MYW5ndWFnZWAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2luTGFuZ3VhZ2UgfCB8CnwgICAgICAgICAgICAgICB8IGBpbnRlcmFjdGlvblN0YXRpc3RpY2AgfCBodHRwOi8vc2NoZW1hLm9yZy9pbnRlcmFjdGlvblN0YXRpc3RpYyB8ICBGb3Igdmlldy9kb3dubG9hZCBjb3VudHMgfAp8ICAgICAgICAgICAgICAgfCBgaXNQYXJ0T2ZgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL2lzUGFydE9mIHwgRm9yIHJlbGF0aW9ucyBiZXR3ZWVuIHByb2plY3RzIHwKfCAgICAgICAgICAgICAgIHwgYGtleXdvcmRzYCAgICAgICAgICAgfCBodHRwOi8vc2NoZW1hLm9yZy9rZXl3b3JkcyB8IHwKfCAgICAgICAgICAgICAgIHwgYHB1YmxpY2F0aW9uYCAgICAgICAgIHwgaHR0cDovL3NjaGVtYS5vcmcvcHVibGljYXRpb24gfCB8CnwgICAgICAgICAgICAgICB8IGB2ZXJzaW9uYCAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3ZlcnNpb24gfCB8CnwgICAgICAgICAgICAgICB8IGBzYW1lQXNgICAgICAgICAgICAgICB8IGh0dHA6Ly9zY2hlbWEub3JnL3NhbWVBcyB8IHwKCiMjIyBEYXRhQ2l0ZSByZWNvbW1lbmRhdGlvbnMKClRoZSBEYXRhQ2l0ZSBNZXRhZGF0YSBTY2hlbWEgdjQuMyBQcm9wZXJ0aWVzIE92ZXJ2aWV3LiA8aHR0cHM6Ly9zdXBwb3J0LmRhdGFjaXRlLm9yZy9kb2NzL3NjaGVtYS1wcm9wZXJ0aWVzLW92ZXJ2aWV3LXY0Mz4gbWFrZXMgc3BlY2lmaWMgcmVjb21tZW5kYXRpb25zIGFib3V0IHdoYXQgcHJvcGVydGllcyBhcmUgbWFuZGF0b3J5LCB3aGljaCBhcmUgcmVjb21tZW5kZWQsIGFuZCB3aGljaCBhcmUgb3B0aW9uYWwuCgp8IElEIHwgUHJvcGVydHkJfCBPYmxpZ2F0aW9uIHwgQ29tbWVudHMgfAp8LS0tLXwtLS0tLS0tLS0tfC0tLS0tLS0tLS0tLXwtLS0tLS0tLS0tfAp8IDEgfCBJZGVudGlmaWVyICh3aXRoIG1hbmRhdG9yeSB0eXBlIHN1Yi1wcm9wZXJ0eSkgfCBNIHwgTWFwcyB0byBgaWRlbnRpZmllcmAgfAp8IDIgfCBDcmVhdG9yICh3aXRoIG9wdGlvbmFsIG5hbWUgaWRlbnRpZmllciBhbmQgYWZmaWxpYXRpb24gc3ViLXByb3BlcnRpZXMpIHwgTSB8IE1hcHMgdG8gYGNyZWF0b3JgIHwKfCAzIHwgVGl0bGUgKHdpdGggb3B0aW9uYWwgdHlwZSBzdWItcHJvcGVydGllcykgfCBNIHwgTWFwcyB0byBgbmFtZWAgfAp8IDQgfCBQdWJsaXNoZXIgfCBNIHwgYHB1Ymxpc2hlcmAgaW4gc2NoZW1hLm9yZyB8CnwgNSB8IFB1YmxpY2F0aW9uWWVhciB8IE0gfCBgZGF0ZVB1Ymxpc2hlZGAgaW4gc2NoZW1hLm9yZyB8CnwgMTAgfCBSZXNvdXJjZVR5cGUgKHdpdGggbWFuZGF0b3J5IGdlbmVyYWwgdHlwZSBkZXNjcmlwdGlvbiBzdWItcHJvcGVydHkpIHwgTSB8IGBhZGRpdGlvbmFsVHlwZWAgZnJvbSBzY2hlbWEub3JnPyB8CgpJdCBzZWVtcyBwcnVkZW50IHRvIHRyeSB0byBpbmNsdWRlIHRoZSBtYW5kYXRvcnkgRGF0YUNpdGUgcHJvcGVydGllcy4KClRoZSByZWNvbW1lbmRlZCAoUikgYW5kIG9wdGlvbmFsIChPKSBwcm9wZXJ0aWVzIGFyZSBhcyBmb2xsb3dzOgoKfCBJRCB8IFByb3BlcnR5CSAgICAgICAgICAgICAgICAgfCBPYmxpZ2F0aW9uIHwgQ29tbWVudHMgfAp8LS0tLXwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS18LS0tLS0tLS0tLS0tfC0tLS0tLS0tLS18CnwgNiAgfCBTdWJqZWN0ICh3aXRoIHNjaGVtZSBzdWItcHJvcGVydHkpIHwgUiB8IHwgCnwgNyAgfCBDb250cmlidXRvciAod2l0aCB0eXBlLCBuYW1lIGlkZW50aWZpZXIsIGFuZCBhZmZpbGlhdGlvbiBzdWItcHJvcGVydGllcykgfCBSIHwgYGNvbnRyaWJ1dG9yYCB8CnwgOCAgfCBEYXRlICh3aXRoIHR5cGUgc3ViLXByb3BlcnR5KSAgICAgIHwgUiB8IFVzZSBtb3JlIHNwZWNpZmljIGBkYXRlTW9kaWZpZWRgLCBldGMuP3wKfCA5ICB8IExhbmd1YWdlICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBPIHwgYGluTGFuZ3VhZ2VgIHwKfCAxMSB8IEFsdGVybmF0ZUlkZW50aWZpZXIgKHdpdGggdHlwZSBzdWItcHJvcGVydHkpIHwgTyB8IHwKfCAxMiB8IFJlbGF0ZWRJZGVudGlmaWVyICh3aXRoIHR5cGUgYW5kIHJlbGF0aW9uIHR5cGUgc3ViLXByb3BlcnRpZXMpIHwgUiB8IHwKfCAxMyB8IFNpemUgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCBPIHwgfAp8IDE0IHwgRm9ybWF0ICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IE8gfCBSZWxldmFudCBzaW5jZSBQcm9qZWN0cyBhcmUgaGV0ZXJvZ2VuZW91cz8gfAp8IDE1IHwgVmVyc2lvbiAgICAgICAgICAgICAgICAgICAgICAgICAgICB8IE8gfCBgdmVyc2lvbmAgaW4gc2NoZW1hLm9yZyB8CnwgMTYgfCBSaWdodHMgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHwgTyB8IFN1cHBvcnQgd2l0aCBzb21lIHZlcnNpb24gb2YgRGF0YWJyYXJ5IGFjY2VzcyByaWdodHM/IHwKfCAxNyB8IERlc2NyaXB0aW9uICh3aXRoIHR5cGUgc3ViLXByb3BlcnR5KSB8IFIgfCBXaGF0IGlzIHJlbGF0aW9uc2hpcCB0byBgYWJzdHJhY3RgPyB8CnwgMTggfCBHZW9Mb2NhdGlvbiAod2l0aCBwb2ludCwgYm94IGFuZCBwb2x5Z29uIHN1Yi1wcm9wZXJ0aWVzKSB8IFIgfCBEZXJpdmVkIGZyb20gaW5kaXZpZHVhbCBjb21wb25lbnRzIG9mIGNvbGxlY3Rpb24/IHwKfCAxOSB8IEZ1bmRpbmdSZWZlcmVuY2UgKHdpdGggbmFtZSwgaWRlbnRpZmllciwgYW5kIGF3YXJkIHJlbGF0ZWQgc3ViLXByb3BlcnRpZXMpIHwgTyB8IEV4dGVuc2lvbiBvZiBgZnVuZGVyYD8gfAoKSGVyZSBpcyBhIHNhbXBsZSBYTUwgZmlsZSBmb3IgYSBzaW1wbGUgZGF0YXNldDogPGh0dHA6Ly9zY2hlbWEuZGF0YWNpdGUub3JnL21ldGEva2VybmVsLTQuMy9leGFtcGxlL2RhdGFjaXRlLWV4YW1wbGUtZGF0YXNldC12NC54bWw+CgoKIyMgU2Vzc2lvbnMKCkluIERCMSwgd2Ugc2hvdyBjb2xsZWN0aW9ucyBvZiBkYXRhIGluIGEgc3ByZWFkc2hlZXQtbGlrZSBpbnRlcmZhY2UuIApBIGNvbGxlY3Rpb24gb2YgZGF0YSBpbnZvbHZpbmcgcGVvcGxlIG9ic2VydmVkIG9uIGEgc3BlY2lmaWMgZGF0ZSBhbmQgdGltZSBpbiBhIHBhcnRpY3VsYXIgbG9jYXRpb24gZG9pbmcgc2ltaWxhciB0aGluZ3MgaXMgY2FsbGVkIGEgKnNlc3Npb24qLgpUaGUgREIxIEFQSSBpbmRleGVzIHNlc3Npb25zIGFzIGBzbG90YHMuCkVhY2ggYHNsb3RgIGlzIGdpdmVuIGEgdW5pcXVlIGludGVnZXIgSUQuCkZvciBleGFtcGxlLCA8aHR0cHM6Ly9ueXUuZGF0YWJyYXJ5Lm9yZy92b2x1bWUvMS9zbG90LzI1OTUyLy0+IGxpbmtzIHRvIGBzbG90YCAyNTk1MiBpbiB2b2x1bWUgMSwgdGhlIHZvbHVtZSB0aGF0IGNvbnRhaW5zIGluZm9ybWF0aW9uIGFib3V0IERhdGFicmFyeSdzIGJvYXJkIG1lZXRpbmdzLgoKIyMjIERCMQoKVGhlIEFQSSByZXR1cm5zIGEgdGFibGUgY2FsbGVkIGBjb250YWluZXJzYDoKCmBgYHtyfQp2b2wxIDwtIGRhdGFicmFyeWFwaTo6ZG93bmxvYWRfY29udGFpbmVyc19yZWNvcmRzKCkKc3RyKHZvbDEpCmBgYAoKVGhlIGBjb250YWluZXJzYCB0YWJsZSBjb250YWlucyB0aGUgZm9sbG93aW5nIGZpZWxkcy4KCmBgYHtyfQp2b2wxX2NvbnQgPC0gdm9sMSRjb250YWluZXJzCm5hbWVzKHZvbDFfY29udCkKYGBgCgpGb3Igdm9sdW1lIDEsIHRoaXMgaXMgYW4gYXJyYXkgb2Ygd2l0aCBkaW1lbnNpb25zIGByIGRpbSh2b2wxX2NvbnQpYCwgb25lIHJvdyBmb3IgZWFjaCBvZiB0aGUgImZvbGRlcnMiIG9yIHNsb3RzL3Nlc3Npb25zIGluIHRoZSB2b2x1bWUuClRoZSBgaWRgIHZhcmlhYmxlIGhvbGRzIHRoZSBgc2xvdGAgaW5kZXguIAoKVGhlIG51bWJlciBvZiB2YXJpYWJsZXMgY29sbGVjdGVkIGZvciBlYWNoIHNlc3Npb24vYHNsb3RgIHZhcmllcyBhY3Jvc3Mgc3R1ZGllcy4KQ29uc2lkZXIgb25lIG9mIHRoZSBQTEFZIGRhdGFzZXRzLCBmb3IgZXhhbXBsZS4KCmBgYHtyfQp2b2w4OTkgPC0gZGF0YWJyYXJ5YXBpOjpkb3dubG9hZF9jb250YWluZXJzX3JlY29yZHMoODk5KQp2b2w4OTlfY29udGFpbmVycyA8LSB2b2w4OTkkY29udGFpbmVycwpuYW1lcyh2b2w4OTlfY29udGFpbmVycykKYGBgCgpUaGUgdmFyaWFibGVzIGZvciB0aGUgc2Vzc2lvbi9gc2xvdGAgYXJlIGlkZW50aWNhbCB0byB0aG9zZSBmb3Igdm9sdW1lIDEuCgpIb3dldmVyLCB0aGUgZGF0YSByZXR1cm5lZCBpbiB0aGUgc3ByZWFkc2hlZXQgYWJvdXQgdGhlIHBhcnRpY2lwYW50cyBhcmUgc3RvcmVkIGluIGEgYHJlY29yZHNgIHRhYmxlIHdpdGggdGhyZWUgdmFyaWFibGVzOgoKYGBge3J9CnZvbDg5OV9yZWNvcmRzIDwtIHZvbDg5OSRyZWNvcmRzCnZvbDg5OV9yZWNvcmRzCmBgYAoKVGhlIGBtZWFzdXJlc2AgdmFyaWFibGUgaXMgYSBkYXRhLmZyYW1lLgpUaGUgYGNhdGVnb3J5YCB2YXJpYWJsZSByZWZlcnMgdG8gdGhlIHR5cGUgb2YgaW5mb3JtYXRpb24gcmVjb3JkZWQgaW4gdGhlIHNwcmVhZHNoZWV0OgoKYGBge3J9CmRiX2NvbnN0IDwtIGRhdGFicmFyeWFwaTo6YXNzaWduX2NvbnN0YW50cygpCnN0cihkYl9jb25zdCRtZXRyaWMpCmBgYAoKVGhlIG1hcHBpbmdzIGFyZSBzdG9yZWQgaW4gYSBzaXRlLXdpZGUgYXJyYXkgYWYgY29uc3RhbnRzIEkgYWNjZXNzIHVzaW5nIGBkYXRhYnJhcnlhcGk6OmFzc2lnbl9jb25zdGFudHNgLgpUaGlzIGlzIGEgd2VsbC1zdHJ1Y3R1cmVkIGFycmF5IHRoYXQgd2UgY2FuIHByb2JhYmx5IG1hcCB0byBvcGVuIHNjaGVtYS4KCiMjIyBRdWVzdGlvbnMKCjEuIFdoYXQgZG8gdGhlIGBpZGAgYW5kIGBjYXRlZ29yeWAgdmFyaWFibGVzIHdpdGhpbiB0aGUgYHJlY29yZHNgIHRhYmxlIHJlZmVyIHRvPwoKVGhlIElEIGFwcGVhcnMgdG8gcmVmZXIgdG8gdGhlc2Ugc2Vzc2lvbi9gc2xvdGAgZGF0YSwgaW5kZXBlbmRlbnQgb2YgdGhlIGBtZWFzdXJlc2AuIEkgYmVsaWV2ZSB0aGlzIGlzIGJlY2F1c2UgaXQncyBwb3NzaWJsZSB0aGF0IHRoZXJlIGNvdWxkIGJlIG1vcmUgdGhhbiBvbmUgcGVyc29uIHJlY29yZGVkIGluIGEgc2Vzc2lvbi9gc2xvdGAuClNvLCB0aGVyZSBtdXN0IGJlIGEgd2F5IHRvIGxpbmsgbXVsdGlwbGUgYHJlY29yZHMkaWRgcyB0byBhIGBjb250YWluZXJzJGlkYC4KClRoZSBgY2F0ZWdvcnlgIHJlZmVycyB0byB0aGUgc2FtZSBncm91cGluZyBvZiBwYXJ0aWNpcGFudC1sZXZlbCB2YXJpYWJsZXMgYXMgZGVzY3JpYmVkIGJlbG93LgoKMi4gV2hhdCBkbyB0aGUgYGNhdGVnb3J5YCBhbmQgYHJlbGVhc2VgIHZhcmlhYmxlcyB3aXRoaW4gdGhlIGBtZXRyaWNzYCBkbz8KCkJhc2VkIG9uIHRoZSBmb2xsb3dpbmcuLi4KCmBgYHtyfQpzdHIoZGJfY29uc3QkY2F0ZWdvcnkpCmBgYAoKSXQgbG9va3MgbGlrZSB0aGUgYGNhdGVnb3J5YCByZWZlcnMgdG8gYW4gYWdncmVnYXRpb24gb2YgZGF0YSBhYm91dCB0aGUgc2Vzc2lvbi4KVGhlIHJlbGV2YW50IHZhbHVlcyBhcmUgaW4gXHsncGFydGljaXBhbnQnLCAncGlsb3QnLCAnZXhjbHVzaW9uJywgJ2NvbmRpdGlvbicsICdncm91cCcsICd0YXNrJywgJ2NvbnRleHQnXH0uCgpTaW1pbGFybHksIGByZWxlYXNlYCBpcyBvbmUgb2YgdGhlIGZvbGxvd2luZyB2YWx1ZXM6CgpgYGB7cn0KZGJfY29uc3QkcmVsZWFzZQpgYGAKClNpbmNlIG1vc3Qgb2YgdGhlIGRhdGEgaXRlbXMgY29udGFpbiBhIHZhbHVlIG9mIDMsIGV4Y2VwdCBmb3IgYGJpcnRoZGF0ZWAgYW5kIGBkaXNhYmlsaXR5YCwgSSdtIGd1ZXNzaW5nIHRoYXQgdGhpcyBpcyB1c2VkIHRvIGZpbHRlciB0aGVzZSB2YXJpYWJsZXMgZnJvbSBiZWluZyBzaG93biB3aGVuIHRoZSBzdHVkeSBpcyBzaGFyZWQuCg==</div>
 
 
 </div>

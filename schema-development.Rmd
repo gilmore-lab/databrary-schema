@@ -10,6 +10,10 @@ params:
   db_login: your@email.com
 ---
 
+```{r set-up, include=FALSE}
+library(tidyverse)
+```
+
 # Purpose
 
 To document Rick Gilmore's work on the Databrary 2.0 schema.
@@ -18,7 +22,13 @@ To document Rick Gilmore's work on the Databrary 2.0 schema.
 
 Jeff Spies, Swapnaa Jayaraman, and Rick Gilmore are also using this Google Doc as a working document:
 
-https://docs.google.com/document/d/1_becXD6YX6lqgn4LK0IhgWII5C_pBzcQWFGDLx-SY_Y/edit?usp=sharing
+<https://docs.google.com/document/d/1_becXD6YX6lqgn4LK0IhgWII5C_pBzcQWFGDLx-SY_Y/edit?usp=sharing>
+
+## Sites
+
+- <https://re3data.org>
+- DataCite: <https://www.datacite.org>
+    - DataCite Metadata Schema v4.3 Properties Overview. <https://support.datacite.org/docs/schema-properties-overview-v43>
 
 I'm using DB1 to refer to Databrary 1.0 and DB2 to refer to Databrary 2.0.
 
@@ -30,7 +40,13 @@ Login to Databrary by running `rmarkdown::render("schema-development.Rmd", param
 databraryapi::login_db(params$db_login)
 ```
 
+# Repository-wide
+
+The re3data.org specification adds some metadata elements that may be helpful to support.
+
 ## Institutions
+
+### DB1
 
 In DB1, all Institutions are instances of `party`, but with some special properties.
 
@@ -60,9 +76,11 @@ I also suggest the following additions:
 |               | `address`         | http://schema.org/address | |
 |               | `contactPoint`    | http://schema.org/contactPoint  |  |
 
-## AccountHolders
+## Users
 
-In DB1, all users are instances of `party`.
+In DB1, all users are instances of `party`. For DB2, we are considering creating a special type of `Person` called an `AccountHolder`.
+
+### DB1
 
 Here, for example, is what the DB1 API returns for Rick Gilmore:
 
@@ -116,7 +134,11 @@ With the following addition(s):
 |               | `jobTitle`         | http://schema.org/jobTitle | |
 |               | `telephone`        | http://schema.org/telephone | |
 
-## Volume (Project)
+## Volumes
+
+In DB1, we use the term volume, and so does the API. We are considering using the term `Project` in DB2.
+
+### DB1
 
 Here is the structure of the output from the DB1 API for a volume, in this case, the default is volume 1 (https://nyu.databrary.org/volume/1):
 
@@ -126,22 +148,28 @@ str(databraryapi::download_containers_records())
 
 We also have the project's icon at <https://nyu.databrary.org/volume/1/thumb?size>, so apparently the `thumb` variable holds the icon.
 
+#### Questions
+
+1. How is the date added information represented?
+2. How are external links represented?
+3. Is the HOW TO CITE generated from a function or is it represented separately as data?
+
 ### Schema suggestions
 
 Let's try the DataCatalog (http://schema.org/DataCatalog) schema to start mapping the volume-level items.
 
-| DB1           | Suggested mapping | Schema URL | Comments |
-|---------------|-------------------|------------|----------|
-| `id`          | `identifier`      | http://schema.org/identifier | |
-| `name`        | `name`            | http://schema.org/name ||
-| `body`        | `abstract`        | http://schema.org/abstract ||
-| `doi`         |                   | | Use `citation` or ? |
-| `creation`    | `dateCreated`     | http://schema.org/dateCreated ||
-| `owners`      | `creator`         | http://schema.org/creator | How to handle different types of 'ownership' |
-| `permission`  |              |                                | See related discussion above |
-| `publicshareful` |            |                                | |
-| `publicaccess`   |            |                               | |
-| https://nyu.databrary.org/volume/1/thumb?size                | `thumbnailUrl` | http://schema.org/thumbnailUrl | |          
+| DB1             | Suggested mapping | Schema URL | Comments |
+|------------------|-------------------|------------|----------|
+| `id`             | `identifier`      | http://schema.org/identifier | |
+| `name`           | `name`            | http://schema.org/name       | |
+| `body`           | `abstract`        | http://schema.org/abstract   | |
+| `doi`            | `doi`             | from re3data.org (property ID 1.2) |  |
+| `creation`       | `dateCreated`     | http://schema.org/dateCreated ||
+| `owners`         | `creator`         | http://schema.org/creator     | How to handle different types of 'ownership' |
+| `permission`     |                   |                               | See related discussion above |
+| `publicshareful` |                   |                               ||
+| `publicaccess`   |                   |                               ||
+| https://nyu.databrary.org/volume/1/thumb?size | `thumbnailUrl` | http://schema.org/thumbnailUrl | |          
 
 We'll deal with the `containers` array separately, as that is where the spreadsheet/session data reside.
 
@@ -159,13 +187,132 @@ The following seem like logical additions to the volume level schema:
 |               | `copyrightHolder`    | http://schema.org/copyrightHolder | |
 |               |                      | http://schema.org/copyrightYear | |
 |               | `creativeWorkStatus` | http://pending.schema.org/creativeWorkStatus | |
-|                | `funder`             | http://schema.org/funder | Not sure how funders are handled now |
-|                | `hasPart`            | http://schema.org/hasPart | For subcomponents |
-|                | `inLanguage`         | http://schema.org/inLanguage | |
-|                | `interactionStatistic` | http://schema.org/interactionStatistic |  For view/download counts |
-|                | `isPartOf`           | http://schema.org/isPartOf | For relations between projects |
-|                | `keywords`           | http://schema.org/keywords | |
-|                | `publication`         | http://schema.org/publication | |
-|                | `version`             | http://schema.org/version | |
-|                | `sameAs`              | http://schema.org/sameAs | |
+|               | `funder`             | http://schema.org/funder | Not sure how funders are handled now |
+|               | `hasPart`            | http://schema.org/hasPart | For subcomponents |
+|               | `inLanguage`         | http://schema.org/inLanguage | |
+|               | `interactionStatistic` | http://schema.org/interactionStatistic |  For view/download counts |
+|               | `isPartOf`           | http://schema.org/isPartOf | For relations between projects |
+|               | `keywords`           | http://schema.org/keywords | |
+|               | `publication`         | http://schema.org/publication | |
+|               | `version`             | http://schema.org/version | |
+|               | `sameAs`              | http://schema.org/sameAs | |
 
+### DataCite recommendations
+
+The DataCite Metadata Schema v4.3 Properties Overview. <https://support.datacite.org/docs/schema-properties-overview-v43> makes specific recommendations about what properties are mandatory, which are recommended, and which are optional.
+
+| ID | Property	| Obligation | Comments |
+|----|----------|------------|----------|
+| 1 | Identifier (with mandatory type sub-property) | M | Maps to `identifier` |
+| 2 | Creator (with optional name identifier and affiliation sub-properties) | M | Maps to `creator` |
+| 3 | Title (with optional type sub-properties) | M | Maps to `name` |
+| 4 | Publisher | M | `publisher` in schema.org |
+| 5 | PublicationYear | M | `datePublished` in schema.org |
+| 10 | ResourceType (with mandatory general type description sub-property) | M | `additionalType` from schema.org? |
+
+It seems prudent to try to include the mandatory DataCite properties.
+
+The recommended (R) and optional (O) properties are as follows:
+
+| ID | Property	                 | Obligation | Comments |
+|----|---------------------------|------------|----------|
+| 6  | Subject (with scheme sub-property) | R | | 
+| 7  | Contributor (with type, name identifier, and affiliation sub-properties) | R | `contributor` |
+| 8  | Date (with type sub-property)      | R | Use more specific `dateModified`, etc.?|
+| 9  | Language                           | O | `inLanguage` |
+| 11 | AlternateIdentifier (with type sub-property) | O | |
+| 12 | RelatedIdentifier (with type and relation type sub-properties) | R | |
+| 13 | Size                               | O | |
+| 14 | Format                             | O | Relevant since Projects are heterogeneous? |
+| 15 | Version                            | O | `version` in schema.org |
+| 16 | Rights                             | O | Support with some version of Databrary access rights? |
+| 17 | Description (with type sub-property) | R | What is relationship to `abstract`? |
+| 18 | GeoLocation (with point, box and polygon sub-properties) | R | Derived from individual components of collection? |
+| 19 | FundingReference (with name, identifier, and award related sub-properties) | O | Extension of `funder`? |
+
+Here is a sample XML file for a simple dataset: <http://schema.datacite.org/meta/kernel-4.3/example/datacite-example-dataset-v4.xml>
+
+
+## Sessions
+
+In DB1, we show collections of data in a spreadsheet-like interface. 
+A collection of data involving people observed on a specific date and time in a particular location doing similar things is called a *session*.
+The DB1 API indexes sessions as `slot`s.
+Each `slot` is given a unique integer ID.
+For example, <https://nyu.databrary.org/volume/1/slot/25952/-> links to `slot` 25952 in volume 1, the volume that contains information about Databrary's board meetings.
+
+### DB1
+
+The API returns a table called `containers`:
+
+```{r}
+vol1 <- databraryapi::download_containers_records()
+str(vol1)
+```
+
+The `containers` table contains the following fields.
+
+```{r}
+vol1_cont <- vol1$containers
+names(vol1_cont)
+```
+
+For volume 1, this is an array of with dimensions `r dim(vol1_cont)`, one row for each of the "folders" or slots/sessions in the volume.
+The `id` variable holds the `slot` index. 
+
+The number of variables collected for each session/`slot` varies across studies.
+Consider one of the PLAY datasets, for example.
+
+```{r}
+vol899 <- databraryapi::download_containers_records(899)
+vol899_containers <- vol899$containers
+names(vol899_containers)
+```
+
+The variables for the session/`slot` are identical to those for volume 1.
+
+However, the data returned in the spreadsheet about the participants are stored in a `records` table with three variables:
+
+```{r}
+vol899_records <- vol899$records
+vol899_records
+```
+
+The `measures` variable is a data.frame.
+The `category` variable refers to the type of information recorded in the spreadsheet:
+
+```{r}
+db_const <- databraryapi::assign_constants()
+str(db_const$metric)
+```
+
+The mappings are stored in a site-wide array af constants I access using `databraryapi::assign_constants`.
+This is a well-structured array that we can probably map to open schema.
+
+### Questions
+
+1. What do the `id` and `category` variables within the `records` table refer to?
+
+The ID appears to refer to these session/`slot` data, independent of the `measures`. I believe this is because it's possible that there could be more than one person recorded in a session/`slot`.
+So, there must be a way to link multiple `records$id`s to a `containers$id`.
+
+The `category` refers to the same grouping of participant-level variables as described below.
+
+2. What do the `category` and `release` variables within the `metrics` do?
+
+Based on the following...
+
+```{r}
+str(db_const$category)
+```
+
+It looks like the `category` refers to an aggregation of data about the session.
+The relevant values are in \{'participant', 'pilot', 'exclusion', 'condition', 'group', 'task', 'context'\}.
+
+Similarly, `release` is one of the following values:
+
+```{r}
+db_const$release
+```
+
+Since most of the data items contain a value of 3, except for `birthdate` and `disability`, I'm guessing that this is used to filter these variables from being shown when the study is shared.
